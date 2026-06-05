@@ -24,12 +24,12 @@
 .expense-panel__title {
   font-size: 1.6rem;
   font-weight: 700;
-  color: #2d4a2a;
+  color: #1A1A1A;
   margin: 0;
 }
 
 .expense-panel__add-btn {
-  background: #5c8a52;
+  background: #1A1A1A;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -41,11 +41,11 @@
 }
 
 .expense-panel__add-btn:hover:not(:disabled) {
-  background: #4a7341;
+  background: #000000;
 }
 
 .expense-panel__add-btn:disabled {
-  background: #b5c4b1;
+  background: #C8C8C8;
   cursor: not-allowed;
 }
 
@@ -53,8 +53,8 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  background: #fdfbf3;
-  border: 1px solid #e8e2c8;
+  background: #FAFAFA;
+  border: 1px solid #E6E6E6;
   border-radius: 10px;
   padding: 10px 16px;
   width: fit-content;
@@ -62,8 +62,8 @@
 
 .expense-panel__month-btn {
   background: transparent;
-  border: 1px solid #d4cba6;
-  color: #5c5440;
+  border: 1px solid #D6D6D6;
+  color: #6B6B6B;
   padding: 6px 14px;
   border-radius: 6px;
   font-size: 0.9rem;
@@ -72,12 +72,12 @@
 }
 
 .expense-panel__month-btn:hover {
-  background: #f0ead0;
+  background: #F0F0F0;
 }
 
 .expense-panel__month-label {
   font-weight: 600;
-  color: #2d4a2a;
+  color: #1A1A1A;
   font-size: 1.05rem;
   min-width: 140px;
   text-align: center;
@@ -98,8 +98,8 @@
    ========================================================================== */
 
 .expense-summary {
-  background: #fdfbf3;
-  border: 1px solid #e8e2c8;
+  background: #FAFAFA;
+  border: 1px solid #E6E6E6;
   border-radius: 12px;
   padding: 20px;
   margin-bottom: 24px;
@@ -115,27 +115,27 @@
 }
 
 .expense-summary__total {
-  border-right: 1px solid #e8e2c8;
+  border-right: 1px solid #E6E6E6;
   padding-right: 24px;
 }
 
 @media (max-width: 700px) {
   .expense-summary__total {
     border-right: none;
-    border-bottom: 1px solid #e8e2c8;
+    border-bottom: 1px solid #E6E6E6;
     padding-right: 0;
     padding-bottom: 16px;
   }
 }
 
 .expense-summary__total-label {
-  color: #6b6450;
+  color: #6B6B6B;
   font-size: 0.85rem;
   margin-bottom: 6px;
 }
 
 .expense-summary__total-value {
-  color: #2d4a2a;
+  color: #1A1A1A;
   font-size: 2rem;
   font-weight: 700;
 }
@@ -159,7 +159,7 @@
   padding: 10px;
   background: #fff;
   border-radius: 8px;
-  border: 1px solid #ece5c3;
+  border: 1px solid #E6E6E6;
 }
 
 .expense-summary__category-icon {
@@ -173,14 +173,14 @@
 
 .expense-summary__category-label {
   font-size: 0.8rem;
-  color: #6b6450;
+  color: #6B6B6B;
   margin-bottom: 2px;
 }
 
 .expense-summary__category-value {
   font-size: 1.05rem;
   font-weight: 600;
-  color: #2d4a2a;
+  color: #1A1A1A;
 }
 
 /* ==========================================================================
@@ -189,28 +189,28 @@
 
 .expense-list {
   background: #fff;
-  border: 1px solid #e8e2c8;
+  border: 1px solid #E6E6E6;
   border-radius: 12px;
   overflow: hidden;
 }
 
 .expense-list__header {
   padding: 16px 20px;
-  border-bottom: 1px solid #e8e2c8;
-  background: #fdfbf3;
+  border-bottom: 1px solid #E6E6E6;
+  background: #FAFAFA;
 }
 
 .expense-list__title {
   font-size: 1rem;
   font-weight: 600;
-  color: #2d4a2a;
+  color: #1A1A1A;
   margin: 0;
 }
 
 .expense-list__empty {
   padding: 40px 20px;
   text-align: center;
-  color: #8a8470;
+  color: #9A9A9A;
   font-size: 0.95rem;
 }
 
@@ -225,7 +225,7 @@
   gap: 16px;
   align-items: center;
   padding: 14px 20px;
-  border-bottom: 1px solid #f0ead8;
+  border-bottom: 1px solid #EEEEEE;
   cursor: pointer;
   transition: background 0.15s;
 }
@@ -235,7 +235,7 @@
 }
 
 .expense-item:hover {
-  background: #fdfbf3;
+  background: #FAFAFA;
 }
 
 @media (max-width: 700px) {
@@ -265,7 +265,7 @@
 
 .expense-item__date {
   font-size: 0.9rem;
-  color: #5c5440;
+  color: #6B6B6B;
   font-weight: 500;
 }
 
@@ -286,7 +286,7 @@
 
 .expense-item__category-label {
   font-weight: 600;
-  color: #2d4a2a;
+  color: #1A1A1A;
   font-size: 0.95rem;
 }
 
@@ -298,8 +298,8 @@
 }
 
 .expense-item__meta-tag {
-  background: #f0ead0;
-  color: #5c5440;
+  background: #F0F0F0;
+  color: #6B6B6B;
   padding: 2px 8px;
   border-radius: 10px;
   font-size: 0.75rem;
@@ -307,7 +307,7 @@
 
 .expense-item__memo {
   font-size: 0.8rem;
-  color: #8a8470;
+  color: #9A9A9A;
   margin-top: 2px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -316,7 +316,7 @@
 
 .expense-item__amount {
   font-weight: 700;
-  color: #2d4a2a;
+  color: #1A1A1A;
   font-size: 1.05rem;
   white-space: nowrap;
 }
@@ -328,7 +328,7 @@
 
 .expense-item__receipt-btn {
   background: transparent;
-  border: 1px solid #d4cba6;
+  border: 1px solid #D6D6D6;
   border-radius: 6px;
   padding: 4px 8px;
   cursor: pointer;
@@ -337,7 +337,7 @@
 }
 
 .expense-item__receipt-btn:hover {
-  background: #f0ead0;
+  background: #F0F0F0;
 }
 
 /* ==========================================================================
@@ -372,14 +372,14 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px 20px;
-  border-bottom: 1px solid #e8e2c8;
-  background: #fdfbf3;
+  border-bottom: 1px solid #E6E6E6;
+  background: #FAFAFA;
 }
 
 .expense-modal__title {
   font-size: 1.15rem;
   font-weight: 700;
-  color: #2d4a2a;
+  color: #1A1A1A;
   margin: 0;
 }
 
@@ -389,13 +389,13 @@
   font-size: 1.6rem;
   line-height: 1;
   cursor: pointer;
-  color: #6b6450;
+  color: #6B6B6B;
   padding: 4px 8px;
   border-radius: 6px;
 }
 
 .expense-modal__close:hover {
-  background: #f0ead0;
+  background: #F0F0F0;
 }
 
 .expense-modal__body {
@@ -406,7 +406,7 @@
 
 .expense-modal__hint {
   font-size: 0.8rem;
-  color: #8a8470;
+  color: #9A9A9A;
   margin-top: 12px;
 }
 
@@ -425,8 +425,8 @@
   align-items: center;
   gap: 8px;
   padding: 14px 20px;
-  border-top: 1px solid #e8e2c8;
-  background: #fdfbf3;
+  border-top: 1px solid #E6E6E6;
+  background: #FAFAFA;
 }
 
 .expense-modal__footer-spacer {
@@ -436,9 +436,9 @@
 .expense-modal__btn {
   padding: 8px 16px;
   border-radius: 8px;
-  border: 1px solid #d4cba6;
+  border: 1px solid #D6D6D6;
   background: #fff;
-  color: #5c5440;
+  color: #6B6B6B;
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
@@ -446,7 +446,7 @@
 }
 
 .expense-modal__btn:hover:not(:disabled) {
-  background: #f0ead0;
+  background: #F0F0F0;
 }
 
 .expense-modal__btn:disabled {
@@ -455,13 +455,13 @@
 }
 
 .expense-modal__btn--primary {
-  background: #5c8a52;
+  background: #1A1A1A;
   color: #fff;
-  border-color: #5c8a52;
+  border-color: #1A1A1A;
 }
 
 .expense-modal__btn--primary:hover:not(:disabled) {
-  background: #4a7341;
+  background: #000000;
 }
 
 .expense-modal__btn--danger {
@@ -496,7 +496,7 @@
   display: block;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #2d4a2a;
+  color: #1A1A1A;
   margin-bottom: 6px;
 }
 
@@ -504,20 +504,20 @@
 .expense-field__textarea {
   width: 100%;
   padding: 8px 12px;
-  border: 1px solid #d4cba6;
+  border: 1px solid #D6D6D6;
   border-radius: 6px;
   font-size: 0.95rem;
   font-family: inherit;
   background: #fff;
-  color: #2d4a2a;
+  color: #1A1A1A;
   box-sizing: border-box;
 }
 
 .expense-field__input:focus,
 .expense-field__textarea:focus {
   outline: none;
-  border-color: #5c8a52;
-  box-shadow: 0 0 0 2px rgba(92, 138, 82, 0.15);
+  border-color: #1A1A1A;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.12);
 }
 
 .expense-field__textarea {
@@ -552,7 +552,7 @@
   padding: 12px 8px;
   min-height: 56px;              /* Phase C-3: ボタン高さ統一 */
   background: #fff;
-  border: 1.5px solid #d4cba6;
+  border: 1.5px solid #D6D6D6;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.15s;
@@ -560,12 +560,12 @@
 }
 
 .expense-category-btn:hover {
-  background: #fdfbf3;
+  background: #FAFAFA;
 }
 
 .expense-category-btn--active {
-  background: #e8f0e3;
-  border-color: #5c8a52;
+  background: #F0F0F0;
+  border-color: #1A1A1A;
 }
 
 .expense-category-btn__icon {
@@ -575,7 +575,7 @@
 .expense-category-btn__label {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #2d4a2a;
+  color: #1A1A1A;
   line-height: 1.3;
 }
 
@@ -588,7 +588,7 @@
   width: 100%;
   height: auto;
   border-radius: 6px;
-  border: 1px solid #d4cba6;
+  border: 1px solid #D6D6D6;
 }
 
 .expense-receipt-existing {
@@ -597,10 +597,10 @@
   flex-direction: column;
   gap: 2px;
   font-size: 0.85rem;
-  color: #5c8a52;
+  color: #1A1A1A;
 }
 
 .expense-receipt-existing__hint {
   font-size: 0.75rem;
-  color: #8a8470;
+  color: #9A9A9A;
 }
