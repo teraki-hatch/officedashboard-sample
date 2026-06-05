@@ -15,15 +15,15 @@
   margin: 0 0 4px 0;
   font-size: 24px;
   font-weight: 700;
-  color: #2c3e2c;
+  color: #1A1A1A;
 }
 .clients-page__subtitle {
   margin: 0;
   font-size: 13px;
-  color: #6b7c6b;
+  color: #6B6B6B;
 }
 .clients-page__add-btn {
-  background: #7a9e7e;
+  background: #1A1A1A;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -34,7 +34,7 @@
   white-space: nowrap;
 }
 .clients-page__add-btn:hover {
-  background: #6b8c6f;
+  background: #000000;
 }
 .clients-page__toolbar {
   display: flex;
@@ -47,7 +47,7 @@
   flex: 1;
   max-width: 400px;
   padding: 8px 12px;
-  border: 1px solid #d9ddd9;
+  border: 1px solid #D6D6D6;
   border-radius: 6px;
   font-size: 14px;
   background: #fff;
@@ -71,13 +71,13 @@
   border-collapse: collapse;
 }
 .clients-page__th {
-  background: #f5f7f5;
-  color: #4a5a4a;
+  background: #F5F5F5;
+  color: #6B6B6B;
   font-size: 12px;
   font-weight: 600;
   text-align: left;
   padding: 12px;
-  border-bottom: 1px solid #e8ece8;
+  border-bottom: 1px solid #E6E6E6;
 }
 .clients-page__th--num {
   text-align: right;
@@ -90,13 +90,13 @@
   transition: background 0.1s;
 }
 .clients-page__row:hover {
-  background: #f9fbf9;
+  background: #FAFAFA;
 }
 .clients-page__td {
   padding: 14px 12px;
   font-size: 14px;
-  color: #2c3e2c;
-  border-bottom: 1px solid #f0f3f0;
+  color: #1A1A1A;
+  border-bottom: 1px solid #EEEEEE;
 }
 .clients-page__td--num {
   text-align: right;
@@ -110,11 +110,11 @@
 }
 .clients-page__short-name {
   font-size: 11px;
-  color: #8a9a8a;
+  color: #9A9A9A;
   margin-top: 2px;
 }
 .clients-page__mute {
-  color: #aab2aa;
+  color: #AAAAAA;
 }
 .clients-page__badge {
   display: inline-block;
@@ -124,16 +124,16 @@
   font-weight: 600;
 }
 .clients-page__badge--active {
-  background: #e6f0e6;
-  color: #4a7d4a;
+  background: #1A1A1A;
+  color: #fff;
 }
 .clients-page__badge--inactive {
-  background: #f0e6e6;
-  color: #8a5050;
+  background: #F0F0F0;
+  color: #6B6B6B;
 }
 .clients-page__empty {
   text-align: center;
   padding: 40px;
-  color: #8a9a8a;
+  color: #9A9A9A;
   font-size: 13px;
 }
