@@ -556,17 +556,17 @@ export function AdminExpenseListPage() {
           font-weight: 700;
         }
         .adm-exp__closure-summary-item--confirmed {
-          background: #E2EED1;
-          color: #4E6B3A;
-          border-color: #C2D6A5;
+          background: #F0F0F0;
+          color: #1A1A1A;
+          border-color: #D6D6D6;
         }
         .adm-exp__closure-summary-item--submitted {
-          background: #FAEFD0;
-          color: #8B6914;
-          border-color: #E8D9A0;
+          background: #F0F0F0;
+          color: #6B6B6B;
+          border-color: #D6D6D6;
         }
         .adm-exp__closure-summary-item--none {
-          background: #fafaf5;
+          background: #FAFAFA;
           color: var(--ink-soft);
           border-color: var(--line);
           border-style: dashed;
@@ -579,9 +579,9 @@ export function AdminExpenseListPage() {
         .adm-exp__btn {
           padding: 6px 14px;
           font-size: 12.5px;
-          background: var(--primary, #2f7d4f);
+          background: var(--primary, #1A1A1A);
           color: #fff;
-          border: 1px solid var(--primary, #2f7d4f);
+          border: 1px solid var(--primary, #1A1A1A);
           border-radius: 6px;
           cursor: pointer;
         }
@@ -598,7 +598,7 @@ export function AdminExpenseListPage() {
           border: 1px solid var(--line);
         }
         .adm-exp__btn--ghost:hover:not(:disabled) {
-          background: #f5f5ee;
+          background: #F5F5F5;
         }
         .adm-exp__error {
           background: var(--danger-bg, #F4E1DA);
@@ -632,7 +632,7 @@ export function AdminExpenseListPage() {
           gap: 12px;
           padding: 12px 16px;
           width: 100%;
-          background: #fafaf5;
+          background: #FAFAFA;
           border: none;
           cursor: pointer;
           font-size: 13.5px;
@@ -640,7 +640,7 @@ export function AdminExpenseListPage() {
           text-align: left;
         }
         .adm-exp__user-header:hover {
-          background: #f4f4ec;
+          background: #F2F2F2;
         }
         .adm-exp__user-toggle {
           color: var(--ink-mute);
@@ -668,20 +668,20 @@ export function AdminExpenseListPage() {
           justify-self: start;
         }
         .adm-exp__user-status--none {
-          background: #fafaf5;
+          background: #FAFAFA;
           color: var(--ink-soft);
           border-color: var(--line);
           border-style: dashed;
         }
         .adm-exp__user-status--submitted {
-          background: #FAEFD0;
-          color: #8B6914;
-          border-color: #E8D9A0;
+          background: #F0F0F0;
+          color: #6B6B6B;
+          border-color: #D6D6D6;
         }
         .adm-exp__user-status--confirmed {
-          background: #E2EED1;
-          color: #4E6B3A;
-          border-color: #C2D6A5;
+          background: #F0F0F0;
+          color: #1A1A1A;
+          border-color: #D6D6D6;
         }
         .adm-exp__user-total {
           font-weight: 600;
@@ -702,7 +702,7 @@ export function AdminExpenseListPage() {
           text-align: center;
           color: var(--ink-soft);
           font-size: 12.5px;
-          background: #fafaf5;
+          background: #FAFAFA;
           border-radius: 6px;
         }
         .adm-exp__category-group {
@@ -716,7 +716,7 @@ export function AdminExpenseListPage() {
           align-items: center;
           gap: 10px;
           padding: 6px 10px;
-          background: #f8f5e9;
+          background: #F4F4F4;
           border-radius: 4px;
           font-size: 12.5px;
         }
@@ -741,7 +741,7 @@ export function AdminExpenseListPage() {
         }
         .adm-exp__item-row td {
           padding: 6px 10px;
-          border-bottom: 1px solid #f0eee5;
+          border-bottom: 1px solid #F0F0F0;
           vertical-align: middle;
         }
         .adm-exp__item-row:last-child td {
@@ -758,7 +758,7 @@ export function AdminExpenseListPage() {
         .adm-exp__tag {
           display: inline-block;
           padding: 1px 6px;
-          background: #f4f4ec;
+          background: #F2F2F2;
           color: var(--ink-mute);
           border-radius: 3px;
           font-size: 11px;
@@ -787,7 +787,7 @@ export function AdminExpenseListPage() {
           font-size: 14px;
         }
         .adm-exp__receipt-btn:hover {
-          background: #f5f5ee;
+          background: #F5F5F5;
         }
       `}</style>
     </div>
