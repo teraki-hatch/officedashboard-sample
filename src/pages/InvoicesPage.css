@@ -1,0 +1,217 @@
+.invoices-page {
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.invoices-page__header {
+  margin-bottom: 16px;
+}
+
+.invoices-page__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.invoices-page__toolbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.invoices-page__filters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.invoices-page__filter {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.875rem;
+  color: #6b7280;
+  gap: 4px;
+}
+
+.invoices-page__filter select {
+  padding: 6px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 0.95rem;
+  min-width: 140px;
+}
+
+.invoices-page__actions {
+  display: flex;
+  gap: 8px;
+}
+
+.invoices-page__btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.invoices-page__btn--primary {
+  background: #4f7a4e;
+  color: #fff;
+  border-color: #4f7a4e;
+}
+
+.invoices-page__btn--primary:hover:not(:disabled) {
+  background: #3f6a3e;
+}
+
+.invoices-page__btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.invoices-page__result {
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 12px;
+  margin: 8px 0 16px;
+  white-space: pre-wrap;
+  font-size: 0.875rem;
+  font-family: inherit;
+}
+
+.invoices-page__error {
+  background: #fee2e2;
+  border: 1px solid #fca5a5;
+  color: #991b1b;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.invoices-page__summary {
+  display: flex;
+  gap: 16px;
+  padding: 8px 4px;
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.invoices-page__summary span:last-child {
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.invoices-page__table-wrapper {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.invoices-page__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.invoices-page__table th,
+.invoices-page__table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 0.9rem;
+}
+
+.invoices-page__table th {
+  background: #f9fafb;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.invoices-page__num,
+.invoices-page__num-cell {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.invoices-page__row {
+  cursor: pointer;
+  transition: filter 100ms ease;
+}
+
+.invoices-page__row:hover {
+  filter: brightness(0.96);
+}
+
+/* 行ボーダーで区切りを明確に */
+.invoices-page__table tbody tr.invoices-page__row td {
+  border-bottom: 1px solid #f0eee5;
+}
+.invoices-page__table tbody tr.invoices-page__row:last-child td {
+  border-bottom: none;
+}
+
+.invoices-page__empty {
+  text-align: center;
+  padding: 32px;
+  color: #9ca3af;
+}
+
+.invoices-page__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.invoices-page__status-cell {
+  padding-left: 14px !important;
+}
+
+.invoices-page__summary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 12px 0 16px;
+  flex-wrap: wrap;
+}
+
+.invoices-page__summary-total {
+  font-size: 13px;
+  color: var(--ink-mute);
+}
+.invoices-page__summary-total strong {
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.invoices-page__summary-status {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.invoices-page__summary-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1;
+}

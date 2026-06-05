@@ -1,0 +1,112 @@
+.check {
+  display: grid;
+  gap: 22px;
+}
+.check__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.check__title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.check__sub {
+  margin: 6px 0 0;
+  color: var(--ink-mute);
+  font-size: 13.5px;
+}
+.check__head-right {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.check__notice {
+  background: var(--primary-pale);
+  border-color: #DCE6CA;
+}
+.check__notice strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--ink);
+  font-weight: 600;
+}
+.check__notice ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--ink-mute);
+  font-size: 13px;
+  line-height: 1.9;
+}
+.check__notice em {
+  color: var(--danger);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.check__filters {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.check__filters label {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  color: var(--ink-mute);
+  gap: 5px;
+}
+.check__filters input,
+.check__filters select {
+  font-family: inherit;
+  font-size: 13.5px;
+  padding: 8px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  outline: none;
+  transition: border 120ms ease, box-shadow 120ms ease;
+}
+.check__filters input:focus,
+.check__filters select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(108, 143, 61, 0.12);
+}
+
+.check__table-wrap {
+  padding: 0;
+  overflow: hidden;
+}
+.check__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+.check__table thead {
+  background: var(--surface-2);
+}
+.check__table th,
+.check__table td {
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+}
+.check__table tr:last-child td {
+  border-bottom: none;
+}
+.check__table th {
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--ink-mute);
+  font-weight: 500;
+}
+.check__cell-mono {
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+  color: var(--ink);
+}

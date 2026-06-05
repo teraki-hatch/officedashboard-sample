@@ -1,0 +1,164 @@
+.employees-page {
+  /* MasterPage内に埋め込まれる前提 */
+}
+
+.employees-page__toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.employees-page__search {
+  flex: 1;
+  max-width: 400px;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  outline: none;
+}
+
+.employees-page__search:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.employees-page__toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #4a5568;
+  cursor: pointer;
+  user-select: none;
+}
+
+.employees-page__error {
+  padding: 12px;
+  background: #fed7d7;
+  color: #c53030;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+
+.employees-page__table-wrap {
+  overflow-x: auto;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.employees-page__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.employees-page__th {
+  text-align: left;
+  padding: 10px 12px;
+  background: #f7fafc;
+  border-bottom: 2px solid #e2e8f0;
+  font-weight: 600;
+  color: #4a5568;
+  white-space: nowrap;
+}
+
+.employees-page__th--code {
+  width: 90px;
+}
+.employees-page__th--type {
+  width: 90px;
+}
+.employees-page__th--role {
+  width: 80px;
+}
+.employees-page__th--date {
+  width: 110px;
+}
+.employees-page__th--num,
+.employees-page__td--num {
+  text-align: right;
+  width: 90px;
+}
+.employees-page__th--salary {
+  width: 100px;
+}
+.employees-page__th--status {
+  width: 80px;
+}
+
+.employees-page__td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #edf2f7;
+  color: #2d3748;
+}
+
+.employees-page__td--code {
+  font-family: 'SF Mono', Menlo, monospace;
+  color: #718096;
+  font-size: 12px;
+}
+
+.employees-page__td--name {
+  font-weight: 600;
+}
+
+.employees-page__row {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.employees-page__row:hover {
+  background: #f7fafc;
+}
+
+.employees-page__empty {
+  text-align: center;
+  padding: 32px 12px;
+  color: #a0aec0;
+}
+
+.employees-page__mute {
+  color: #a0aec0;
+}
+
+.employees-page__badge {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.employees-page__badge--admin {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.employees-page__badge--ok {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.employees-page__badge--pending {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.employees-page__badge--active {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.employees-page__badge--inactive {
+  background: #e2e8f0;
+  color: #718096;
+}
+.employees-page__badge--pm {
+  background: #dbeafe;
+  color: #1e40af;
+}

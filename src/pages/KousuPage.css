@@ -1,0 +1,29 @@
+/* =================================================================
+   工数管理ページ (Phase 4-1)
+   ================================================================= */
+
+.kousu {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 18px 24px;
+  max-width: 1200px;
+}
+.kousu__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+.kousu__title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.kousu__subtitle {
+  margin: 6px 0 0;
+  font-size: 13.5px;
+  color: var(--ink-mute);
+  line-height: 1.7;
+}

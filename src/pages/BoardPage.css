@@ -1,0 +1,259 @@
+/* ===== 経営ボード =====
+ * Salesforce 風タイルダッシュボード
+ * 既存テーマ変数 (--primary 系) を流用
+ */
+
+.board {
+  padding: 24px 32px 48px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* ===== ヘッダー ===== */
+.board__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  gap: 16px;
+}
+
+.board__title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: #1f2937;
+}
+
+.board__subtitle {
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* ===== ボタン ===== */
+.board__btn {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  background: var(--primary, #10b981);
+  color: #fff;
+  transition: background 0.15s, opacity 0.15s;
+}
+.board__btn:hover {
+  opacity: 0.88;
+}
+.board__btn--secondary {
+  background: #fff;
+  color: #374151;
+  border-color: #d1d5db;
+}
+.board__btn--secondary:hover {
+  background: #f9fafb;
+  opacity: 1;
+}
+.board__btn--small {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+/* ===== KPI カードグリッド ===== */
+.board__kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+@media (max-width: 1200px) {
+  .board__kpi-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 700px) {
+  .board__kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.board__kpi {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  border-left: 4px solid #d1d5db;
+}
+.board__kpi--primary {
+  border-left-color: var(--primary, #10b981);
+}
+.board__kpi--success {
+  border-left-color: #10b981;
+}
+.board__kpi--warning {
+  border-left-color: #f59e0b;
+}
+.board__kpi--danger {
+  border-left-color: #ef4444;
+}
+
+.board__kpi-label {
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 500;
+}
+.board__kpi-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1.2;
+  word-break: break-all;
+}
+.board__kpi-sub {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+/* ===== チャート行 ===== */
+.board__chart-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+@media (max-width: 1000px) {
+  .board__chart-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== パネル (チャート/テーブルの共通枠) ===== */
+.board__panel {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 18px 20px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+.board__panel--wide {
+  /* チャート行で広い方 */
+}
+.board__panel--full {
+  /* 横幅全部使う */
+  margin-bottom: 16px;
+}
+
+.board__panel-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.board__panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f3f4f6;
+}
+.board__panel-header .board__panel-title {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.board__chart-wrap {
+  width: 100%;
+  min-height: 260px;
+}
+
+/* ===== テーブル ===== */
+.board__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.board__table thead th {
+  text-align: left;
+  font-weight: 600;
+  color: #6b7280;
+  padding: 8px 10px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+  font-size: 12px;
+}
+.board__table tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #f3f4f6;
+  color: #1f2937;
+}
+.board__td-num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.board__row-link {
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.board__row-link:hover {
+  background: #f9fafb;
+}
+.board__row--danger {
+  background: #fef2f2;
+}
+.board__row--danger:hover {
+  background: #fee2e2;
+}
+.board__row--warn {
+  background: #fffbeb;
+}
+.board__row--warn:hover {
+  background: #fef3c7;
+}
+
+/* ===== 補助テキスト ===== */
+.board__mute {
+  color: #9ca3af;
+  font-size: 13px;
+  padding: 16px 0;
+  text-align: center;
+}
+.board__note {
+  margin-top: 24px;
+  font-size: 12px;
+  color: #6b7280;
+  text-align: center;
+}
+.board__inline-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--primary, #10b981);
+  cursor: pointer;
+  font-size: inherit;
+  text-decoration: underline;
+}
+.board__inline-link:hover {
+  opacity: 0.8;
+}
+
+/* ===== エラー ===== */
+.board__error {
+  padding: 32px;
+  text-align: center;
+  color: #ef4444;
+  background: #fef2f2;
+  border-radius: 10px;
+  margin: 24px;
+}

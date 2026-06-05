@@ -1,0 +1,257 @@
+/* ===== マイページ ===== */
+
+.mypage {
+  padding: 0;
+}
+
+.mypage__loading,
+.mypage__error {
+  padding: 32px;
+  color: var(--ink-mute);
+}
+
+/* === ヘッダー === */
+.mypage__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.mypage__title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--ink);
+}
+.mypage__subtitle {
+  margin: 4px 0 0;
+  color: var(--ink-mute);
+  font-size: 13px;
+}
+.mypage__header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* === ボタン === */
+.mypage__btn {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--line-strong);
+  background: #fff;
+  color: var(--ink);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 120ms ease;
+  font-family: inherit;
+}
+.mypage__btn:hover {
+  border-color: var(--primary);
+  color: var(--primary-dark);
+}
+.mypage__btn--primary {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+.mypage__btn--primary:hover {
+  background: var(--primary-dark);
+  color: #fff;
+}
+.mypage__btn--secondary {
+  background: #fff;
+}
+.mypage__btn--small {
+  padding: 4px 10px;
+  font-size: 12px;
+}
+.mypage__btn--link {
+  background: transparent;
+  border: none;
+  color: var(--primary-dark);
+  padding: 4px 0;
+  font-size: 12px;
+  text-align: left;
+  margin-top: 8px;
+}
+.mypage__btn--link:hover {
+  text-decoration: underline;
+  color: var(--primary-dark);
+  border: none;
+}
+
+/* === カスタマイズパネル === */
+.mypage__customize-panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin-bottom: 20px;
+}
+.mypage__customize-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+.mypage__customize-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 8px;
+}
+.mypage__customize-card {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  background: #fff;
+}
+.mypage__customize-card:hover {
+  border-color: var(--primary);
+}
+.mypage__customize-card input[type='checkbox'] {
+  cursor: pointer;
+}
+.mypage__customize-hint {
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+/* === カードグリッド === */
+.mypage__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.mypage__card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  min-height: 180px;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+.mypage__card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.mypage__card--dragging {
+  opacity: 0.5;
+  transform: scale(0.98);
+}
+
+.mypage__card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+.mypage__card-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--ink);
+  flex: 1;
+}
+.mypage__drag-handle {
+  cursor: grab;
+  color: var(--ink-soft);
+  font-size: 14px;
+  letter-spacing: -2px;
+  user-select: none;
+}
+.mypage__drag-handle:active {
+  cursor: grabbing;
+}
+
+.mypage__card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  color: var(--ink);
+}
+
+/* === カード内部 === */
+.mypage__stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 8px 0 12px;
+  border-bottom: 1px dashed var(--line);
+  margin-bottom: 10px;
+}
+.mypage__stat-label {
+  font-size: 12px;
+  color: var(--ink-mute);
+}
+.mypage__stat-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.mypage__dl {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 6px 12px;
+  margin: 0;
+  font-size: 13px;
+}
+.mypage__dl dt {
+  color: var(--ink-mute);
+  font-size: 12px;
+}
+.mypage__dl dd {
+  margin: 0;
+  color: var(--ink);
+}
+
+.mypage__mini-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+.mypage__mini-table th {
+  text-align: left;
+  font-weight: 500;
+  color: var(--ink-mute);
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--line);
+  font-size: 11px;
+}
+.mypage__mini-table td {
+  padding: 6px;
+  border-bottom: 1px solid var(--line);
+}
+.mypage__mini-table tr:last-child td {
+  border-bottom: none;
+}
+
+.mypage__row-link {
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+.mypage__row-link:hover {
+  background: var(--primary-pale);
+}
+
+.mypage__mute {
+  color: var(--ink-soft);
+  font-size: 13px;
+  margin: 8px 0;
+}

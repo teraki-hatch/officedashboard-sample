@@ -1,0 +1,265 @@
+.login {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  padding: 24px;
+}
+
+/* ロゴ + カードを縦に並べる */
+.login__center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* ----- ロゴ ----- */
+.login__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.login__logo {
+  display: block;
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+}
+.login__brand-sub {
+  font-size: 12px;
+  color: var(--ink-soft);
+  letter-spacing: 0.06em;
+}
+
+/* ----- ログインカード ----- */
+.login__card {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 32px 30px 26px;
+}
+.login__heading {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 22px;
+  text-align: center;
+}
+.login__demo-msg {
+  font-size: 13px;
+  color: var(--ink-mute);
+  line-height: 1.8;
+  background: var(--primary-pale);
+  border: 1px solid #DCE6CA;
+  padding: 12px 14px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+.login__demo-msg code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: rgba(108, 143, 61, 0.08);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+.login__label {
+  display: block;
+  font-size: 13px;
+  color: var(--ink-mute);
+  margin-bottom: 14px;
+}
+.login__input {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px 12px;
+  font-size: 14px;
+  border-radius: 7px;
+  border: 1px solid var(--line-strong);
+  background: #fff;
+  font-family: inherit;
+  color: var(--ink);
+  outline: none;
+  transition: border 120ms ease, box-shadow 120ms ease;
+}
+.login__input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(108, 143, 61, 0.15);
+}
+.login__error {
+  color: var(--danger);
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.login__submit {
+  width: 100%;
+  padding: 11px 14px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+.login__submit:hover:not(:disabled) {
+  background: var(--primary-dark);
+}
+.login__submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.login__footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+/* ----- 接続診断パネル ----- */
+.diag {
+  margin-bottom: 12px;
+  font-size: 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--line-strong);
+  border-radius: 7px;
+}
+.diag__summary {
+  cursor: pointer;
+  padding: 8px 12px;
+  color: var(--ink-mute);
+  list-style: none;
+  user-select: none;
+}
+.diag__summary::-webkit-details-marker {
+  display: none;
+}
+.diag__summary::before {
+  content: '▸';
+  display: inline-block;
+  width: 14px;
+  color: var(--ink-soft);
+}
+.diag[open] .diag__summary::before {
+  content: '▾';
+}
+.diag__body {
+  padding: 6px 12px 10px;
+  border-top: 1px dashed var(--line-strong);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.diag__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--ink-mute);
+}
+.diag__mark {
+  display: inline-block;
+  width: 14px;
+  text-align: center;
+  font-weight: 600;
+}
+.diag__mark--ok {
+  color: var(--ok);
+}
+.diag__mark--ng {
+  color: var(--danger);
+}
+.diag__label {
+  flex: 1;
+}
+.diag__note {
+  font-size: 11px;
+  color: var(--ink-soft);
+}
+.diag__hint {
+  margin: 6px 0 0;
+  font-size: 11px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+.diag__hint code {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  background: var(--surface);
+  padding: 1px 4px;
+  border-radius: 3px;
+  color: var(--ink);
+}
+.diag__steps {
+  margin: 4px 0 0;
+  padding-left: 20px;
+  font-size: 11px;
+  color: var(--ink-mute);
+  line-height: 1.8;
+}
+.diag__steps li {
+  margin-bottom: 6px;
+}
+.diag__steps code {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  background: var(--surface);
+  padding: 1px 4px;
+  border-radius: 3px;
+  color: var(--ink);
+}
+/* ============================================
+ * パスワード表示トグル (2026-05-19 追加)
+ * ============================================ */
+
+.login__password-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.login__input--password {
+  /* 右側に目アイコン分の余白を確保 */
+  padding-right: 44px !important;
+  width: 100%;
+}
+
+.login__password-toggle {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  border-radius: 6px;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.login__password-toggle:hover {
+  color: #4a6b3a; /* As Partner グリーンに寄せる */
+  background-color: rgba(74, 107, 58, 0.08);
+}
+
+.login__password-toggle:focus-visible {
+  outline: 2px solid #4a6b3a;
+  outline-offset: 1px;
+}
+
+.login__password-toggle svg {
+  display: block;
+}

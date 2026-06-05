@@ -1,0 +1,103 @@
+/* ====================================================================
+   PortalLinks.css
+   ホーム左カラム下部のポータルカード (外部リンク 2列x2行)
+   ==================================================================== */
+
+.portal-links {
+  margin-top: 0; /* dashboard-grid内なのでgapに任せる */
+}
+
+.portal-links__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding: 0 4px;
+}
+
+.portal-links__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.portal-links__subtitle {
+  font-size: 12px;
+  color: #888;
+}
+
+.portal-links__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.portal-links__card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.portal-links__card:hover {
+  border-color: #7ba87b;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(123, 168, 123, 0.12);
+}
+
+.portal-links__icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: #eef4ee;
+  font-size: 24px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.portal-links__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.portal-links__card-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2c3e2c;
+}
+
+.portal-links__external {
+  color: #aaa;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+.portal-links__card-desc {
+  font-size: 12px;
+  color: #777;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* レスポンシブ: 狭くなったら1列 */
+@media (max-width: 520px) {
+  .portal-links__grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,432 @@
+.emp-detail {
+  padding: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.emp-detail__loading,
+.emp-detail__error {
+  padding: 60px 24px;
+  text-align: center;
+  color: #718096;
+}
+
+.emp-detail__back-btn {
+  margin-top: 16px;
+  background: #7a9e7e;
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.emp-detail__back-btn:hover {
+  background: #6b8c6f;
+}
+
+.emp-detail__header {
+  margin-bottom: 20px;
+}
+
+.emp-detail__back {
+  background: transparent;
+  border: none;
+  color: #6b8c6f;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 4px 0;
+  margin-bottom: 8px;
+}
+
+.emp-detail__back:hover {
+  text-decoration: underline;
+}
+
+.emp-detail__title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.emp-detail__title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #2c3e2c;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.emp-detail__code {
+  font-size: 14px;
+  font-weight: 400;
+  color: #718096;
+  font-family: 'SF Mono', Menlo, monospace;
+}
+
+.emp-detail__email {
+  margin: 4px 0 0 0;
+  font-size: 13px;
+  color: #6b7c6b;
+}
+
+.emp-detail__actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.emp-detail__badge {
+  display: inline-block;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.emp-detail__badge--admin {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.emp-detail__badge--inactive {
+  background: #e2e8f0;
+  color: #718096;
+}
+
+.emp-detail__badge--leave {
+  background: #fed7e2;
+  color: #97266d;
+}
+
+.emp-detail__card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.emp-detail__section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.emp-detail__section-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #2c3e2c;
+}
+
+.emp-detail__btn {
+  padding: 6px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+.emp-detail__btn--small {
+  padding: 4px 12px;
+  font-size: 12px;
+}
+
+.emp-detail__btn--secondary {
+  background: #f7fafc;
+  color: #4a5568;
+  border: 1px solid #d9ddd9;
+}
+
+.emp-detail__btn--secondary:hover {
+  background: #edf2f7;
+}
+
+.emp-detail__btn--primary {
+  background: #7a9e7e;
+  color: #fff;
+}
+
+.emp-detail__btn--primary:hover {
+  background: #6b8c6f;
+}
+
+.emp-detail__btn--danger {
+  background: #fff;
+  color: #c53030;
+  border: 1px solid #fed7d7;
+}
+
+.emp-detail__btn--danger:hover {
+  background: #fed7d7;
+}
+
+.emp-detail__dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 10px 16px;
+}
+
+.emp-detail__dl dt {
+  font-size: 12px;
+  color: #6b7c6b;
+  font-weight: 600;
+  padding-top: 2px;
+}
+
+.emp-detail__dl dd {
+  margin: 0;
+  font-size: 14px;
+  color: #2c3e2c;
+}
+
+.emp-detail__check {
+  color: #4a7d4a;
+  font-weight: 600;
+}
+
+.emp-detail__mute {
+  color: #a0aec0;
+}
+
+.emp-detail__empty {
+  padding: 24px;
+  text-align: center;
+  background: #f7fafc;
+  border-radius: 8px;
+  color: #718096;
+  font-size: 13px;
+  margin: 0;
+}
+
+.emp-detail__salary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.emp-detail__salary-row {
+  border: 1px solid #e8ece8;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #fafbfa;
+}
+
+.emp-detail__salary-row--current {
+  background: #f0f7f0;
+  border-color: #c6dcc6;
+}
+
+.emp-detail__salary-period {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #2c3e2c;
+}
+
+.emp-detail__salary-period-text {
+  font-size: 14px;
+}
+
+.emp-detail__salary-current-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  background: #7a9e7e;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.emp-detail__salary-amounts {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.emp-detail__salary-amount {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.emp-detail__salary-label {
+  font-size: 11px;
+  color: #6b7c6b;
+  font-weight: 600;
+}
+
+.emp-detail__salary-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: #2c3e2c;
+  font-variant-numeric: tabular-nums;
+}
+
+.emp-detail__salary-allowances {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.emp-detail__salary-allowance-list {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.emp-detail__salary-allowance-tag {
+  font-size: 12px;
+  padding: 3px 10px;
+  background: #fff;
+  border: 1px solid #d9ddd9;
+  border-radius: 12px;
+  color: #4a5a4a;
+}
+
+.emp-detail__salary-memo {
+  font-size: 12px;
+  color: #6b7c6b;
+  padding: 6px 10px;
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid #edf2f7;
+}
+
+.emp-detail__salary-actions {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+}
+/* ===== 追加 (Phase B-2, 2026-05-21): 派生表示用 ===== */
+
+/* サマリーカード (5枚) */
+.emp-detail__summary {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin: 16px 0 24px;
+}
+
+.emp-detail__summary-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+
+.emp-detail__summary-label {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.emp-detail__summary-value {
+  font-size: 22px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.emp-detail__summary-sub {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+@media (max-width: 1100px) {
+  .emp-detail__summary {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 700px) {
+  .emp-detail__summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* テーブル */
+.emp-detail__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.emp-detail__table th {
+  text-align: left;
+  font-weight: 600;
+  color: #6b7280;
+  padding: 8px 10px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+  font-size: 12px;
+}
+.emp-detail__table td {
+  padding: 10px;
+  border-bottom: 1px solid #f3f4f6;
+  color: #111827;
+}
+.emp-detail__table tr:last-child td {
+  border-bottom: none;
+}
+.emp-detail__td-num {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.emp-detail__td-memo {
+  max-width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 合計行 */
+.emp-detail__total-row {
+  background: #f9fafb;
+  border-top: 2px solid #e5e7eb;
+}
+
+/* クリックで遷移する行 */
+.emp-detail__row-link {
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.emp-detail__row-link:hover {
+  background: #f3f4f6;
+}
+
+/* 工数集計グリッド */
+.emp-detail__time-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+@media (max-width: 900px) {
+  .emp-detail__time-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.emp-detail__subsection-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 8px;
+}
+
+.emp-detail__btn--small {
+  padding: 4px 10px;
+  font-size: 12px;
+}

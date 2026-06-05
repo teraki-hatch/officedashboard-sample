@@ -1,0 +1,310 @@
+.client-detail {
+  padding: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.client-detail__loading,
+.client-detail__error {
+  padding: 40px 24px;
+  text-align: center;
+  color: #6b7c6b;
+}
+
+.client-detail__back-btn,
+.client-detail__back {
+  background: none;
+  border: none;
+  color: #7a9e7e;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px 0;
+}
+
+.client-detail__back:hover {
+  text-decoration: underline;
+}
+
+.client-detail__header {
+  margin-bottom: 20px;
+}
+
+.client-detail__title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.client-detail__title {
+  margin: 0 0 4px 0;
+  font-size: 26px;
+  font-weight: 700;
+  color: #2c3e2c;
+}
+
+.client-detail__short-name {
+  margin: 0;
+  font-size: 13px;
+  color: #8a9a8a;
+}
+
+.client-detail__actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.client-detail__btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+.client-detail__btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.client-detail__btn--secondary {
+  background: #fff;
+  color: #4a5a4a;
+  border: 1px solid #d9ddd9;
+}
+
+.client-detail__btn--secondary:hover:not(:disabled) {
+  background: #f5f7f5;
+}
+
+.client-detail__btn--danger {
+  background: #fff;
+  color: #b94646;
+  border: 1px solid #e6c4c4;
+}
+
+.client-detail__btn--danger:hover:not(:disabled) {
+  background: #fdf4f4;
+}
+
+.client-detail__badge {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.client-detail__badge--inactive {
+  background: #f0e6e6;
+  color: #8a5050;
+}
+
+.client-detail__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.client-detail__card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 18px 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.client-detail__card--full {
+  margin-bottom: 16px;
+}
+
+.client-detail__section-title {
+  margin: 0 0 14px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7c6b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #e8ece8;
+  padding-bottom: 6px;
+}
+
+.client-detail__section-title--inline {
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 14px;
+}
+
+.client-detail__dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 8px 12px;
+  font-size: 14px;
+}
+
+.client-detail__dl dt {
+  color: #6b7c6b;
+  font-size: 12px;
+  font-weight: 600;
+  padding-top: 2px;
+}
+
+.client-detail__dl dd {
+  margin: 0;
+  color: #2c3e2c;
+  word-break: break-all;
+}
+
+.client-detail__dl a {
+  color: #7a9e7e;
+  text-decoration: none;
+}
+
+.client-detail__dl a:hover {
+  text-decoration: underline;
+}
+
+.client-detail__mute {
+  color: #aab2aa;
+  font-size: 13px;
+}
+
+.client-detail__notes {
+  margin: 0;
+  font-size: 14px;
+  color: #2c3e2c;
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+
+.client-detail__deals-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-bottom: 1px solid #e8ece8;
+  padding-bottom: 8px;
+}
+
+.client-detail__deals-total {
+  font-size: 13px;
+  color: #4a5a4a;
+}
+
+.client-detail__deals-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.client-detail__deals-table th {
+  text-align: left;
+  font-size: 11px;
+  color: #6b7c6b;
+  font-weight: 600;
+  padding: 8px 8px;
+  border-bottom: 1px solid #e8ece8;
+  background: #f5f7f5;
+}
+
+.client-detail__deals-table td {
+  padding: 10px 8px;
+  color: #2c3e2c;
+  border-bottom: 1px solid #f0f3f0;
+}
+
+.client-detail__td-num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.client-detail__terminated {
+  font-size: 11px;
+  color: #8a5050;
+}
+
+@media (max-width: 800px) {
+  .client-detail__grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* ===== 追加 (Phase B-1, 2026-05-21): サマリーカード ===== */
+
+.client-detail__summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 16px 0 24px;
+}
+
+.client-detail__summary-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+
+.client-detail__summary-label {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.client-detail__summary-value {
+  font-size: 22px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.client-detail__summary-sub {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+@media (max-width: 900px) {
+  .client-detail__summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ===== 工数集計グリッド ===== */
+.client-detail__time-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .client-detail__time-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.client-detail__subsection-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 8px;
+}
+
+.client-detail__total-row {
+  background: #f9fafb;
+  border-top: 2px solid #e5e7eb;
+}
+
+/* ===== 小さいボタン (請求書セクションの「開く」用) ===== */
+.client-detail__btn--small {
+  padding: 4px 10px;
+  font-size: 12px;
+}

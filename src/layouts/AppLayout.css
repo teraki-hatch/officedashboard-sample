@@ -1,0 +1,316 @@
+/* Phase D-4-e (Step 7.4): タスク管理画面用 .content--flush
+   - max-width / padding / margin を解除 → 画面いっぱい使用
+*/
+/* Phase D-4-e (Step 7.3): 画面全体を固定、.content だけ縦スクロール
+   - .layout は height: 100vh; overflow: hidden で画面外スクロール禁止
+   - .main は flex column / 100vh
+   - .content は flex: 1; overflow-y: auto で内側のみスクロール
+   → Slack/Notion 風の「ヘッダー/サイドバー固定、中だけ動く」を実現
+*/
+/* Phase C-5 (cont.): ロゴボタン整形 + アイコン余白 + gap 追加 */
+.layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  transition: grid-template-columns 200ms ease;
+}
+.layout--collapsed {
+  grid-template-columns: 72px 1fr;
+}
+/* --- Sidebar (アイボリー基調) -------------------------------- */
+.sidebar {
+  height: 100vh;
+  background: var(--sidebar-bg);
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--line);
+  overflow: hidden;
+}
+/* ロゴエリアをボタン化 (デフォルトの枠を消す + クリック可能を示す) */
+.sidebar__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid var(--line);
+}
+.sidebar__brand--button {
+  background: transparent;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition: background 120ms ease;
+}
+.sidebar__brand--button:hover {
+  background: var(--primary-pale);
+}
+.sidebar__brand-logo {
+  display: block;
+  width: 160px;
+  max-width: 100%;
+  height: auto;
+}
+.sidebar__brand-logo--collapsed {
+  width: 36px;
+  object-fit: cover;
+  object-position: left center;
+  height: 36px;
+}
+.sidebar__brand-sub {
+  font-size: 11px;
+  color: var(--ink-soft);
+  letter-spacing: 0.06em;
+  margin-left: 2px;
+}
+.sidebar__nav {
+  flex: 1;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow-y: auto;
+}
+/* --- アイコン (lucide-react) ------------------------------- */
+.sidebar__icon {
+  flex: 0 0 auto;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.layout--collapsed .sidebar__icon {
+  margin-right: 0;
+  margin: 0 auto;
+}
+/* --- リンク (トップレベル + グループ子 共通) ----------------- */
+.sidebar__link {
+  display: flex;
+  align-items: center;
+  padding: 9px 14px;
+  border-radius: 7px;
+  color: var(--ink-mute);
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 500;
+  text-align: left;
+  transition: background 120ms ease, color 120ms ease;
+  position: relative;
+}
+.sidebar__link:hover {
+  background: var(--primary-hover);
+  color: var(--ink);
+}
+.sidebar__link--active {
+  background: var(--primary);
+  color: #fff;
+}
+.sidebar__link--active:hover {
+  background: var(--primary-dark);
+  color: #fff;
+}
+/* ラベル: 左寄せで伸びる */
+.sidebar__label {
+  flex: 1 1 auto;
+  text-align: left;
+  white-space: nowrap;
+}
+/* 外部リンク矢印は右端 */
+.sidebar__external {
+  flex: 0 0 auto;
+  margin-left: 8px;
+  font-size: 11px;
+  opacity: 0.55;
+}
+/* --- 区切り線 (メンバー/管理者の境目) ------------------------ */
+.sidebar__divider {
+  height: 1px;
+  background: var(--line);
+  margin: 10px 14px;
+}
+/* --- グループ (10カテゴリ) ---------------------------------- */
+.sidebar__group {
+  display: flex;
+  flex-direction: column;
+}
+.sidebar__group-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 9px 14px;
+  background: transparent;
+  border: none;
+  border-radius: 7px;
+  color: var(--ink-mute);
+  font-size: 13.5px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease;
+  font-family: inherit;
+}
+.sidebar__group-header:hover {
+  background: var(--primary-hover);
+  color: var(--ink);
+}
+.sidebar__group--active > .sidebar__group-header {
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+/* chevron: 大きめで右端固定 */
+.sidebar__chevron {
+  flex: 0 0 auto;
+  margin-left: 8px;
+  font-size: 16px;
+  line-height: 1;
+  opacity: 0.7;
+  transition: transform 0.18s ease;
+  display: inline-block;
+}
+.sidebar__chevron--open {
+  transform: rotate(-180deg);
+  opacity: 1;
+}
+/* グループ配下の子リンク */
+.sidebar__group-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding-left: 12px;
+  margin: 2px 0 6px 16px;
+  border-left: 2px solid var(--line);
+}
+.sidebar__link--child {
+  padding: 7px 12px;
+  font-size: 13px;
+  opacity: 0.88;
+}
+.sidebar__link--child.sidebar__link--active {
+  opacity: 1;
+}
+/* 折りたたみ時はグループ子を隠す */
+.layout--collapsed .sidebar__group-items {
+  display: none;
+}
+/* --- collapse ボタン --------------------------------------- */
+.sidebar__collapse {
+  margin: 10px;
+  padding: 7px 10px;
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  color: var(--ink-mute);
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 120ms ease;
+  flex-shrink: 0;
+}
+.sidebar__collapse:hover {
+  color: var(--primary-dark);
+  border-color: var(--primary);
+  background: var(--primary-pale);
+}
+/* --- Main ----------------------------------------------------- */
+.main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 28px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  min-height: 56px;
+  flex-shrink: 0;
+}
+.topbar__right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.topbar__user {
+  font-size: 13px;
+  color: var(--ink-mute);
+}
+.topbar__signout {
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  color: var(--ink-mute);
+  font-size: 12.5px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+.topbar__signout:hover {
+  border-color: var(--primary);
+  color: var(--primary-dark);
+  background: var(--primary-pale);
+}
+.content {
+  flex: 1;
+  padding: 32px 36px 44px;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  overflow-y: auto;
+  min-height: 0;
+}
+/* タスク管理など、画面いっぱい使いたいページ用 */
+.content--flush {
+  padding: 0;
+  max-width: none;
+  margin: 0;
+  overflow: hidden; /* スクロールは内側コンテンツに任せる */
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 36px;
+  font-size: 12px;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+  flex-shrink: 0;
+}
+@media (max-width: 880px) {
+  .layout {
+    grid-template-columns: 72px 1fr;
+  }
+  .sidebar__brand-sub,
+  .sidebar__label,
+  .sidebar__external,
+  .sidebar__chevron {
+    display: none;
+  }
+  .sidebar__group-items {
+    display: none;
+  }
+  .sidebar__brand-logo {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    object-position: left center;
+  }
+  .sidebar__icon {
+    margin-right: 0;
+    margin: 0 auto;
+  }
+  .content {
+    padding: 22px 18px 32px;
+  }
+  .content--flush {
+    padding: 0;
+  }
+}

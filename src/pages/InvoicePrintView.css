@@ -1,0 +1,295 @@
+/* ==============================
+ * 請求書 印刷用ビュー
+ * ============================== */
+
+.invoice-print {
+  font-family: 'Hiragino Mincho ProN', '游明朝', YuMincho, 'MS Mincho', serif;
+  color: #000;
+  background: #fff;
+  width: 210mm;
+  min-height: 297mm;
+  padding: 12mm 12mm 8mm;
+  box-sizing: border-box;
+  margin: 0 auto;
+  font-size: 10pt;
+  line-height: 1.4;
+  position: relative;
+}
+
+/* タイトル */
+.invoice-print__title {
+  text-align: center;
+  font-size: 24pt;
+  font-weight: 700;
+  letter-spacing: 0.6em;
+  margin: 0 0 8mm;
+  padding-left: 0.6em;
+}
+
+/* ヘッダー 2カラム構成 - 左右間隔広め */
+.invoice-print__header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5mm;
+  gap: 18mm;
+  align-items: flex-start;
+}
+
+.invoice-print__header-left {
+  flex: 1;
+  max-width: 100mm;
+  display: flex;
+  flex-direction: column;
+}
+
+.invoice-print__header-right {
+  width: 72mm;
+  font-size: 10pt;
+}
+
+/* 左: 宛先 - 大きめ */
+.invoice-print__addressee {
+  font-size: 17pt;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 2mm;
+}
+
+.invoice-print__addressee-name {
+  font-weight: 500;
+}
+
+.invoice-print__addressee-suffix {
+  font-size: 15pt;
+  margin-left: 3em;
+}
+
+.invoice-print__addressee-underline {
+  border-bottom: 1px solid #000;
+  margin-bottom: 2mm;
+}
+
+/* 「下記の通り〜」右寄せ */
+.invoice-print__intro {
+  text-align: right;
+  font-size: 10pt;
+  margin-bottom: 22mm;
+}
+
+/* 左: ご請求金額 */
+.invoice-print__amount-wrap {
+  width: 100%;
+}
+
+.invoice-print__amount-block {
+  display: flex;
+  align-items: baseline;
+  gap: 4mm;
+  padding: 0 2mm 2mm;
+}
+
+.invoice-print__amount-label {
+  font-size: 13pt;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  white-space: nowrap;
+}
+
+.invoice-print__amount-value {
+  font-size: 22pt;
+  font-weight: 700;
+  flex: 1;
+  text-align: center;
+  font-family: 'Hiragino Mincho ProN', serif;
+}
+
+.invoice-print__amount-suffix {
+  font-size: 10pt;
+  white-space: nowrap;
+}
+
+.invoice-print__amount-underline {
+  border-bottom: 1px solid #000;
+}
+
+/* 右: 請求情報 */
+.invoice-print__meta {
+  line-height: 1.7;
+  white-space: nowrap;
+  font-size: 10pt;
+  padding-top: 1mm;
+  margin-bottom: 8mm;
+}
+
+/* 右: 発行元 */
+.invoice-print__issuer {
+  font-size: 9.5pt;
+  line-height: 1.55;
+  position: relative;
+  padding-right: 24mm;
+  white-space: nowrap;
+}
+
+/* 社判画像: フラット・フルス〜代表社員の4行分 (約18mm四方) */
+.invoice-print__stamp {
+  position: absolute;
+  right: 0;
+  top: 15mm;
+  width: 18mm;
+  height: 18mm;
+  object-fit: contain;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  mix-blend-mode: multiply;
+}
+
+/* 明細テーブル */
+.invoice-print__table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 3mm;
+  font-size: 10pt;
+}
+
+.invoice-print__table th,
+.invoice-print__table td {
+  border: 0.75px solid #000;
+  padding: 0.8mm 2mm;
+  height: 6.5mm;
+  vertical-align: middle;
+}
+
+.invoice-print__table th {
+  background: #fff;
+  font-weight: 500;
+  text-align: center;
+  font-size: 10pt;
+  height: 6.5mm;
+}
+
+.invoice-print__col-desc { width: 40%; }
+.invoice-print__col-rate { width: 9%; }
+.invoice-print__col-unit { width: 17%; }
+.invoice-print__col-qty  { width: 11%; }
+.invoice-print__col-amount { width: 23%; }
+
+.invoice-print__center {
+  text-align: center;
+}
+
+.invoice-print__num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  padding-right: 3mm;
+}
+
+.invoice-print__total-row td {
+  font-weight: 500;
+}
+
+.invoice-print__total-amount {
+  font-weight: 500;
+}
+
+/* 税率別内訳 */
+.invoice-print__tax-breakdown {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 3mm;
+}
+
+.invoice-print__tax-breakdown table {
+  border-collapse: collapse;
+  font-size: 9.5pt;
+}
+
+.invoice-print__tax-breakdown th,
+.invoice-print__tax-breakdown td {
+  border: 0.75px solid #000;
+  padding: 0.8mm 3mm;
+  height: 8mm;
+  vertical-align: middle;
+}
+
+.invoice-print__tax-label {
+  background: #fff;
+  text-align: center;
+  font-weight: 500;
+  font-size: 9pt;
+  width: 13mm;
+  line-height: 1.2;
+}
+
+.invoice-print__tax-breakdown td {
+  min-width: 26mm;
+}
+
+/* 備考 */
+.invoice-print__notes {
+  border: 0.75px solid #000;
+}
+
+.invoice-print__notes-header {
+  text-align: center;
+  border-bottom: 0.75px solid #000;
+  padding: 1mm;
+  font-size: 10pt;
+  letter-spacing: 0.5em;
+  padding-left: 0.5em;
+}
+
+.invoice-print__notes-body {
+  padding: 2.5mm 3mm;
+  font-size: 9.5pt;
+  line-height: 1.6;
+  min-height: 16mm;
+}
+
+.invoice-print__notes-custom {
+  margin-bottom: 1.5mm;
+  white-space: pre-wrap;
+}
+
+/* 画面表示時 */
+.invoice-print {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* 印刷時 */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+  body {
+    margin: 0;
+    background: #fff;
+  }
+  body * {
+    visibility: hidden;
+  }
+  .invoice-print, .invoice-print * {
+    visibility: visible;
+  }
+  .invoice-print {
+    position: absolute;
+    left: 0;
+    top: 0;
+    box-shadow: none;
+    margin: 0;
+    width: 210mm;
+    height: 297mm;
+    min-height: 297mm;
+    padding: 10mm 10mm 6mm;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+    overflow: hidden;
+  }
+  .invoice-print__stamp {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}

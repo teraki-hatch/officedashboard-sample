@@ -1,0 +1,408 @@
+/* ====================================================
+   HomePage Layout
+   ----------------------------------------------------
+   構造:
+     section.dashboard-grid   ... 2カラム (左カラム / 右カレンダー)
+       div.left-column        ... 縦並び3カード
+         .time-card
+         .attendance-work-check-card
+         .attendance-status-card
+       .calendar-card         ... 縦長 (左カラム3カード分)
+     section.task-list-section ... 横幅いっぱい
+       .task-list-card
+   ==================================================== */
+
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* ===== 上段 2カラムグリッド ===== */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  grid-template-rows: auto;
+  gap: 22px;
+  align-items: stretch;
+}
+
+/* 左カラム: 縦並び3カード */
+.dashboard-grid > .left-column {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  min-width: 0;
+}
+
+/* 右カラム: カレンダー (左カラム全高に追従) */
+.dashboard-grid > .calendar-card {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+@media (max-width: 980px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-grid > .left-column,
+  .dashboard-grid > .calendar-card {
+    grid-column: 1;
+  }
+  .dashboard-grid > .calendar-card {
+    grid-row: auto;
+  }
+}
+
+/* ====================================================
+   左カラム 1番目: 時刻・あいさつ
+   ==================================================== */
+.time-card__date {
+  font-size: 13px;
+  color: var(--ink-mute);
+  letter-spacing: 0.02em;
+}
+.time-card__time {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.2;
+  margin: 4px 0 14px;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+}
+.time-card__greet {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.time-card__name {
+  color: var(--primary-dark);
+}
+.time-card__lead {
+  margin: 8px 0 0;
+  color: var(--ink-mute);
+  font-size: 13.5px;
+}
+
+/* ====================================================
+   左カラム 2番目: 勤怠・工数チェック
+   ==================================================== */
+.attendance-work-check-card {
+  display: flex;
+  flex-direction: column;
+}
+.check-desc {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--ink-mute);
+  line-height: 1.85;
+}
+.check-link {
+  align-self: flex-end;
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--primary-dark);
+  text-decoration: none;
+  font-weight: 500;
+}
+.check-link:hover {
+  text-decoration: underline;
+}
+
+/* ====================================================
+   左カラム 3番目: 今日の社内出勤状況
+   ==================================================== */
+.attendance-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.attendance-list__row {
+  display: grid;
+  grid-template-columns: 10px 1.2fr 0.9fr auto 60px;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 4px;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+}
+.attendance-list__row:last-child {
+  border-bottom: none;
+}
+.attendance-list__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+.attendance-list__name {
+  font-weight: 500;
+  color: var(--ink);
+}
+.attendance-list__dept {
+  color: var(--ink-mute);
+  font-size: 12.5px;
+}
+.attendance-list__time {
+  font-size: 12px;
+  color: var(--ink-soft);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ====================================================
+   右カラム: Googleカレンダー (縦長)
+   ==================================================== */
+.calendar-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 36px 16px;
+  color: var(--ink-mute);
+}
+.calendar-empty__icon {
+  font-size: 26px;
+  opacity: 0.4;
+  margin-bottom: 12px;
+  color: var(--primary);
+}
+.calendar-empty__msg {
+  margin: 0;
+  font-size: 13.5px;
+}
+.calendar-empty__sub {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  margin-top: 10px;
+  line-height: 1.8;
+}
+.calendar-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.calendar-list__item {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 12px;
+  padding: 12px 4px;
+  border-bottom: 1px solid var(--line);
+}
+.calendar-list__item:last-child {
+  border-bottom: none;
+}
+.calendar-list__time {
+  font-size: 12.5px;
+  color: var(--primary-dark);
+  padding-top: 2px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+.calendar-list__title {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.calendar-list__loc {
+  font-size: 12px;
+  color: var(--ink-mute);
+  margin-top: 2px;
+}
+
+/* ====================================================
+   下段: タスク一覧
+   ==================================================== */
+.task-list-card {
+  padding-bottom: 16px;
+}
+.task-table-wrap {
+  overflow-x: auto;
+}
+.task-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+.task-table thead th {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-mute);
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--line);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.task-table tbody td {
+  padding: 12px 12px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+.task-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.task-table tbody tr:hover {
+  background: var(--primary-pale);
+}
+.task-table__th-right {
+  text-align: right !important;
+}
+.task-table__title {
+  font-weight: 500;
+  color: var(--ink);
+}
+.task-table__project {
+  color: var(--ink-mute);
+  font-size: 12.5px;
+}
+.task-table__assignee {
+  color: var(--ink-mute);
+  font-size: 12.5px;
+  white-space: nowrap;
+}
+.task-table__due {
+  text-align: right;
+  font-size: 13px;
+  color: var(--ink-mute);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.task-table__due--overdue {
+  color: var(--danger);
+  font-weight: 500;
+}
+.task-list-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 14px 4px 0;
+}
+.task-link {
+  font-size: 13px;
+  color: var(--primary-dark);
+  text-decoration: none;
+  font-weight: 500;
+}
+.task-link:hover {
+  text-decoration: underline;
+}
+
+/* ========================================================
+   マイステータスカード (Phase 3-9)
+   ======================================================== */
+.mystatus-card {
+  display: flex;
+  flex-direction: column;
+}
+.mystatus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 10px;
+  margin-top: 4px;
+}
+.mystatus-cell {
+  padding: 12px 14px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.mystatus-cell--admin {
+  background: linear-gradient(180deg, var(--primary-pale) 0%, var(--surface-2) 100%);
+  border-color: #DCE6CA;
+}
+.mystatus-cell__label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-mute);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.mystatus-cell__value {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.mystatus-cell__value--working {
+  color: var(--primary);
+  font-size: 18px;
+  padding-top: 2px;
+}
+.mystatus-cell__value--done {
+  color: var(--ink-mute);
+  font-size: 18px;
+  padding-top: 2px;
+}
+.mystatus-cell__value--idle {
+  color: var(--ink-soft);
+  font-size: 18px;
+  padding-top: 2px;
+}
+.mystatus-cell__value--pending {
+  color: #B25E2A;
+}
+.mystatus-cell__value--leave {
+  color: var(--primary-dark);
+}
+.mystatus-cell__value--alert {
+  color: #B25E2A;
+}
+.mystatus-cell__unit {
+  font-size: 11px;
+  font-weight: 600;
+  margin-left: 3px;
+  color: var(--ink-mute);
+  vertical-align: super;
+}
+.mystatus-cell__hint {
+  font-size: 10.5px;
+  color: var(--ink-soft);
+  line-height: 1.4;
+}
+.mystatus-actions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+}
+.mystatus-link {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--primary-dark);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--primary-pale);
+  background: var(--primary-pale);
+  transition: background 0.12s, border-color 0.12s;
+}
+.mystatus-link:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+.mystatus-cell__expiry-warn {
+  margin-top: 6px;
+  font-size: 11px;
+  color: #c44;
+  font-weight: 600;
+}

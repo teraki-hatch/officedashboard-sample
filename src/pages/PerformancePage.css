@@ -1,0 +1,197 @@
+.perf-page {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.perf-page__header {
+  margin-bottom: 16px;
+}
+
+.perf-page__title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.perf-page__title {
+  margin: 0 0 4px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink, #1f2937);
+}
+
+.perf-page__subtitle {
+  margin: 0;
+  color: var(--ink-mute, #6b7280);
+  font-size: 13px;
+}
+
+.perf-page__kpi-btn {
+  padding: 9px 16px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  color: var(--ink, #1f2937);
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s;
+}
+.perf-page__kpi-btn:hover {
+  background: #f9fafb;
+  border-color: #7b9e6e;
+  color: #4a5836;
+}
+
+.perf-page__tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 18px;
+}
+
+.perf-page__tab {
+  padding: 10px 18px;
+  border: none;
+  background: transparent;
+  border-bottom: 2px solid transparent;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink-mute, #6b7280);
+  cursor: pointer;
+  margin-bottom: -1px;
+}
+.perf-page__tab:hover {
+  color: var(--ink, #1f2937);
+}
+.perf-page__tab--active {
+  color: #7b9e6e;
+  border-bottom-color: #7b9e6e;
+}
+
+.perf-page__body {
+  /* タブ中身 */
+}
+
+.perf-page__placeholder {
+  padding: 60px 20px;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 14px;
+  background: #fff;
+  border: 1px dashed #e5e7eb;
+  border-radius: 12px;
+}
+
+/* MyPerformanceTab スタイル */
+.perf-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.perf-tab__header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.perf-tab__title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.perf-tab__subtitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink, #1f2937);
+}
+
+.perf-tab__add-btn {
+  padding: 9px 16px;
+  border: none;
+  background: #7b9e6e;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.perf-tab__add-btn:hover:not(:disabled) {
+  background: #6a8c5e;
+}
+.perf-tab__add-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.perf-tab__month-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+
+.perf-tab__month-btn {
+  padding: 6px 14px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4b5563;
+  cursor: pointer;
+}
+.perf-tab__month-btn:hover {
+  background: #f9fafb;
+}
+
+.perf-tab__month-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink, #1f2937);
+  min-width: 100px;
+  text-align: center;
+}
+
+.perf-tab__error {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+@media (max-width: 720px) {
+  .perf-page {
+    padding: 16px;
+  }
+  .perf-page__title {
+    font-size: 18px;
+  }
+}
+/* ============================================================
+ * 「+ 案件を追加」ボタンの右寄せ配置
+ * 2026-05-19 追加: グラフと案件一覧の間に配置するため
+ * ============================================================ */
+.perf-tab__add-row {
+  display: flex;
+  justify-content: flex-end;
+  margin: 16px 0 8px;
+}

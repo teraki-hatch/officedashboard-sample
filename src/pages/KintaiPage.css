@@ -1,0 +1,154 @@
+/* ====================================================
+   勤怠管理ページ (Phase 3-1: 土台)
+   ==================================================== */
+
+.kintai {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ----- ヘッダー ----- */
+.kintai__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.kintai__title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+.kintai__subtitle {
+  margin: 6px 0 0;
+  font-size: 13.5px;
+  color: var(--ink-mute);
+  line-height: 1.7;
+}
+
+/* ----- タブ ----- */
+.kintai-tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto;
+}
+.kintai-tabs__tab {
+  appearance: none;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 11px 18px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink-mute);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 120ms ease, border-color 120ms ease;
+  margin-bottom: -1px;
+}
+.kintai-tabs__tab:hover {
+  color: var(--ink);
+}
+.kintai-tabs__tab--active {
+  color: var(--primary-dark);
+  border-bottom-color: var(--primary);
+}
+
+/* ----- タブパネル ----- */
+.kintai-panel__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.kintai-panel__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.kintai-panel__phase {
+  font-size: 11.5px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--ink-soft);
+  border: 1px solid var(--line-strong);
+  white-space: nowrap;
+}
+.kintai-panel__desc {
+  margin: 0 0 22px;
+  font-size: 13.5px;
+  color: var(--ink-mute);
+  line-height: 1.85;
+}
+
+.kintai-panel__placeholder {
+  text-align: center;
+  padding: 40px 16px 32px;
+  color: var(--ink-mute);
+  border-top: 1px solid var(--line);
+}
+.kintai-panel__placeholder-icon {
+  font-size: 26px;
+  color: var(--primary);
+  opacity: 0.4;
+  margin-bottom: 12px;
+}
+.kintai-panel__placeholder-msg {
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.kintai-panel__placeholder-sub {
+  margin: 8px 0 0;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  line-height: 1.8;
+}
+/* ============================================
+ * 管理者タブ内の小タブ (承認 / 月次PDF出力)
+ * 2026-05-19 追加
+ * ============================================ */
+
+.kintai-subtabs {
+  display: flex;
+  gap: 4px;
+  margin: 0 0 12px 0;
+  padding: 4px;
+  background: #f5f4ee;
+  border-radius: 10px;
+  width: fit-content;
+}
+
+.kintai-subtabs__tab {
+  background: transparent;
+  border: none;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b6b6b;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.kintai-subtabs__tab:hover {
+  color: #333;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.kintai-subtabs__tab--active {
+  background: #fff;
+  color: #4a6b3a;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.kintai-subtabs__tab--active:hover {
+  background: #fff;
+}
