@@ -1,0 +1,626 @@
+/* =================================================================
+   月次工数カレンダー (Phase 4-1)
+   ================================================================= */
+
+.kousu-cal {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ----- ヘッダー ----- */
+.kousu-cal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.kousu-cal__nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.kousu-cal__nav-btn {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink-mute);
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+}
+.kousu-cal__nav-btn:hover {
+  background: var(--primary-pale);
+  color: var(--primary-dark);
+}
+.kousu-cal__month {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  min-width: 130px;
+  text-align: center;
+}
+.kousu-cal__today-btn {
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink-mute);
+  cursor: pointer;
+  margin-left: 4px;
+}
+.kousu-cal__today-btn:hover {
+  background: var(--primary-pale);
+  color: var(--primary-dark);
+}
+
+/* ----- サマリー ----- */
+.kousu-cal__summary {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  background: var(--primary-pale);
+  border: 1px solid #DCE6CA;
+  border-radius: 8px;
+  padding: 6px 14px;
+}
+.kousu-cal__summary-label {
+  font-size: 11px;
+  color: var(--ink-mute);
+  font-weight: 600;
+  margin-right: 6px;
+}
+.kousu-cal__summary-value {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--primary-dark);
+  letter-spacing: -0.02em;
+}
+.kousu-cal__summary-unit {
+  font-size: 11px;
+  color: var(--ink-mute);
+  font-weight: 600;
+}
+.kousu-cal__loading-inline {
+  margin-left: 10px;
+  font-size: 11px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+/* ----- エラー ----- */
+.kousu-cal__error {
+  background: var(--danger-bg);
+  border: 1px solid #E3C2B7;
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+.kousu-cal__error p {
+  margin: 4px 0;
+  font-size: 12.5px;
+  color: var(--danger);
+}
+
+/* ----- ローディング ----- */
+.kousu-cal__loading {
+  text-align: center;
+  padding: 30px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+/* ----- 曜日ヘッダ ----- */
+.kousu-cal__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  margin-top: 4px;
+}
+.kousu-cal__weekday {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink-mute);
+  padding: 4px 0;
+  background: var(--surface-2);
+  border-radius: 4px;
+}
+.kousu-cal__weekday--sun {
+  color: #C75353;
+}
+.kousu-cal__weekday--sat {
+  color: #4A6CB6;
+}
+
+/* ----- グリッド ----- */
+.kousu-cal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+.kousu-cal__cell {
+  position: relative;
+  min-height: 70px;
+  padding: 6px 8px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: background 0.12s, border-color 0.12s, transform 0.08s;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.kousu-cal__cell:hover {
+  background: var(--surface-2);
+  border-color: var(--primary);
+}
+.kousu-cal__cell:active {
+  transform: scale(0.98);
+}
+.kousu-cal__cell--empty {
+  visibility: hidden;
+  cursor: default;
+  pointer-events: none;
+}
+.kousu-cal__cell--weekend {
+  background: var(--surface-2);
+}
+.kousu-cal__cell--today {
+  border-color: var(--primary);
+  background: var(--primary-pale);
+}
+.kousu-cal__cell--has {
+  border-color: #C9D8AA;
+}
+
+.kousu-cal__cell-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.kousu-cal__cell-day {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.kousu-cal__cell--today .kousu-cal__cell-day {
+  color: var(--primary-dark);
+}
+.kousu-cal__cell-hours {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+.kousu-cal__cell-dots {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: auto;
+}
+.kousu-cal__cell-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  display: inline-block;
+}
+.kousu-cal__cell-more {
+  font-size: 9.5px;
+  color: var(--ink-soft);
+  font-weight: 600;
+  margin-left: 1px;
+}
+
+/* スマホ */
+@media (max-width: 640px) {
+  .kousu-cal__cell {
+    min-height: 56px;
+    padding: 4px 5px;
+  }
+  .kousu-cal__cell-day {
+    font-size: 12px;
+  }
+  .kousu-cal__cell-hours {
+    font-size: 10.5px;
+  }
+}
+
+/* =================================================================
+   ステータス表示 (Phase 4-1)
+   ================================================================= */
+
+/* ----- 凡例 ----- */
+.kousu-cal__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin: 4px 0 2px;
+  padding: 8px 12px;
+  background: var(--surface-2);
+  border-radius: 8px;
+  font-size: 11px;
+  color: var(--ink-mute);
+}
+.kousu-cal__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+}
+.kousu-cal__legend-swatch {
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  border: 1px solid;
+  display: inline-block;
+}
+.kousu-cal__legend-swatch--match {
+  background: #EAF3DC;
+  border-color: #B9D08A;
+}
+.kousu-cal__legend-swatch--short {
+  background: #FDF1DB;
+  border-color: #E9C68B;
+}
+.kousu-cal__legend-swatch--over {
+  background: #EFE9F8;
+  border-color: #CFC3E0;
+}
+.kousu-cal__legend-swatch--no-entry {
+  background: #FBE5E0;
+  border-color: #E3B8AE;
+}
+.kousu-cal__legend-swatch--no-clock {
+  background: var(--surface-2);
+  border-color: var(--line-strong);
+}
+
+/* ----- セル背景色 (ステータス別) ----- */
+.kousu-cal__cell--match {
+  background: #EAF3DC;
+  border-color: #B9D08A;
+}
+.kousu-cal__cell--match:hover {
+  background: #DCEAC4;
+}
+.kousu-cal__cell--short {
+  background: #FDF1DB;
+  border-color: #E9C68B;
+}
+.kousu-cal__cell--short:hover {
+  background: #FAE5BE;
+}
+.kousu-cal__cell--over {
+  background: #EFE9F8;
+  border-color: #CFC3E0;
+}
+.kousu-cal__cell--over:hover {
+  background: #E3D9F1;
+}
+.kousu-cal__cell--no-entry {
+  background: #FBE5E0;
+  border-color: #E3B8AE;
+}
+.kousu-cal__cell--no-entry:hover {
+  background: #F6D1C8;
+}
+.kousu-cal__cell--pending {
+  background: #FDF4E1;
+  border-color: #E9D08C;
+}
+.kousu-cal__cell--leave {
+  background: var(--surface-2);
+  border-color: var(--line);
+  opacity: 0.7;
+}
+.kousu-cal__cell--future,
+.kousu-cal__cell--weekend {
+  /* 既存スタイルそのまま */
+}
+
+/* 今日 (color override - statusカラーより優先) */
+.kousu-cal__cell--today {
+  box-shadow: inset 0 0 0 2px var(--primary);
+}
+
+/* ----- ステータスバッジ ----- */
+.kousu-cal__status {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  margin-top: auto;
+  align-self: flex-start;
+  background: white;
+  border: 1px solid;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.kousu-cal__status--match {
+  color: #4A7A28;
+  border-color: #B9D08A;
+}
+.kousu-cal__status--short {
+  color: #B25E2A;
+  border-color: #E9C68B;
+}
+.kousu-cal__status--over {
+  color: #6B4FAF;
+  border-color: #CFC3E0;
+}
+.kousu-cal__status--no-entry {
+  color: #B23E2A;
+  border-color: #E3B8AE;
+  background: #FFF0EB;
+}
+.kousu-cal__status--no-clock {
+  color: var(--ink-soft);
+  border-color: var(--line-strong);
+  background: white;
+}
+.kousu-cal__status--pending {
+  color: #B25E2A;
+  border-color: #E9D08C;
+}
+.kousu-cal__status--leave {
+  color: var(--ink-soft);
+  border-color: var(--line);
+  background: white;
+}
+
+/* スマホ */
+@media (max-width: 640px) {
+  .kousu-cal__status {
+    font-size: 9.5px;
+    padding: 1px 5px;
+  }
+}
+/* ============================================================
+ * 公休日 (土日・祝) デザイン
+ * 2026-05-19 追加
+ * 勤怠カレンダーの cell--holiday / cell--weekend と統一感を出す
+ * ============================================================ */
+
+/* 土日セル: 薄い赤系トーン */
+.kousu-cal__cell--weekend {
+  background: #fbf2ef;
+}
+
+/* 祝日セル: 土日より少し濃い赤系 */
+.kousu-cal__cell--holiday {
+  background: #f8e8e3;
+}
+
+/* 公休日 (weekend status) は枠を薄く */
+.kousu-cal__cell--weekend.kousu-cal__cell--holiday {
+  background: #f8e8e3;
+}
+
+/* 公休日にホバー */
+.kousu-cal__cell--weekend:hover,
+.kousu-cal__cell--holiday:hover {
+  background: #f3ddd5;
+}
+
+/* 公休日の日付テキストを赤系に */
+.kousu-cal__cell--weekend .kousu-cal__cell-day,
+.kousu-cal__cell--holiday .kousu-cal__cell-day {
+  color: #b85a4a;
+}
+
+/* 日曜・祝日の日付は強めの赤 */
+.kousu-cal__cell-day--sun {
+  color: #c44a3a;
+}
+
+/* 土曜の日付は青系 (任意) */
+.kousu-cal__cell-day--sat {
+  color: #4a6b8c;
+}
+
+/* 凡例: 公休日 */
+.kousu-cal__legend-swatch--holiday {
+  background: #f8e8e3;
+  border: 1px solid #e3b5a8;
+}
+/* ============================================================
+   KousuCalendar metrics 表示 (2026-05-21 追加)
+   勤怠 / 工数 / 差分を H:MM で並列表示
+   ============================================================ */
+
+/* セル全体: metrics を縦に積めるよう flex-column 化 */
+.kousu-cal__cell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 96px;
+  padding: 6px 8px;
+}
+
+/* セル上部 (日付 + ミニバッジ) */
+.kousu-cal__cell-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+/* ステータスバッジ */
+.kousu-cal__status {
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.kousu-cal__status--no-clock {
+  background: #f5e3df;
+  color: #a85040;
+}
+.kousu-cal__status--no-entry {
+  background: #f0e6d2;
+  color: #8a6c2c;
+}
+.kousu-cal__status--pending {
+  background: #f3eada;
+  color: #8a6c2c;
+}
+.kousu-cal__status--match {
+  background: #e0efd9;
+  color: #3f6b3f;
+}
+.kousu-cal__status--short {
+  background: #f7e2d6;
+  color: #a05b32;
+}
+.kousu-cal__status--over {
+  background: #e3e2f5;
+  color: #4a4a8c;
+}
+
+/* metrics 3行ブロック */
+.kousu-cal__metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-top: auto;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.kousu-cal__metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px;
+  line-height: 1.3;
+  color: #4a5749;
+}
+
+.kousu-cal__metric-label {
+  color: #8a9385;
+  font-size: 10px;
+  flex-shrink: 0;
+}
+
+.kousu-cal__metric-val {
+  font-weight: 600;
+  font-size: 12px;
+}
+
+/* 差分行: ステータス別カラー */
+.kousu-cal__metric--diff {
+  margin-top: 2px;
+  padding-top: 3px;
+  border-top: 1px dashed #d6dcd2;
+}
+.kousu-cal__metric--diff-match .kousu-cal__metric-val {
+  color: #3f7e3f;
+}
+.kousu-cal__metric--diff-short .kousu-cal__metric-val {
+  color: #b8642e;
+}
+.kousu-cal__metric--diff-over .kousu-cal__metric-val {
+  color: #5d5dab;
+}
+.kousu-cal__metric--diff-no-entry .kousu-cal__metric-val {
+  color: #8a6c2c;
+}
+
+/* 公休・未来日は metrics 非表示なので, セル高さ調整 */
+.kousu-cal__cell--weekend,
+.kousu-cal__cell--holiday,
+.kousu-cal__cell--future {
+  min-height: 96px;
+}
+/* ============================================================
+   KousuCalendar サマリーカード (2026-05-21 追加)
+   勤怠カレンダーの .att-cal__summary と同じデザインで揃える
+   ============================================================ */
+
+.kousu-cal__summary-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.kousu-cal__summary-card {
+  background: #fff;
+  border: 1px solid #e4e8e0;
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.kousu-cal__summary-card-label {
+  font-size: 12px;
+  color: #6b7569;
+  font-weight: 500;
+}
+
+.kousu-cal__summary-card-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2b3a2b;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.kousu-cal__summary-card-value--accent {
+  color: #5a8a5a;
+}
+
+.kousu-cal__summary-card-value--ok {
+  color: #3f7e3f;
+}
+
+.kousu-cal__summary-card-value--short {
+  color: #b8642e;
+}
+
+.kousu-cal__summary-card-value--over {
+  color: #5d5dab;
+}
+
+.kousu-cal__summary-card-unit {
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 2px;
+  color: inherit;
+  opacity: 0.7;
+}
+
+.kousu-cal__summary-card-sub {
+  font-size: 11px;
+  color: #8a9385;
+  margin-top: 2px;
+}
+
+/* ============================================================
+   レスポンシブ
+   ============================================================ */
+@media (max-width: 768px) {
+  .kousu-cal__summary-cards {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .kousu-cal__summary-card-value {
+    font-size: 24px;
+  }
+}

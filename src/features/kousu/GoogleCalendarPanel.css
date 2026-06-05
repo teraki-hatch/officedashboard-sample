@@ -1,0 +1,205 @@
+/* ============================================
+   Google Calendar Panel (工数モーダル右側)
+   ============================================ */
+
+.gcal-panel {
+  display: flex;
+  flex-direction: column;
+  background: #fafbf7;
+  border: 1px solid #e3e7d8;
+  border-radius: 10px;
+  overflow: hidden;
+  min-height: 0;
+  height: 100%;
+}
+
+.gcal-panel__header {
+  padding: 10px 14px;
+  background: #eef2e3;
+  border-bottom: 1px solid #e3e7d8;
+  flex-shrink: 0;
+}
+
+.gcal-panel__title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4a5836;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.gcal-panel__icon {
+  font-size: 16px;
+}
+
+.gcal-panel__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+  min-height: 0;
+}
+
+.gcal-panel__loading,
+.gcal-panel__empty,
+.gcal-panel__error {
+  padding: 20px 12px;
+  text-align: center;
+  color: #6b7560;
+  font-size: 13px;
+}
+
+.gcal-panel__empty p {
+  margin: 4px 0;
+}
+
+.gcal-panel__hint {
+  font-size: 11px;
+  color: #95a08a;
+}
+
+.gcal-panel__error {
+  color: #b3261e;
+  background: #fef2f2;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 12px;
+}
+
+.gcal-panel__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.gcal-panel__item {
+  display: flex;
+  background: #fff;
+  border: 1px solid #e3e7d8;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.15s;
+}
+
+.gcal-panel__item:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.gcal-panel__item--registered {
+  background: #f3f6ec;
+  opacity: 0.85;
+}
+
+.gcal-panel__item-bar {
+  width: 4px;
+  flex-shrink: 0;
+  background: #7b9e6e;
+}
+
+.gcal-panel__item-main {
+  flex: 1;
+  padding: 8px 10px;
+  min-width: 0;
+}
+
+.gcal-panel__item-time {
+  font-size: 11px;
+  color: #6b7560;
+  font-weight: 600;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.gcal-panel__allday {
+  background: #ffd97a;
+  color: #6b4f00;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.gcal-panel__time {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.gcal-panel__time-sep {
+  color: #95a08a;
+}
+
+.gcal-panel__duration {
+  margin-left: 4px;
+  color: #7b9e6e;
+  font-weight: 700;
+}
+
+.gcal-panel__item-title {
+  font-size: 13px;
+  color: #2d3a1f;
+  font-weight: 500;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
+}
+
+.gcal-panel__item-location {
+  font-size: 11px;
+  color: #6b7560;
+  margin-top: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gcal-panel__item-actions {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  flex-shrink: 0;
+}
+
+.gcal-panel__btn {
+  background: #7b9e6e;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.gcal-panel__btn:hover:not(:disabled) {
+  background: #6b8b5e;
+}
+
+.gcal-panel__btn:disabled {
+  background: #c4cebb;
+  cursor: not-allowed;
+}
+
+.gcal-panel__badge {
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.gcal-panel__badge--registered {
+  background: #d4e3c5;
+  color: #4a5836;
+}
