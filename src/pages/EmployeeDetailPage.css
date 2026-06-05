@@ -13,7 +13,7 @@
 
 .emp-detail__back-btn {
   margin-top: 16px;
-  background: #7a9e7e;
+  background: #1A1A1A;
   color: #fff;
   border: none;
   padding: 8px 20px;
@@ -23,7 +23,7 @@
 }
 
 .emp-detail__back-btn:hover {
-  background: #6b8c6f;
+  background: #000000;
 }
 
 .emp-detail__header {
@@ -33,7 +33,7 @@
 .emp-detail__back {
   background: transparent;
   border: none;
-  color: #6b8c6f;
+  color: #1A1A1A;
   font-size: 13px;
   cursor: pointer;
   padding: 4px 0;
@@ -56,7 +56,7 @@
   margin: 0;
   font-size: 24px;
   font-weight: 700;
-  color: #2c3e2c;
+  color: #1A1A1A;
   display: flex;
   align-items: baseline;
   gap: 8px;
@@ -72,7 +72,7 @@
 .emp-detail__email {
   margin: 4px 0 0 0;
   font-size: 13px;
-  color: #6b7c6b;
+  color: #6B6B6B;
 }
 
 .emp-detail__actions {
@@ -90,8 +90,8 @@
 }
 
 .emp-detail__badge--admin {
-  background: #fef3c7;
-  color: #92400e;
+  background: #F0F0F0;
+  color: #4A4A4A;
 }
 
 .emp-detail__badge--inactive {
@@ -100,8 +100,8 @@
 }
 
 .emp-detail__badge--leave {
-  background: #fed7e2;
-  color: #97266d;
+  background: #F0F0F0;
+  color: #6B6B6B;
 }
 
 .emp-detail__card {
@@ -123,7 +123,7 @@
   margin: 0;
   font-size: 16px;
   font-weight: 700;
-  color: #2c3e2c;
+  color: #1A1A1A;
 }
 
 .emp-detail__btn {
@@ -143,7 +143,7 @@
 .emp-detail__btn--secondary {
   background: #f7fafc;
   color: #4a5568;
-  border: 1px solid #d9ddd9;
+  border: 1px solid #D6D6D6;
 }
 
 .emp-detail__btn--secondary:hover {
@@ -151,12 +151,12 @@
 }
 
 .emp-detail__btn--primary {
-  background: #7a9e7e;
+  background: #1A1A1A;
   color: #fff;
 }
 
 .emp-detail__btn--primary:hover {
-  background: #6b8c6f;
+  background: #000000;
 }
 
 .emp-detail__btn--danger {
@@ -178,7 +178,7 @@
 
 .emp-detail__dl dt {
   font-size: 12px;
-  color: #6b7c6b;
+  color: #6B6B6B;
   font-weight: 600;
   padding-top: 2px;
 }
@@ -186,11 +186,11 @@
 .emp-detail__dl dd {
   margin: 0;
   font-size: 14px;
-  color: #2c3e2c;
+  color: #1A1A1A;
 }
 
 .emp-detail__check {
-  color: #4a7d4a;
+  color: #1A1A1A;
   font-weight: 600;
 }
 
@@ -215,18 +215,18 @@
 }
 
 .emp-detail__salary-row {
-  border: 1px solid #e8ece8;
+  border: 1px solid #E6E6E6;
   border-radius: 8px;
   padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background: #fafbfa;
+  background: #FAFAFA;
 }
 
 .emp-detail__salary-row--current {
-  background: #f0f7f0;
-  border-color: #c6dcc6;
+  background: #F4F4F4;
+  border-color: #D6D6D6;
 }
 
 .emp-detail__salary-period {
@@ -234,7 +234,7 @@
   align-items: center;
   gap: 8px;
   font-weight: 600;
-  color: #2c3e2c;
+  color: #1A1A1A;
 }
 
 .emp-detail__salary-period-text {
@@ -245,7 +245,7 @@
   font-size: 10px;
   font-weight: 700;
   padding: 2px 8px;
-  background: #7a9e7e;
+  background: #1A1A1A;
   color: #fff;
   border-radius: 10px;
 }
@@ -264,14 +264,14 @@
 
 .emp-detail__salary-label {
   font-size: 11px;
-  color: #6b7c6b;
+  color: #6B6B6B;
   font-weight: 600;
 }
 
 .emp-detail__salary-value {
   font-size: 15px;
   font-weight: 700;
-  color: #2c3e2c;
+  color: #1A1A1A;
   font-variant-numeric: tabular-nums;
 }
 
@@ -291,14 +291,14 @@
   font-size: 12px;
   padding: 3px 10px;
   background: #fff;
-  border: 1px solid #d9ddd9;
+  border: 1px solid #D6D6D6;
   border-radius: 12px;
-  color: #4a5a4a;
+  color: #4A4A4A;
 }
 
 .emp-detail__salary-memo {
   font-size: 12px;
-  color: #6b7c6b;
+  color: #6B6B6B;
   padding: 6px 10px;
   background: #fff;
   border-radius: 6px;
