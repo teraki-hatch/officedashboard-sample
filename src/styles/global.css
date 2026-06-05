@@ -147,3 +147,35 @@ h1, h2, h3, h4 {
 .badge--danger { color: var(--danger); border-color: #E3C2B7; background: var(--danger-bg); }
 .badge--info   { color: var(--info);   border-color: #D6D6D6; background: var(--info-bg); }
 .badge--mute   { color: var(--ink-mute); }
+/* =========================================================
+   フォーカス/ホバーの「緑」をモノクロに統一（上書き）
+   元テンプレートが各所で緑の枠を使っているため、まとめて黒系に。
+   ========================================================= */
+
+/* 入力欄・テキストエリア・セレクト: フォーカス時 */
+input:focus,
+input:focus-visible,
+textarea:focus,
+textarea:focus-visible,
+select:focus,
+select:focus-visible {
+  outline: none !important;
+  border-color: var(--ink) !important;
+  box-shadow: 0 0 0 2px rgba(26, 26, 26, 0.10) !important;
+}
+
+/* 入力欄: ホバー時 */
+input:hover,
+textarea:hover,
+select:hover {
+  border-color: var(--line-strong) !important;
+}
+
+/* ボタン・リンク・クリック可能要素: フォーカスリング */
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--ink) !important;
+  outline-offset: 2px !important;
+}
