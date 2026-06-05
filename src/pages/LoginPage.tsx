@@ -4,6 +4,10 @@ import { useAuth } from '../contexts/AuthContext';
 import { getSupabaseConfigDiagnosis } from '../lib/supabase';
 import './LoginPage.css';
 
+// デモ用のログイン情報（1か所で管理）
+const DEMO_EMAIL = 'admin@example.com';
+const DEMO_PASS = 'demo1234';
+
 export function LoginPage() {
   const navigate = useNavigate();
   const { signInWithEmail, signInAsDemo, isDemoMode, user } = useAuth();
@@ -13,6 +17,7 @@ export function LoginPage() {
   const [demoName, setDemoName] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [copied, setCopied] = useState<string | null>(null);
 
   if (user) {
     navigate('/', { replace: true });
@@ -35,6 +40,36 @@ export function LoginPage() {
     e.preventDefault();
     signInAsDemo(demoName.trim() || 'ゲスト');
     navigate('/', { replace: true });
+  };
+
+  // デモ情報をログインフォームに自動入力
+  const fillDemo = () => {
+    setEmail(DEMO_EMAIL);
+    setPassword(DEMO_PASS);
+    setError(null);
+  };
+
+  // クリップボードにコピー
+  const copy = async (key: string, text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(key);
+      setTimeout(() => setCopied(null), 1500);
+    } catch {
+      /* コピー不可の環境では無視 */
+    }
+  };
+
+  const copyBtnStyle: React.CSSProperties = {
+    fontSize: 12,
+    padding: '3px 10px',
+    border: '1px solid #D6D6D6',
+    borderRadius: 6,
+    background: '#FFFFFF',
+    color: '#1A1A1A',
+    cursor: 'pointer',
+    whiteSpace: 'nowrap',
+    flexShrink: 0,
   };
 
   return (
@@ -93,7 +128,15 @@ export function LoginPage() {
                 >
                   🔑 デモ用ログイン
                 </div>
-                <div style={{ display: 'flex', gap: 8, marginBottom: 2 }}>
+
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    marginBottom: 6,
+                  }}
+                >
                   <span style={{ width: 48, color: '#6B6B6B', flexShrink: 0 }}>
                     ID
                   </span>
@@ -102,12 +145,25 @@ export function LoginPage() {
                       fontFamily: 'monospace',
                       color: '#1A1A1A',
                       userSelect: 'all',
+                      flex: 1,
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
                     }}
                   >
-                    admin@example.com
+                    {DEMO_EMAIL}
                   </code>
+                  <button
+                    type="button"
+                    style={copyBtnStyle}
+                    onClick={() => copy('id', DEMO_EMAIL)}
+                  >
+                    {copied === 'id' ? '✓ コピー' : 'コピー'}
+                  </button>
                 </div>
-                <div style={{ display: 'flex', gap: 8 }}>
+
+                <div
+                  style={{ display: 'flex', alignItems: 'center', gap: 8 }}
+                >
                   <span style={{ width: 48, color: '#6B6B6B', flexShrink: 0 }}>
                     PASS
                   </span>
@@ -116,11 +172,38 @@ export function LoginPage() {
                       fontFamily: 'monospace',
                       color: '#1A1A1A',
                       userSelect: 'all',
+                      flex: 1,
                     }}
                   >
-                    demo1234
+                    {DEMO_PASS}
                   </code>
+                  <button
+                    type="button"
+                    style={copyBtnStyle}
+                    onClick={() => copy('pass', DEMO_PASS)}
+                  >
+                    {copied === 'pass' ? '✓ コピー' : 'コピー'}
+                  </button>
                 </div>
+
+                <button
+                  type="button"
+                  onClick={fillDemo}
+                  style={{
+                    marginTop: 12,
+                    width: '100%',
+                    padding: '8px 12px',
+                    border: '1px solid #1A1A1A',
+                    borderRadius: 8,
+                    background: '#FFFFFF',
+                    color: '#1A1A1A',
+                    fontSize: 13,
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                  }}
+                >
+                  デモ情報を自動入力
+                </button>
               </div>
 
               <form onSubmit={onSubmit}>
