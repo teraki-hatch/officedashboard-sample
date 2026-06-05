@@ -47,13 +47,13 @@
   justify-content: space-between;
   align-items: center;
   padding: 18px 22px;
-  border-bottom: 1px solid #ecedef;
+  border-bottom: 1px solid #E6E6E6;
 }
 
 .sales-target-modal__title {
   font-size: 16px;
   font-weight: 600;
-  color: #2c3e50;
+  color: #1A1A1A;
   margin: 0;
 }
 
@@ -62,7 +62,7 @@
   border: none;
   font-size: 22px;
   line-height: 1;
-  color: #7a8895;
+  color: #6B6B6B;
   cursor: pointer;
   padding: 4px 8px;
   border-radius: 4px;
@@ -70,17 +70,17 @@
 }
 
 .sales-target-modal__close:hover {
-  background: #f5f6f7;
+  background: #F0F0F0;
 }
 
 .sales-target-modal__readonly {
   margin: 12px 22px 0;
   padding: 8px 12px;
-  background: #fff8e1;
-  border: 1px solid #ffe082;
+  background: #F5F5F5;
+  border: 1px solid #E0E0E0;
   border-radius: 6px;
   font-size: 12.5px;
-  color: #5d4037;
+  color: #6B6B6B;
 }
 
 .sales-target-modal__body {
@@ -101,7 +101,7 @@
   display: block;
   font-size: 13px;
   font-weight: 600;
-  color: #2c3e50;
+  color: #1A1A1A;
   margin-bottom: 6px;
 }
 
@@ -114,7 +114,7 @@
 
 .sales-target-modal__sum {
   font-size: 12px;
-  color: #7a8895;
+  color: #6B6B6B;
   font-weight: 500;
 }
 
@@ -124,7 +124,7 @@
 }
 
 .sales-target-modal__sum-diff--ok {
-  color: #2e7d32;
+  color: #1A1A1A;
 }
 
 .sales-target-modal__sum-diff--warn {
@@ -134,7 +134,7 @@
 .sales-target-modal__input-wrap {
   display: flex;
   align-items: center;
-  border: 1px solid #d8dce0;
+  border: 1px solid #D6D6D6;
   border-radius: 6px;
   background: #fff;
   padding: 0 10px;
@@ -142,12 +142,12 @@
 }
 
 .sales-target-modal__input-wrap:focus-within {
-  border-color: #2e7d32;
-  box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.1);
+  border-color: #1A1A1A;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
 .sales-target-modal__yen {
-  color: #7a8895;
+  color: #6B6B6B;
   font-size: 13px;
   margin-right: 4px;
 }
@@ -159,7 +159,7 @@
   padding: 9px 0;
   font-size: 14px;
   background: transparent;
-  color: #2c3e50;
+  color: #1A1A1A;
   font-variant-numeric: tabular-nums;
   text-align: right;
   min-width: 0;
@@ -172,7 +172,7 @@
 }
 
 .sales-target-modal__input:disabled {
-  color: #95a1ad;
+  color: #9A9A9A;
   cursor: not-allowed;
 }
 
@@ -183,18 +183,18 @@
 .sales-target-modal__autofill {
   margin-top: 8px;
   background: none;
-  border: 1px solid #d8dce0;
+  border: 1px solid #D6D6D6;
   border-radius: 6px;
   padding: 6px 12px;
   font-size: 12px;
-  color: #5e9b76;
+  color: #1A1A1A;
   cursor: pointer;
   transition: all 0.12s ease;
 }
 
 .sales-target-modal__autofill:hover:not(:disabled) {
-  background: #f0f7f3;
-  border-color: #5e9b76;
+  background: #F5F5F5;
+  border-color: #1A1A1A;
 }
 
 .sales-target-modal__autofill:disabled {
@@ -205,35 +205,35 @@
 .sales-target-modal__select {
   width: 100%;
   padding: 9px 12px;
-  border: 1px solid #d8dce0;
+  border: 1px solid #D6D6D6;
   border-radius: 6px;
   background: #fff;
   font-size: 14px;
-  color: #2c3e50;
+  color: #1A1A1A;
   cursor: pointer;
   transition: border-color 0.12s ease;
 }
 
 .sales-target-modal__select:focus {
   outline: none;
-  border-color: #2e7d32;
-  box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.1);
+  border-color: #1A1A1A;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
 .sales-target-modal__select:disabled {
-  background: #f5f6f7;
-  color: #95a1ad;
+  background: #F0F0F0;
+  color: #9A9A9A;
   cursor: not-allowed;
 }
 
 .sales-target-modal__hint {
   margin-top: 6px;
   font-size: 11.5px;
-  color: #7a8895;
+  color: #6B6B6B;
 }
 
 .sales-target-modal__hint strong {
-  color: #2e7d32;
+  color: #1A1A1A;
   font-weight: 600;
 }
 
@@ -253,7 +253,7 @@
 
 .sales-target-modal__month-label {
   font-size: 12.5px;
-  color: #2c3e50;
+  color: #1A1A1A;
   font-weight: 500;
   min-width: 36px;
   flex-shrink: 0;
@@ -277,7 +277,7 @@
   justify-content: flex-end;
   gap: 10px;
   padding: 14px 22px;
-  border-top: 1px solid #ecedef;
+  border-top: 1px solid #E6E6E6;
 }
 
 .sales-target-modal__btn {
@@ -296,21 +296,21 @@
 }
 
 .sales-target-modal__btn--cancel {
-  background: #f5f6f7;
-  color: #2c3e50;
+  background: #F0F0F0;
+  color: #1A1A1A;
 }
 
 .sales-target-modal__btn--cancel:hover:not(:disabled) {
-  background: #e8eaed;
+  background: #E8E8E8;
 }
 
 .sales-target-modal__btn--save {
-  background: #5e9b76;
+  background: #1A1A1A;
   color: #fff;
 }
 
 .sales-target-modal__btn--save:hover:not(:disabled) {
-  background: #4d8665;
+  background: #000000;
 }
 
 @media (max-width: 500px) {
