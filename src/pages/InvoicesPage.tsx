@@ -42,24 +42,24 @@ const STATUS_CONFIG: Record<
 > = {
   draft: {
     icon: FileText,
-    color: '#6b7280',
-    bg: '#f3f4f6',
+    color: '#9A9A9A',
+    bg: '#F5F5F5',
     rowBg: 'transparent',
     rowBorder: 'transparent',
   },
   issued: {
     icon: Send,
-    color: '#2563eb',
-    bg: '#dbeafe',
-    rowBg: '#f0f7ff',
-    rowBorder: '#bfdbfe',
+    color: '#6B6B6B',
+    bg: '#EFEFEF',
+    rowBg: '#FAFAFA',
+    rowBorder: '#E6E6E6',
   },
   paid: {
     icon: CheckCircle2,
-    color: '#15803d',
-    bg: '#d1fae5',
-    rowBg: '#f0fdf4',
-    rowBorder: '#bbf7d0',
+    color: '#1A1A1A',
+    bg: '#E4E4E4',
+    rowBg: '#F5F5F5',
+    rowBorder: '#D6D6D6',
   },
   cancelled: {
     icon: XCircle,
@@ -240,7 +240,7 @@ export default function InvoicesPage() {
               // draft の場合は zebra (縞模様)、それ以外はステータス色背景
               const isZebra = inv.status === 'draft';
               const rowBg = isZebra
-                ? (idx % 2 === 0 ? '#ffffff' : '#fafaf7')
+                ? (idx % 2 === 0 ? '#ffffff' : '#FAFAFA')
                 : cfg.rowBg;
               return (
                 <tr
