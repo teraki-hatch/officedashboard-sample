@@ -11,7 +11,7 @@
 .invoice-detail__back {
   background: none;
   border: none;
-  color: #4f7a4e;
+  color: #1A1A1A;
   cursor: pointer;
   font-size: 0.9rem;
   padding: 0;
@@ -224,7 +224,7 @@
 }
 
 .invoice-detail__save-msg {
-  color: #16a34a;
+  color: #1A1A1A;
   font-size: 0.9rem;
 }
 
@@ -243,13 +243,13 @@
 }
 
 .invoice-detail__btn--primary {
-  background: #4f7a4e;
+  background: #1A1A1A;
   color: #fff;
-  border-color: #4f7a4e;
+  border-color: #1A1A1A;
 }
 
 .invoice-detail__btn--primary:hover:not(:disabled) {
-  background: #3f6a3e;
+  background: #000000;
 }
 
 .invoice-detail__btn--danger {
@@ -310,7 +310,7 @@
 
 .invoice-detail__confirmer-time {
   font-size: 0.8rem;
-  color: #16a34a;
+  color: #1A1A1A;
 }
 
 .invoice-detail__confirmer-pending {
@@ -318,10 +318,8 @@
   color: #9ca3af;
 }
 /* ==============================
- * 既存の InvoiceDetailPage.css の末尾に追加してください
+ * プレビューモーダル
  * ============================== */
-
-/* プレビューモーダル */
 .invoice-detail__preview-overlay {
   position: fixed;
   inset: 0;
@@ -361,15 +359,12 @@
 }
 
 @media print {
-  /* 画面の通常UIは全部隠す */
   .invoice-detail__no-print {
     display: none !important;
   }
-  /* 印刷専用要素を表示 */
   .invoice-detail__print-only {
     display: block !important;
   }
-  /* オーバーレイの背景なども消す */
   body {
     background: #fff !important;
   }
