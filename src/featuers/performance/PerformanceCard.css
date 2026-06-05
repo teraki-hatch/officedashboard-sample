@@ -1,0 +1,107 @@
+.perf-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.perf-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.perf-card__header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-mute, #6b7280);
+}
+
+.perf-card__icon {
+  font-size: 16px;
+}
+
+.perf-card__label {
+  letter-spacing: 0.02em;
+}
+
+.perf-card__value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink, #1f2937);
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+.perf-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--ink-mute, #6b7280);
+  margin-top: 2px;
+}
+
+.perf-card__target {
+  font-weight: 500;
+}
+
+.perf-card__rate {
+  font-weight: 700;
+  color: #2e7d32;
+}
+
+.perf-card__no-target {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.perf-card__bar {
+  width: 100%;
+  height: 6px;
+  background: #f3f4f6;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.perf-card__bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.perf-card__bar-fill--low {
+  background: #ef4444;
+}
+.perf-card__bar-fill--mid {
+  background: #f59e0b;
+}
+.perf-card__bar-fill--high {
+  background: #84cc16;
+}
+.perf-card__bar-fill--full {
+  background: #22c55e;
+}
+
+@media (max-width: 880px) {
+  .perf-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .perf-card-grid {
+    grid-template-columns: 1fr;
+  }
+  .perf-card__value {
+    font-size: 18px;
+  }
+}

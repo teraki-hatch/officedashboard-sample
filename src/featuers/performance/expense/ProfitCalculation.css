@@ -1,0 +1,186 @@
+.profit-calc {
+  padding: 16px 0;
+}
+
+.profit-calc__toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.profit-calc__period-select {
+  padding: 8px 14px;
+  border: 1px solid #d0d3cd;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 14px;
+  color: #2c2c2c;
+  cursor: pointer;
+}
+
+.profit-calc__tax-toggle {
+  display: inline-flex;
+  border: 1px solid #d0d3cd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.profit-calc__tax-btn {
+  padding: 8px 16px;
+  background: #fff;
+  border: none;
+  font-size: 13px;
+  color: #6b6b6b;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.profit-calc__tax-btn:not(:last-child) {
+  border-right: 1px solid #d0d3cd;
+}
+
+.profit-calc__tax-btn--active {
+  background: #5a6e3f;
+  color: #fff;
+}
+
+.profit-calc__period-total {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.profit-calc__total-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.profit-calc__total-label {
+  font-size: 12px;
+  color: #6b6b6b;
+}
+
+.profit-calc__total-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2c2c2c;
+}
+
+.profit-calc__total-value--negative {
+  color: #c0392b;
+}
+
+.profit-calc__error {
+  padding: 12px 16px;
+  background: #fde8e8;
+  color: #c0392b;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.profit-calc__loading {
+  padding: 32px;
+  text-align: center;
+  color: #6b6b6b;
+}
+
+.profit-calc__table-wrap {
+  overflow-x: auto;
+  border: 1px solid #e6e8e3;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.profit-calc__table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.profit-calc__th {
+  padding: 12px 10px;
+  background: #f7f8f5;
+  border-bottom: 2px solid #e6e8e3;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4a4a4a;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.profit-calc__th--label {
+  text-align: left;
+  width: 100px;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: #f7f8f5;
+}
+
+.profit-calc__th--num {
+  text-align: right;
+}
+
+.profit-calc__th--total {
+  background: #eef0e8;
+  border-right: 2px solid #d0d3cd;
+}
+
+.profit-calc__td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #f0f1ec;
+  font-size: 14px;
+  color: #2c2c2c;
+  white-space: nowrap;
+}
+
+.profit-calc__td--label {
+  text-align: left;
+  font-weight: 500;
+  color: #4a4a4a;
+  position: sticky;
+  left: 0;
+  background: #fff;
+  z-index: 1;
+}
+
+.profit-calc__td--num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.profit-calc__td--total {
+  background: #f7f8f5;
+  border-right: 2px solid #e6e8e3;
+  font-weight: 600;
+}
+
+.profit-calc__td--strong {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.profit-calc__td--negative {
+  color: #c0392b;
+}
+
+.profit-calc__row-profit {
+  background: #fafbf8;
+}
+
+.profit-calc__row-profit:hover {
+  background: #f5f7f2;
+}
+
+.profit-calc__note {
+  padding: 12px 16px;
+  font-size: 12px;
+  color: #6b6b6b;
+  background: #f7f8f5;
+  border-top: 1px solid #e6e8e3;
+}

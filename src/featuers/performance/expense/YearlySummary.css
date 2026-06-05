@@ -1,0 +1,195 @@
+.yearly-sum {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.yearly-sum__toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  background: #f9fbf9;
+  border: 1px solid #e8ece8;
+  border-radius: 8px;
+}
+
+.yearly-sum__period-select {
+  padding: 8px 12px;
+  border: 1px solid #d9ddd9;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  background: #fff;
+  outline: none;
+  cursor: pointer;
+}
+
+.yearly-sum__period-select:focus {
+  border-color: #7a9e7e;
+}
+
+.yearly-sum__tax-toggle {
+  display: flex;
+  gap: 2px;
+  background: #e8ece8;
+  border-radius: 6px;
+  padding: 2px;
+}
+
+.yearly-sum__tax-btn {
+  padding: 6px 14px;
+  border: none;
+  background: transparent;
+  color: #6b7c6b;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s;
+}
+
+.yearly-sum__tax-btn:hover {
+  color: #2c3e2c;
+}
+
+.yearly-sum__tax-btn--active {
+  background: #fff;
+  color: #2c3e2c;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.yearly-sum__grand-total {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.yearly-sum__grand-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7c6b;
+}
+
+.yearly-sum__grand-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2c3e2c;
+  font-variant-numeric: tabular-nums;
+}
+
+.yearly-sum__loading,
+.yearly-sum__empty {
+  padding: 60px 24px;
+  text-align: center;
+  color: #8a9a8a;
+  font-size: 14px;
+}
+
+.yearly-sum__error {
+  padding: 12px;
+  background: #fed7d7;
+  color: #c53030;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.yearly-sum__table-wrap {
+  background: #fff;
+  border: 1px solid #e8ece8;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.yearly-sum__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.yearly-sum__th {
+  background: #f5f7f5;
+  color: #4a5a4a;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: left;
+  padding: 8px 6px;
+  border-bottom: 2px solid #e8ece8;
+  white-space: nowrap;
+}
+
+.yearly-sum__th--category {
+  text-align: left;
+  min-width: 130px;
+  padding-left: 12px;
+}
+
+.yearly-sum__th--num {
+  text-align: right;
+  min-width: 56px;
+}
+
+.yearly-sum__th--total {
+  background: #edf2ed;
+  border-right: 2px solid #d9ddd9;
+  min-width: 90px;
+}
+
+.yearly-sum__td {
+  padding: 8px 6px;
+  border-bottom: 1px solid #f0f3f0;
+  color: #2c3e2c;
+  font-variant-numeric: tabular-nums;
+}
+
+.yearly-sum__td--category {
+  font-weight: 600;
+  padding-left: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.yearly-sum__cat-icon {
+  font-size: 14px;
+}
+.yearly-sum__cat-icon:empty {
+  display: none;
+}
+
+.yearly-sum__td--num {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.yearly-sum__td--total {
+  background: #fafbfa;
+  font-weight: 700;
+  border-right: 2px solid #d9ddd9;
+}
+
+.yearly-sum__td--zero {
+  color: #c8d1c8;
+}
+
+.yearly-sum__foot-row {
+  background: #f5f7f5;
+}
+
+.yearly-sum__td--foot {
+  border-top: 2px solid #d9ddd9;
+  border-bottom: none;
+  font-weight: 700;
+  color: #2c3e2c;
+  padding: 10px 6px;
+}
+
+.yearly-sum__td--foot.yearly-sum__td--category {
+  padding-left: 12px;
+}
+
+.yearly-sum__td--foot.yearly-sum__td--total {
+  background: #edf2ed;
+}

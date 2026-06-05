@@ -1,0 +1,405 @@
+.deal-modal__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.deal-modal {
+  background: #fff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+}
+
+.deal-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.deal-modal__title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink, #1f2937);
+}
+
+.deal-modal__close {
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  cursor: pointer;
+  color: #6b7280;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+}
+.deal-modal__close:hover {
+  background: #f3f4f6;
+}
+
+.deal-modal__body {
+  padding: 16px 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.deal-modal__field {
+  margin-bottom: 14px;
+}
+
+.deal-modal__label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-mute, #6b7280);
+  margin-bottom: 6px;
+}
+
+.deal-modal__input,
+.deal-modal__textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--ink, #1f2937);
+  background: #fff;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+.deal-modal__input:focus,
+.deal-modal__textarea:focus {
+  outline: none;
+  border-color: #7b9e6e;
+  box-shadow: 0 0 0 3px rgba(123, 158, 110, 0.15);
+}
+.deal-modal__textarea {
+  resize: vertical;
+  min-height: 64px;
+}
+
+.deal-modal__row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ===== カテゴリ選択 ===== */
+.deal-modal__category-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.deal-modal__category-btn {
+  padding: 10px 6px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #4b5563;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.12s;
+}
+.deal-modal__category-btn:hover {
+  background: #f9fafb;
+}
+.deal-modal__category-btn--active {
+  background: #eef5e8;
+  border-color: #7b9e6e;
+  color: #4a5836;
+  box-shadow: 0 0 0 2px rgba(123, 158, 110, 0.12);
+}
+.deal-modal__category-btn--company {
+  background: #fdfaf3;
+}
+.deal-modal__category-btn--company.deal-modal__category-btn--active {
+  background: #fef3c7;
+  border-color: #d97706;
+  color: #92400e;
+  box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.12);
+}
+
+.deal-modal__category-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* ===== ステータス選択 ===== */
+.deal-modal__status-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.deal-modal__status-btn {
+  padding: 8px 4px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #4b5563;
+}
+.deal-modal__status-btn:hover {
+  background: #f9fafb;
+}
+.deal-modal__status-btn--active[data-status="prospect"] {
+  background: #e8eaf6;
+  border-color: #3949ab;
+  color: #3949ab;
+}
+.deal-modal__status-btn--active[data-status="in_progress"] {
+  background: #fff3e0;
+  border-color: #ef6c00;
+  color: #ef6c00;
+}
+.deal-modal__status-btn--active[data-status="won"] {
+  background: #e8f5e9;
+  border-color: #2e7d32;
+  color: #2e7d32;
+}
+.deal-modal__status-btn--active[data-status="lost"] {
+  background: #f3f4f6;
+  border-color: #6b7280;
+  color: #374151;
+}
+
+/* ===== 担当者リスト (按分) ===== */
+.deal-modal__assignees-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.deal-modal__alloc-total {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid;
+}
+.deal-modal__alloc-total--ok {
+  background: #ecfdf5;
+  color: #047857;
+  border-color: #6ee7b7;
+}
+.deal-modal__alloc-total--ng {
+  background: #fef2f2;
+  color: #b91c1c;
+  border-color: #fca5a5;
+}
+
+.deal-modal__assignees {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.deal-modal__assignee-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 0.9fr) 70px auto auto;
+  gap: 6px;
+  align-items: center;
+}
+
+.deal-modal__assignee-user,
+.deal-modal__assignee-role {
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 13px;
+  background: #fff;
+  color: var(--ink, #1f2937);
+  font-family: inherit;
+  min-width: 0;
+}
+.deal-modal__assignee-user:focus,
+.deal-modal__assignee-role:focus {
+  outline: none;
+  border-color: #7b9e6e;
+  box-shadow: 0 0 0 2px rgba(123, 158, 110, 0.12);
+}
+
+.deal-modal__assignee-pct {
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 13px;
+  text-align: right;
+  background: #fff;
+  color: var(--ink, #1f2937);
+  font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
+  -moz-appearance: textfield;
+}
+.deal-modal__assignee-pct::-webkit-outer-spin-button,
+.deal-modal__assignee-pct::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.deal-modal__assignee-pct:focus {
+  outline: none;
+  border-color: #7b9e6e;
+  box-shadow: 0 0 0 2px rgba(123, 158, 110, 0.12);
+}
+
+.deal-modal__assignee-unit {
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.deal-modal__assignee-del {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #fca5a5;
+  background: #fff;
+  color: #b91c1c;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.deal-modal__assignee-del:hover:not(:disabled) {
+  background: #fef2f2;
+}
+.deal-modal__assignee-del:disabled {
+  border-color: #e5e7eb;
+  color: #d1d5db;
+  cursor: not-allowed;
+}
+
+.deal-modal__assignee-add {
+  width: 100%;
+  padding: 8px;
+  border: 1px dashed #d1d5db;
+  background: #fff;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  font-family: inherit;
+}
+.deal-modal__assignee-add:hover {
+  background: #f9fafb;
+  border-color: #7b9e6e;
+  color: #4a5836;
+}
+
+/* ===== ヒント ===== */
+.deal-modal__hint {
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+.deal-modal__hint--info {
+  background: #fef3c7;
+  color: #92400e;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #fcd34d;
+  font-weight: 500;
+}
+
+.deal-modal__error {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.deal-modal__footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border-top: 1px solid #eee;
+  background: #fafafa;
+  border-radius: 0 0 12px 12px;
+}
+
+.deal-modal__footer-spacer {
+  flex: 1;
+}
+
+.deal-modal__btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.deal-modal__btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.deal-modal__btn--primary {
+  background: #7b9e6e;
+  color: #fff;
+}
+.deal-modal__btn--primary:hover:not(:disabled) {
+  background: #6a8c5e;
+}
+
+.deal-modal__btn--ghost {
+  background: #fff;
+  border-color: #d1d5db;
+  color: #4b5563;
+}
+.deal-modal__btn--ghost:hover:not(:disabled) {
+  background: #f3f4f6;
+}
+
+.deal-modal__btn--danger {
+  background: #fff;
+  border-color: #fca5a5;
+  color: #b91c1c;
+}
+.deal-modal__btn--danger:hover:not(:disabled) {
+  background: #fef2f2;
+}
+
+@media (max-width: 520px) {
+  .deal-modal__row2 {
+    grid-template-columns: 1fr;
+  }
+  .deal-modal__status-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .deal-modal__category-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .deal-modal__assignee-row {
+    grid-template-columns: 1fr 1fr 70px auto auto;
+  }
+}

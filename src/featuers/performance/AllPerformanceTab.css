@@ -1,0 +1,373 @@
+.all-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.all-tab__header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.all-tab__subtitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink, #1f2937);
+}
+
+/* ===== 内側タブ (期サマリー / 月単位) ===== */
+.all-tab__inner-tabs {
+  display: flex;
+  gap: 4px;
+  background: #f3f4f6;
+  border-radius: 10px;
+  padding: 4px;
+  width: fit-content;
+}
+
+.all-tab__inner-tab {
+  padding: 8px 18px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  font-family: inherit;
+}
+.all-tab__inner-tab:hover {
+  color: var(--ink, #1f2937);
+}
+.all-tab__inner-tab--active {
+  background: #fff;
+  color: #7b9e6e;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== 期選択ナビ ===== */
+.all-tab__period-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 10px 14px;
+  flex-wrap: wrap;
+}
+
+.all-tab__period-toggle {
+  display: flex;
+  gap: 4px;
+  background: #f9fafb;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 3px;
+}
+
+.all-tab__period-btn {
+  padding: 6px 14px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4b5563;
+  cursor: pointer;
+  font-family: inherit;
+}
+.all-tab__period-btn:hover {
+  background: #fff;
+}
+.all-tab__period-btn--active {
+  background: #7b9e6e;
+  color: #fff;
+}
+.all-tab__period-btn--active:hover {
+  background: #6a8c5e;
+}
+
+.all-tab__period-label {
+  font-size: 12.5px;
+  color: var(--ink-mute, #6b7280);
+  font-weight: 500;
+}
+
+/* ===== 月選択ナビ (月単位モード用) ===== */
+.all-tab__month-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+
+.all-tab__month-btn {
+  padding: 6px 14px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4b5563;
+  cursor: pointer;
+}
+.all-tab__month-btn:hover {
+  background: #f9fafb;
+}
+
+.all-tab__month-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink, #1f2937);
+  min-width: 100px;
+  text-align: center;
+}
+
+.all-tab__error {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.all-tab__total {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+
+.all-tab__total-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-mute, #6b7280);
+  margin-bottom: 10px;
+  letter-spacing: 0.05em;
+}
+
+.all-tab__section-title {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink, #1f2937);
+}
+
+/* ===== グラフセクション ===== */
+.all-tab__chart-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.all-tab__chart-tabs {
+  display: flex;
+  gap: 4px;
+  background: #f3f4f6;
+  border-radius: 8px;
+  padding: 3px;
+  width: fit-content;
+}
+
+.all-tab__chart-tab {
+  padding: 6px 14px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  font-family: inherit;
+}
+.all-tab__chart-tab:hover {
+  color: var(--ink, #1f2937);
+}
+.all-tab__chart-tab--active {
+  background: #fff;
+  color: #7b9e6e;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== カテゴリ別サマリー ===== */
+.all-tab__categories {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+
+.all-tab__category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.all-tab__category-card {
+  background: #fafafa;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.all-tab__category-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.all-tab__category-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.all-tab__category-name {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink, #1f2937);
+}
+
+.all-tab__category-sales {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--ink, #1f2937);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.all-tab__category-target {
+  font-size: 11px;
+  color: var(--ink-mute, #6b7280);
+  font-weight: 500;
+}
+
+.all-tab__category-rate {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #7b9e6e;
+  margin-top: 2px;
+}
+
+/* ===== 社員別テーブル ===== */
+.all-tab__member-list {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px 18px 18px;
+}
+
+.all-tab__table-wrap {
+  overflow-x: auto;
+}
+
+.all-tab__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.all-tab__th {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-mute, #6b7280);
+  background: #fafafa;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.all-tab__th--name {
+  width: 28%;
+}
+.all-tab__th--num {
+  text-align: right;
+}
+
+.all-tab__row {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.all-tab__row:hover {
+  background: #f9fafb;
+}
+
+.all-tab__td {
+  padding: 12px;
+  border-bottom: 1px solid #f3f4f6;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.all-tab__row:last-child .all-tab__td {
+  border-bottom: none;
+}
+
+.all-tab__td--name {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.all-tab__member-code {
+  font-size: 11px;
+  color: var(--ink-mute, #6b7280);
+}
+
+.all-tab__member-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink, #1f2937);
+}
+
+.all-tab__td--num {
+  text-align: right;
+  font-weight: 600;
+  color: var(--ink, #1f2937);
+}
+
+.all-tab__td--mute {
+  color: var(--ink-mute, #6b7280);
+  font-weight: 500;
+}
+
+.all-tab__empty {
+  padding: 36px 0;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 13.5px;
+}
+
+@media (max-width: 720px) {
+  .all-tab__table {
+    font-size: 12.5px;
+  }
+  .all-tab__th,
+  .all-tab__td {
+    padding: 8px 10px;
+  }
+  .all-tab__category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .all-tab__category-grid {
+    grid-template-columns: 1fr;
+  }
+  .all-tab__period-nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

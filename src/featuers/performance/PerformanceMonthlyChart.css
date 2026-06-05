@@ -1,0 +1,13 @@
+.perf-chart {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+
+.perf-chart__title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink, #1f2937);
+  margin-bottom: 10px;
+}
