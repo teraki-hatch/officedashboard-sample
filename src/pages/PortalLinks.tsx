@@ -1,14 +1,13 @@
 import { useState } from 'react';
-import './PortalLinks.css';
 
-type PortalLink = {
+type PortalItem = {
   key: string;
   title: string;
   description: string;
   icon: string;
 };
 
-const PORTAL_LINKS: PortalLink[] = [
+const PORTAL_ITEMS: PortalItem[] = [
   {
     key: 'rules',
     title: 'ルール・制度',
@@ -22,12 +21,6 @@ const PORTAL_LINKS: PortalLink[] = [
     icon: '🏢',
   },
   {
-    key: 'library',
-    title: 'てらき文庫',
-    description: '社内ナレッジ・資料集',
-    icon: '📚',
-  },
-  {
     key: 'meeting',
     title: '定例会議',
     description: 'クライアント別進捗管理',
@@ -35,7 +28,7 @@ const PORTAL_LINKS: PortalLink[] = [
   },
 ];
 
-// デモ用のダミー内容（外部リンクの代わりに、クリックでモーダル表示）
+// デモ用のダミー内容（画面内にインライン表示）
 const PORTAL_CONTENT: Record<string, { h: string; lines: string[] }[]> = {
   rules: [
     { h: '勤務時間', lines: ['フレックスタイム制（標準7時間/日）', 'コアタイムなし'] },
@@ -59,17 +52,6 @@ const PORTAL_CONTENT: Record<string, { h: string; lines: string[] }[]> = {
     },
     { h: '拠点', lines: ['本社 / 支社（デモ用ダミー）'] },
   ],
-  library: [
-    {
-      h: '資料一覧（サンプル）',
-      lines: [
-        '提案書テンプレート',
-        '議事録フォーマット',
-        'デザインガイドライン',
-        '新人研修マニュアル',
-      ],
-    },
-  ],
   meeting: [
     {
       h: 'クライアント別進捗（サンプル）',
@@ -82,142 +64,132 @@ const PORTAL_CONTENT: Record<string, { h: string; lines: string[] }[]> = {
   ],
 };
 
+const STYLE = `
+.pl-wrap { max-width: 1100px; }
+.pl-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.pl-title { font-size: 18px; font-weight: 700; color: #1A1A1A; margin: 0; }
+.pl-sub { font-size: 12px; color: #9A9A9A; }
+.pl-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+@media (max-width: 900px) { .pl-grid { grid-template-columns: 1fr; } }
+.pl-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid #E6E6E6;
+  border-radius: 12px;
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  transition: border-color .15s ease, background .15s ease;
+}
+.pl-card:hover { border-color: #1A1A1A; background: #FAFAFA; }
+.pl-card:focus { outline: none; }
+.pl-card:focus-visible { outline: 2px solid #1A1A1A; outline-offset: 2px; }
+.pl-card.is-active { border-color: #1A1A1A; background: #F5F5F5; }
+.pl-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #F0F0F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex: 0 0 auto;
+}
+.pl-card-text { display: flex; flex-direction: column; }
+.pl-card-title { font-size: 14px; font-weight: 700; color: #1A1A1A; }
+.pl-card-desc { font-size: 12px; color: #6B6B6B; margin-top: 2px; }
+.pl-panel {
+  border: 1px solid #E6E6E6;
+  border-radius: 12px;
+  background: #fff;
+  padding: 24px;
+}
+.pl-panel-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin-bottom: 16px;
+}
+.pl-section { margin-bottom: 16px; }
+.pl-section-h { font-weight: 700; color: #1A1A1A; margin-bottom: 6px; }
+.pl-section ul { margin: 0; padding-left: 18px; color: #444444; line-height: 1.8; }
+.pl-note {
+  margin-top: 8px;
+  padding: 10px 12px;
+  background: #F5F5F5;
+  border: 1px solid #E6E6E6;
+  border-radius: 8px;
+  font-size: 12px;
+  color: #6B6B6B;
+}
+`;
+
 export function PortalLinks() {
-  const [openKey, setOpenKey] = useState<string | null>(null);
-  const active = PORTAL_LINKS.find((l) => l.key === openKey);
-  const sections = openKey ? PORTAL_CONTENT[openKey] ?? [] : [];
+  const [activeKey, setActiveKey] = useState<string>('rules');
+  const active = PORTAL_ITEMS.find((i) => i.key === activeKey) ?? PORTAL_ITEMS[0];
+  const sections = PORTAL_CONTENT[active.key] ?? [];
 
   return (
-    <section className="portal-links">
-      <div className="portal-links__header">
-        <h2 className="portal-links__title">ポータル</h2>
-        <span className="portal-links__subtitle">クリックで内容を表示（デモ用）</span>
+    <section className="pl-wrap">
+      <style>{STYLE}</style>
+
+      <div className="pl-header">
+        <h2 className="pl-title">ポータル</h2>
+        <span className="pl-sub">カードを選ぶと内容が表示されます（デモ用）</span>
       </div>
-      <div className="portal-links__grid">
-        {PORTAL_LINKS.map(({ key, title, description, icon }) => (
-          <a
-            key={key}
-            role="button"
-            tabIndex={0}
-            className="portal-links__card"
-            style={{ cursor: 'pointer' }}
-            onClick={() => setOpenKey(key)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                setOpenKey(key);
-              }
-            }}
+
+      <div className="pl-grid">
+        {PORTAL_ITEMS.map((item) => (
+          <button
+            key={item.key}
+            type="button"
+            className={item.key === active.key ? 'pl-card is-active' : 'pl-card'}
+            onClick={() => setActiveKey(item.key)}
           >
-            <div className="portal-links__icon-wrap" aria-hidden>
-              {icon}
-            </div>
-            <div className="portal-links__body">
-              <div className="portal-links__card-title">{title}</div>
-              <div className="portal-links__card-desc">{description}</div>
-            </div>
-          </a>
+            <span className="pl-icon" aria-hidden>
+              {item.icon}
+            </span>
+            <span className="pl-card-text">
+              <span className="pl-card-title">{item.title}</span>
+              <span className="pl-card-desc">{item.description}</span>
+            </span>
+          </button>
         ))}
       </div>
 
-      {active && (
-        <div
-          onClick={() => setOpenKey(null)}
-          style={{
-            position: 'fixed',
-            inset: 0,
-            background: 'rgba(0,0,0,0.45)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: 20,
-            zIndex: 1000,
-          }}
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              background: '#fff',
-              borderRadius: 12,
-              width: '100%',
-              maxWidth: 560,
-              maxHeight: '85vh',
-              overflowY: 'auto',
-              boxShadow: '0 20px 60px rgba(0,0,0,0.25)',
-            }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: '16px 20px',
-                borderBottom: '1px solid #E6E6E6',
-              }}
-            >
-              <div style={{ fontSize: 16, fontWeight: 700, color: '#1A1A1A' }}>
-                {active.icon} {active.title}
-              </div>
-              <button
-                type="button"
-                onClick={() => setOpenKey(null)}
-                aria-label="閉じる"
-                style={{
-                  background: 'transparent',
-                  border: 'none',
-                  fontSize: 22,
-                  lineHeight: 1,
-                  cursor: 'pointer',
-                  color: '#6B6B6B',
-                  padding: '4px 8px',
-                }}
-              >
-                ×
-              </button>
-            </div>
-            <div style={{ padding: 20 }}>
-              {sections.map((sec, i) => (
-                <div key={i} style={{ marginBottom: 16 }}>
-                  <div
-                    style={{
-                      fontWeight: 700,
-                      color: '#1A1A1A',
-                      marginBottom: 6,
-                    }}
-                  >
-                    {sec.h}
-                  </div>
-                  <ul
-                    style={{
-                      margin: 0,
-                      paddingLeft: 18,
-                      color: '#444444',
-                      lineHeight: 1.8,
-                    }}
-                  >
-                    {sec.lines.map((line, j) => (
-                      <li key={j}>{line}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-              <div
-                style={{
-                  marginTop: 8,
-                  padding: '10px 12px',
-                  background: '#F5F5F5',
-                  border: '1px solid #E6E6E6',
-                  borderRadius: 8,
-                  fontSize: 12,
-                  color: '#6B6B6B',
-                }}
-              >
-                ※ これはデモ用のサンプル内容です。
-              </div>
-            </div>
-          </div>
+      <div className="pl-panel">
+        <div className="pl-panel-head">
+          {active.icon} {active.title}
         </div>
-      )}
+        {sections.map((sec, i) => (
+          <div className="pl-section" key={i}>
+            <div className="pl-section-h">{sec.h}</div>
+            <ul>
+              {sec.lines.map((line, j) => (
+                <li key={j}>{line}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+        <div className="pl-note">※ これはデモ用のサンプル内容です。</div>
+      </div>
     </section>
   );
 }
