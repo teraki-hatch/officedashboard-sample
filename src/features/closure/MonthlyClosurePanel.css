@@ -1,5 +1,5 @@
 /* ============================================
- * 月次勤怠締めパネル (管理者画面)
+ * 月次勤怠締めパネル (管理者画面) — モノクロ版
  * ============================================ */
 
 .closure-panel {
@@ -21,7 +21,7 @@
 .closure-panel__title {
   font-size: 16px;
   font-weight: 700;
-  color: #1a1a2e;
+  color: #1a1a1a;
   margin: 0 0 4px 0;
 }
 
@@ -101,7 +101,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 16px;
-  background: #f7f6f1;
+  background: #F4F4F4;
   border-radius: 10px;
   padding: 10px 14px;
   margin-bottom: 14px;
@@ -116,11 +116,11 @@
 }
 
 .closure-panel__count-item--warn strong {
-  color: #b45309;
+  color: #6B6B6B;
 }
 
 .closure-panel__count-item--ok strong {
-  color: #15803d;
+  color: #1A1A1A;
 }
 
 /* 一括確定 */
@@ -131,7 +131,7 @@
 }
 
 .closure-panel__bulk-btn {
-  background: #1f6f3c;
+  background: #1A1A1A;
   color: #fff;
   font-size: 12px;
   font-weight: 700;
@@ -143,7 +143,7 @@
 }
 
 .closure-panel__bulk-btn:hover:not(:disabled) {
-  background: #155a30;
+  background: #000000;
 }
 
 .closure-panel__bulk-btn:disabled {
@@ -175,7 +175,7 @@
   gap: 12px;
   align-items: center;
   background: #fff;
-  border: 1px solid #ece7d7;
+  border: 1px solid #E6E6E6;
   border-radius: 10px;
   padding: 10px 14px;
 }
@@ -239,22 +239,22 @@
 }
 
 .closure-list__btn--ok {
-  background: #4a6b3a;
+  background: #1A1A1A;
   color: #fff;
 }
 
 .closure-list__btn--ok:hover:not(:disabled) {
-  background: #3d5a2e;
+  background: #000000;
 }
 
 .closure-list__btn--reject {
   background: #f3f4f6;
-  color: #b45309;
-  border: 1px solid #fde68a;
+  color: #6B6B6B;
+  border: 1px solid #D6D6D6;
 }
 
 .closure-list__btn--reject:hover:not(:disabled) {
-  background: #fef3c7;
+  background: #F0F0F0;
 }
 
 .closure-list__btn--unlock {
