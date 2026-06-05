@@ -404,7 +404,7 @@ export function MemberAttendancePage() {
           font-size: 13px;
         }
         .mem-att__table thead th {
-          background: #f8f5e9;
+          background: #F4F4F4;
           color: var(--ink-mute);
           font-weight: 500;
           padding: 10px 12px;
@@ -414,14 +414,14 @@ export function MemberAttendancePage() {
         }
         .mem-att__table tbody td {
           padding: 10px 12px;
-          border-bottom: 1px solid #f0eee5;
+          border-bottom: 1px solid #F0F0F0;
           color: var(--ink);
         }
         .mem-att__table tbody tr:last-child td {
           border-bottom: none;
         }
         .mem-att__table tbody tr:hover {
-          background: #fafaf5;
+          background: #FAFAFA;
         }
         .mem-att__td-code {
           font-family: var(--font-mono);
