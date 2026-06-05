@@ -26,14 +26,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 16px 20px;
-  border-bottom: 1px solid #e8ece8;
+  border-bottom: 1px solid #E6E6E6;
 }
 
 .client-modal__title {
   margin: 0;
   font-size: 18px;
   font-weight: 700;
-  color: #2c3e2c;
+  color: #1A1A1A;
 }
 
 .client-modal__close {
@@ -41,7 +41,7 @@
   border: none;
   font-size: 24px;
   cursor: pointer;
-  color: #8a9a8a;
+  color: #6B6B6B;
   padding: 0;
   width: 30px;
   height: 30px;
@@ -52,7 +52,7 @@
 }
 
 .client-modal__close:hover {
-  background: #f0f3f0;
+  background: #F0F0F0;
 }
 
 .client-modal__body {
@@ -74,10 +74,10 @@
   margin: 20px 0 12px 0;
   font-size: 13px;
   font-weight: 600;
-  color: #6b7c6b;
+  color: #6B6B6B;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  border-bottom: 1px solid #e8ece8;
+  border-bottom: 1px solid #E6E6E6;
   padding-bottom: 6px;
 }
 
@@ -103,7 +103,7 @@
   display: block;
   font-size: 12px;
   font-weight: 600;
-  color: #4a5a4a;
+  color: #4A4A4A;
   margin-bottom: 4px;
 }
 
@@ -116,7 +116,7 @@
 .client-modal__textarea {
   width: 100%;
   padding: 8px 10px;
-  border: 1px solid #d9ddd9;
+  border: 1px solid #D6D6D6;
   border-radius: 4px;
   font-size: 14px;
   font-family: inherit;
@@ -127,8 +127,8 @@
 .client-modal__input:focus,
 .client-modal__textarea:focus {
   outline: none;
-  border-color: #7a9e7e;
-  box-shadow: 0 0 0 2px rgba(122, 158, 126, 0.15);
+  border-color: #1A1A1A;
+  box-shadow: 0 0 0 2px rgba(26, 26, 26, 0.10);
 }
 
 .client-modal__textarea {
@@ -142,7 +142,7 @@
   gap: 8px;
   cursor: pointer;
   font-size: 14px;
-  color: #2c3e2c;
+  color: #1A1A1A;
 }
 
 .client-modal__footer {
@@ -150,8 +150,8 @@
   justify-content: flex-end;
   gap: 8px;
   padding: 14px 20px;
-  border-top: 1px solid #e8ece8;
-  background: #f9fbf9;
+  border-top: 1px solid #E6E6E6;
+  background: #FAFAFA;
 }
 
 .client-modal__btn {
@@ -170,21 +170,21 @@
 
 .client-modal__btn--secondary {
   background: #fff;
-  color: #4a5a4a;
-  border: 1px solid #d9ddd9;
+  color: #4A4A4A;
+  border: 1px solid #D6D6D6;
 }
 
 .client-modal__btn--secondary:hover:not(:disabled) {
-  background: #f5f7f5;
+  background: #F5F5F5;
 }
 
 .client-modal__btn--primary {
-  background: #7a9e7e;
+  background: #1A1A1A;
   color: #fff;
 }
 
 .client-modal__btn--primary:hover:not(:disabled) {
-  background: #6b8c6f;
+  background: #000000;
 }
 
 @media (max-width: 600px) {
