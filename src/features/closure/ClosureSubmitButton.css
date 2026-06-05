@@ -1,12 +1,12 @@
 /* ============================================
- * 勤怠カレンダー右上の提出ボタン / バッジ
+ * 勤怠カレンダー右上の提出ボタン / バッジ（モノクロ）
  * ============================================ */
 
 .closure-btn {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  background: #4a6b3a;
+  background: #1a1a1a;
   color: #fff;
   border: none;
   padding: 6px 14px;
@@ -19,11 +19,11 @@
 }
 
 .closure-btn:hover {
-  background: #3d5a2e;
+  background: #000000;
 }
 
 .closure-btn--submit {
-  /* グリーンのまま */
+  /* モノクロ（黒）のまま */
 }
 
 .closure-btn__loading {
@@ -59,7 +59,7 @@
   margin: 0 0 8px 0;
   font-size: 16px;
   font-weight: 700;
-  color: #1a1a2e;
+  color: #1a1a1a;
 }
 
 .closure-modal__lead {
@@ -89,9 +89,9 @@
 }
 
 .closure-modal__textarea:focus {
-  outline: 2px solid #4a6b3a;
+  outline: 2px solid #1a1a1a;
   outline-offset: 1px;
-  border-color: #4a6b3a;
+  border-color: #1a1a1a;
 }
 
 .closure-modal__error {
@@ -158,10 +158,10 @@
 }
 
 .closure-modal__btn--submit {
-  background: #4a6b3a;
+  background: #1a1a1a;
   color: #fff;
 }
 
 .closure-modal__btn--submit:hover:not(:disabled) {
-  background: #3d5a2e;
+  background: #000000;
 }
