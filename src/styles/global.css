@@ -179,3 +179,24 @@ a:focus-visible,
   outline: 2px solid var(--ink) !important;
   outline-offset: 2px !important;
 }
+/* =========================================================
+   ステータス色をモノクロ寄りに統一（暖色を抑える）
+   ※ エラー表示の赤(--danger)だけは視認性のため残す
+   ========================================================= */
+:root {
+  --warn: #6B6B6B;     /* 旧:金色 → グレー */
+  --warn-bg: #F0F0F0;  /* 旧:クリーム → 薄グレー */
+  --info: #444444;     /* グレー */
+  --info-bg: #EFEFEF;  /* 薄グレー */
+  --ok: #1A1A1A;       /* 黒 */
+  --ok-bg: #F0F0F0;    /* 薄グレー */
+}
+
+/* バッジの枠線・背景もグレーに上書き */
+.badge--ok,
+.badge--warn,
+.badge--info {
+  border-color: #D6D6D6 !important;
+}
+.badge--warn { background: #F0F0F0 !important; }
+.badge--info { background: #EFEFEF !important; }
