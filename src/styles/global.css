@@ -1,43 +1,43 @@
-/* As Partner - OfficeHub : Design Tokens
+/* Hatch Promotion - OfficeHub : Design Tokens
    ----------------------------------------------------
-   トーン: 誠実・温かい・自然体・余白のある・落ち着いた
-   アイボリー × グリーンのコーポレートトーン。
+   トーン: 誠実・落ち着いた・余白のある・モノクロ
+   白 × 黒（グレー）のコーポレートトーン。
    装飾的なディスプレイフォントは使わず、Noto Sans JP で統一。
    ---------------------------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap');
 
 :root {
-  /* ----- Brand color ----- */
-  --primary: #6C8F3D;       /* Primary Green */
-  --primary-dark: #55752F;  /* Dark Green */
-  --primary-pale: #EDF3E3;  /* Pale Green */
-  --primary-hover: #E4ECD7; /* Hover Green */
+  /* ----- Brand color (モノクロ) ----- */
+  --primary: #1A1A1A;       /* ほぼ黒 (ボタン等) */
+  --primary-dark: #000000;  /* 黒 (ホバー/強調) */
+  --primary-pale: #F0F0F0;  /* 薄いグレー */
+  --primary-hover: #E8E8E8; /* ホバー時の薄グレー */
 
   /* ----- Surface / background ----- */
-  --bg: #F6F3E8;            /* Background (ivory) */
-  --surface: #FBFAF5;       /* Card background */
-  --surface-2: #F1EDDD;     /* やや沈めた面 */
-  --sidebar-bg: #FBFAF5;    /* サイドバーはアイボリー基調 */
+  --bg: #FFFFFF;            /* 背景: 白 */
+  --surface: #FFFFFF;       /* カード: 白 */
+  --surface-2: #F4F4F4;     /* やや沈めた面 */
+  --sidebar-bg: #FAFAFA;    /* サイドバー: ほぼ白 */
 
   /* ----- Line ----- */
-  --line: #E6E1D2;
-  --line-strong: #DDD8C8;
+  --line: #E6E6E6;
+  --line-strong: #D6D6D6;
 
   /* ----- Text ----- */
-  --ink: #2D2D2D;
-  --ink-mute: #6F6F6F;
-  --ink-soft: #9A9686;
+  --ink: #1A1A1A;
+  --ink-mute: #6B6B6B;
+  --ink-soft: #9A9A9A;
 
-  /* ----- Status (彩度抑えめ) ----- */
-  --ok: #6C8F3D;
+  /* ----- Status (警告・エラーは視認性のため色を残す) ----- */
+  --ok: #1A1A1A;
   --warn: #B6852A;
   --danger: #B5523C;
-  --info: #4F7A8C;
+  --info: #444444;
 
-  --ok-bg: #EDF3E3;
+  --ok-bg: #F0F0F0;
   --warn-bg: #F4ECD6;
   --danger-bg: #F4E1DA;
-  --info-bg: #E5ECF0;
+  --info-bg: #EFEFEF;
 
   /* ----- Typography ----- */
   --font-base: 'Noto Sans JP', system-ui, -apple-system, 'Segoe UI', 'Hiragino Sans',
@@ -47,8 +47,8 @@
   /* ----- Radius / shadow (影は最小限) ----- */
   --radius: 8px;
   --radius-lg: 12px;
-  --shadow-xs: 0 1px 1px rgba(45, 45, 45, 0.03);
-  --shadow-sm: 0 1px 2px rgba(45, 45, 45, 0.04);
+  --shadow-xs: 0 1px 1px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 * {
@@ -142,8 +142,8 @@ h1, h2, h3, h4 {
   background: var(--surface-2);
   color: var(--ink-mute);
 }
-.badge--ok     { color: var(--ok);     border-color: #CFDDB6; background: var(--ok-bg); }
+.badge--ok     { color: var(--ok);     border-color: #D6D6D6; background: var(--ok-bg); }
 .badge--warn   { color: var(--warn);   border-color: #E4D4A8; background: var(--warn-bg); }
 .badge--danger { color: var(--danger); border-color: #E3C2B7; background: var(--danger-bg); }
-.badge--info   { color: var(--info);   border-color: #C5D3DA; background: var(--info-bg); }
+.badge--info   { color: var(--info);   border-color: #D6D6D6; background: var(--info-bg); }
 .badge--mute   { color: var(--ink-mute); }
