@@ -441,7 +441,7 @@ export function ClientDetailPage() {
               onClick={openCreateDeal}
               style={{
                 padding: '6px 14px',
-                background: '#4a8a4a',
+                background: '#1A1A1A',
                 color: '#fff',
                 border: 'none',
                 borderRadius: 4,
