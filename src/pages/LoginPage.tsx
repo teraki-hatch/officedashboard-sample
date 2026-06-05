@@ -71,50 +71,103 @@ export function LoginPage() {
               </form>
             </>
           ) : (
-            <form onSubmit={onSubmit}>
-              <label className="login__label">
-                メールアドレス
-                <input
-                  className="login__input"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  autoFocus
-                />
-              </label>
-              <label className="login__label">
-                パスワード
-                <div className="login__password-wrap">
-                  <input
-                    className="login__input login__input--password"
-                    type={showPassword ? 'text' : 'password'}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  />
-                  <button
-                    type="button"
-                    className="login__password-toggle"
-                    onClick={() => setShowPassword((v) => !v)}
-                    aria-label={showPassword ? 'パスワードを隠す' : 'パスワードを表示'}
-                    title={showPassword ? 'パスワードを隠す' : 'パスワードを表示'}
-                    tabIndex={-1}
-                  >
-                    {showPassword ? <EyeOffIcon /> : <EyeIcon />}
-                  </button>
+            <>
+              {/* ===== デモ用ログイン情報（お試し環境向け案内） ===== */}
+              <div
+                style={{
+                  margin: '0 0 16px',
+                  padding: '12px 14px',
+                  background: '#F5F5F5',
+                  border: '1px solid #E6E6E6',
+                  borderRadius: 8,
+                  fontSize: 13,
+                  lineHeight: 1.6,
+                }}
+              >
+                <div
+                  style={{
+                    fontWeight: 700,
+                    marginBottom: 6,
+                    color: '#1A1A1A',
+                  }}
+                >
+                  🔑 デモ用ログイン
                 </div>
-              </label>
-              {error && (
-                <>
-                  <div className="login__error">{error}</div>
-                  {import.meta.env.DEV && <ConnectionDiagnosis />}
-                </>
-              )}
-              <button className="login__submit" type="submit" disabled={submitting}>
-                {submitting ? '認証中…' : 'ログイン'}
-              </button>
-            </form>
+                <div style={{ display: 'flex', gap: 8, marginBottom: 2 }}>
+                  <span style={{ width: 48, color: '#6B6B6B', flexShrink: 0 }}>
+                    ID
+                  </span>
+                  <code
+                    style={{
+                      fontFamily: 'monospace',
+                      color: '#1A1A1A',
+                      userSelect: 'all',
+                    }}
+                  >
+                    admin@example.com
+                  </code>
+                </div>
+                <div style={{ display: 'flex', gap: 8 }}>
+                  <span style={{ width: 48, color: '#6B6B6B', flexShrink: 0 }}>
+                    PASS
+                  </span>
+                  <code
+                    style={{
+                      fontFamily: 'monospace',
+                      color: '#1A1A1A',
+                      userSelect: 'all',
+                    }}
+                  >
+                    demo1234
+                  </code>
+                </div>
+              </div>
+
+              <form onSubmit={onSubmit}>
+                <label className="login__label">
+                  メールアドレス
+                  <input
+                    className="login__input"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    autoFocus
+                  />
+                </label>
+                <label className="login__label">
+                  パスワード
+                  <div className="login__password-wrap">
+                    <input
+                      className="login__input login__input--password"
+                      type={showPassword ? 'text' : 'password'}
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                    />
+                    <button
+                      type="button"
+                      className="login__password-toggle"
+                      onClick={() => setShowPassword((v) => !v)}
+                      aria-label={showPassword ? 'パスワードを隠す' : 'パスワードを表示'}
+                      title={showPassword ? 'パスワードを隠す' : 'パスワードを表示'}
+                      tabIndex={-1}
+                    >
+                      {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+                    </button>
+                  </div>
+                </label>
+                {error && (
+                  <>
+                    <div className="login__error">{error}</div>
+                    {import.meta.env.DEV && <ConnectionDiagnosis />}
+                  </>
+                )}
+                <button className="login__submit" type="submit" disabled={submitting}>
+                  {submitting ? '認証中…' : 'ログイン'}
+                </button>
+              </form>
+            </>
           )}
           <div className="login__footer">
             <span className="badge badge--mute">v0.1.0</span>
