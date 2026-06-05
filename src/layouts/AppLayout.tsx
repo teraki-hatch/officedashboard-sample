@@ -58,7 +58,7 @@ export function AppLayout() {
   const [expandedKey, setExpandedKey] = useState<string | null>(null);
 
   // ===== Google OAuth コールバック検知 (?gcal=connected / ?gcal=error) =====
-  const [gcalToast, setGcalToast] = useState<
+  const [gcalToast, setGcalToast] = useState
     { kind: 'success' | 'error'; message: string } | null
   >(null);
 
@@ -286,7 +286,7 @@ function renderIcon(group: NavGroup, collapsed: boolean) {
   return (
     <Icon
       size={size}
-      color={group.iconColor ?? '#5a6a5a'}
+      color="currentColor"
       strokeWidth={2}
       className="sidebar__icon"
       aria-hidden
@@ -347,7 +347,7 @@ function renderSingleLink(group: NavGroup, collapsed: boolean) {
   const cls = 'sidebar__link';
   if (group.href) {
     return (
-      <a
+      
         key={group.key}
         href={group.href}
         target="_blank"
@@ -388,7 +388,7 @@ function renderItem(item: NavItem, isChild: boolean, collapsed?: boolean) {
 
   if (item.href) {
     return (
-      <a
+      
         key={item.key}
         href={item.href}
         target="_blank"
