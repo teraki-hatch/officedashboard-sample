@@ -1,5 +1,5 @@
 /* =================================================================
-   勤怠カレンダー (Phase 3-5a)
+   勤怠カレンダー (Phase 3-5a) — モノクロ版
    ================================================================= */
 
 .att-cal {
@@ -94,7 +94,7 @@
   color: var(--primary-dark);
 }
 .att-cal__summary-value--leave {
-  color: #7E5BA6;
+  color: #444444;
 }
 .att-cal__summary-value--ok {
   color: var(--ok);
@@ -231,24 +231,24 @@
   border-color: var(--primary);
 }
 
-/* セル種別ごとの色 */
+/* セル種別ごとの色（モノクロのグレー濃淡で区別） */
 .cell--completed {
-  background: #F0F5E2;
+  background: #EDEDED;
 }
 .cell--working {
-  background: #FDF8E8;
+  background: #F7F7F7;
 }
 .cell--leave-full {
-  background: #EFE8F5;
+  background: #E4E4E4;
 }
 .cell--leave-half {
-  background: #F5EFE8;
+  background: #F0F0F0;
 }
 .cell--holiday {
-  background: #FBEEEE;
+  background: #F4F4F4;
 }
 .cell--weekend {
-  background: #F4F6FA;
+  background: #F7F7F7;
 }
 
 .att-cal__cell-day {
@@ -268,8 +268,8 @@
 .att-cal__cell-leave {
   font-size: 10.5px;
   font-weight: 600;
-  color: #7E5BA6;
-  background: rgba(126, 91, 166, 0.1);
+  color: #6B6B6B;
+  background: rgba(0, 0, 0, 0.06);
   padding: 1px 6px;
   border-radius: 999px;
   align-self: flex-start;
@@ -434,7 +434,7 @@
 }
 
 /* =================================================================
-   経費申請バッジ (セル右上の「申請済」表示)
+   経費申請バッジ (セル右上の「申請済」表示) — モノクロ
    ================================================================= */
 
 .att-cal__cell-expense {
@@ -445,7 +445,7 @@
   align-items: center;
   justify-content: center;
   padding: 2px 7px;
-  background: #c8a04a;
+  background: #1A1A1A;
   color: #fff;
   border-radius: 10px;
   font-size: 0.68rem;
@@ -453,14 +453,14 @@
   line-height: 1.2;
   letter-spacing: 0.02em;
   cursor: pointer;
-  border: 1px solid #b08b3a;
+  border: 1px solid #000000;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   transition: transform 0.15s, background 0.15s;
   z-index: 2;
   white-space: nowrap;
 }
 .att-cal__cell-expense:hover {
-  background: #a8843a;
+  background: #000000;
   transform: scale(1.05);
 }
 
@@ -469,19 +469,19 @@
   align-items: center;
   justify-content: center;
   padding: 2px 7px;
-  background: #c8a04a;
+  background: #1A1A1A;
   color: #fff;
   border-radius: 10px;
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  border: 1px solid #b08b3a;
+  border: 1px solid #000000;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   line-height: 1.2;
 }
 
 /* =================================================================
-   表示モードトグル (2026-06-01 追加: カレンダー / リスト 切替)
+   表示モードトグル (カレンダー / リスト 切替)
    ================================================================= */
 
 .att-cal__view-toggle {
