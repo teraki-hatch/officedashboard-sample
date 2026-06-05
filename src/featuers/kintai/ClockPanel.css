@@ -1,0 +1,430 @@
+/* ====================================================
+   打刻パネル (Phase 3-2: UI のみ)
+   ==================================================== */
+
+.clock-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+/* ----- お知らせ ----- */
+.clock-notice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  background: var(--surface-2);
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--ink);
+  line-height: 1.7;
+}
+.clock-notice__text {
+  flex: 1;
+}
+.clock-notice__close {
+  appearance: none;
+  background: transparent;
+  border: none;
+  color: var(--ink-soft);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0 4px;
+}
+.clock-notice__close:hover {
+  color: var(--ink);
+}
+
+/* 成功時 (打刻完了) */
+.clock-notice--ok {
+  background: var(--ok-bg);
+  border-color: #CFDDB6;
+}
+
+/* ====================================================
+   上段: 状態 + 時刻
+   ==================================================== */
+.clock-status {
+  background: linear-gradient(180deg, var(--primary-pale) 0%, var(--surface) 80%);
+  border: 1px solid #DCE6CA;
+  border-radius: var(--radius-lg);
+  padding: 24px 26px;
+}
+.clock-status__date {
+  font-size: 13px;
+  color: var(--ink-mute);
+  letter-spacing: 0.02em;
+}
+.clock-status__time {
+  font-size: 38px;
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+  margin: 4px 0 14px;
+}
+.clock-status__state {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.clock-status__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+.clock-status__hint {
+  font-size: 12.5px;
+  color: var(--ink-mute);
+}
+
+/* ====================================================
+   セクション共通
+   ==================================================== */
+.clock-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.clock-section__title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+.clock-section__hint {
+  margin: -4px 0 0;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+/* ====================================================
+   勤務区分 (ラジオ)
+   ==================================================== */
+.clock-worktype {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+@media (max-width: 600px) {
+  .clock-worktype {
+    grid-template-columns: 1fr;
+  }
+}
+
+.clock-worktype__opt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 120ms ease;
+  font-size: 13.5px;
+  color: var(--ink-mute);
+}
+.clock-worktype__opt:hover {
+  border-color: var(--line-strong);
+  color: var(--ink);
+}
+.clock-worktype__opt--active {
+  background: var(--primary-pale);
+  border-color: var(--primary);
+  color: var(--primary-dark);
+  font-weight: 500;
+}
+.clock-worktype__radio {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.clock-worktype__icon {
+  font-size: 16px;
+}
+.clock-worktype__label {
+  flex: 1;
+}
+
+/* ====================================================
+   打刻ボタン
+   ==================================================== */
+.clock-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+@media (max-width: 720px) {
+  .clock-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.clock-btn {
+  appearance: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 22px 14px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 120ms ease;
+  min-height: 88px;
+}
+.clock-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.clock-btn__icon {
+  font-size: 18px;
+}
+.clock-btn__label {
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.clock-btn--primary {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+.clock-btn--primary:not(:disabled):hover {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.clock-btn--secondary {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+.clock-btn--secondary:not(:disabled):hover {
+  background: var(--primary-pale);
+  border-color: var(--primary);
+  color: var(--primary-dark);
+}
+
+.clock-btn--end {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+.clock-btn--end:not(:disabled):hover {
+  background: #F4E1DA;
+  border-color: #E3C2B7;
+  color: var(--danger);
+}
+
+/* ====================================================
+   本日のサマリー
+   ==================================================== */
+.clock-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 0;
+}
+@media (max-width: 600px) {
+  .clock-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.clock-summary__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.clock-summary__item dt {
+  font-size: 12px;
+  color: var(--ink-mute);
+  margin: 0;
+}
+.clock-summary__item dd {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ====================================================
+   休憩履歴
+   ==================================================== */
+.clock-empty {
+  margin: 0;
+  padding: 18px 16px;
+  background: var(--surface);
+  border: 1px dashed var(--line-strong);
+  border-radius: 8px;
+  color: var(--ink-soft);
+  font-size: 13px;
+  text-align: center;
+}
+
+.clock-breaks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.clock-breaks__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 4px;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+}
+.clock-breaks__item:last-child {
+  border-bottom: none;
+}
+.clock-breaks__time {
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.clock-breaks__memo {
+  color: var(--ink-mute);
+  font-size: 12.5px;
+}
+
+/* 進行中の休憩 */
+.clock-breaks__item--ongoing {
+  background: var(--warn-bg);
+  border-radius: 6px;
+  padding: 10px 10px;
+  border-bottom: none;
+  margin-bottom: 4px;
+}
+
+/* ====================================================
+   エラー表示
+   ==================================================== */
+.clock-error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  background: var(--danger-bg);
+  border: 1px solid #E3C2B7;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--danger);
+  line-height: 1.7;
+}
+
+/* ====================================================
+   フォールバック表示 (.env未設定・未ログイン等)
+   ==================================================== */
+.clock-empty-state {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 48px 28px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.clock-empty-state__icon {
+  font-size: 32px;
+  opacity: 0.55;
+  margin-bottom: 8px;
+}
+.clock-empty-state__title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+}
+.clock-empty-state__msg {
+  font-size: 13.5px;
+  color: var(--ink-mute);
+  line-height: 1.9;
+  margin: 0;
+  max-width: 460px;
+}
+.clock-empty-state__msg code {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  background: var(--surface-2);
+  padding: 1px 6px;
+  border-radius: 3px;
+  color: var(--ink);
+}
+.clock-empty-state__sub {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  margin: 6px 0 0;
+  line-height: 1.8;
+}
+.clock-empty-state__sub code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink);
+}
+.clock-empty-state__actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+}
+.clock-empty-state__btn {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  background: var(--primary);
+  color: white;
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.clock-empty-state__btn:hover {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+/* ====================================================
+   状態行: 勤務区分の小さい表示
+   ==================================================== */
+.clock-status__worktype {
+  font-size: 12px;
+  color: var(--ink-mute);
+  padding: 2px 8px;
+  background: var(--surface-2);
+  border-radius: 999px;
+  border: 1px solid var(--line);
+}
+
+/* ====================================================
+   フッター
+   ==================================================== */
+.clock-footer {
+  margin: 4px 0 0;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  text-align: right;
+  font-style: italic;
+}

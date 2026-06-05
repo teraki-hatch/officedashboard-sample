@@ -1,0 +1,400 @@
+/* =================================================================
+   申請タブ (Phase 3-6)
+   ================================================================= */
+
+.req-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.req-panel__empty {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 48px 28px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.req-panel__empty-icon {
+  font-size: 32px;
+  opacity: 0.55;
+}
+.req-panel__empty h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+.req-panel__empty p {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--ink-mute);
+}
+
+/* ===== 有休残日数カード ===== */
+.req-panel__balance {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.req-panel__balance-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.req-panel__balance-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.req-panel__balance-loading {
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+.req-panel__balance-error {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--danger);
+}
+.req-panel__balance-empty {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+.req-panel__balance-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+}
+@media (max-width: 900px) {
+  .req-panel__balance-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 540px) {
+  .req-panel__balance-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.req-panel__balance-item {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  text-align: center;
+}
+.req-panel__balance-item--accent {
+  background: #FDF8E8;
+  border-color: #E4D4A8;
+}
+.req-panel__balance-item--remain {
+  background: var(--ok-bg);
+  border-color: #CFDDB6;
+}
+.req-panel__balance-label {
+  font-size: 10.5px;
+  color: var(--ink-soft);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.req-panel__balance-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.req-panel__balance-item--accent .req-panel__balance-value {
+  color: #8B5C13;
+}
+.req-panel__balance-item--remain .req-panel__balance-value {
+  color: var(--primary-dark);
+}
+.req-panel__balance-unit {
+  font-size: 10px;
+  color: var(--ink-soft);
+}
+
+/* ===== アクション ===== */
+.req-panel__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.req-panel__new-btn {
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 9px 18px;
+  background: var(--primary);
+  color: white;
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.req-panel__new-btn:hover {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+.req-panel__actions-hint {
+  margin: 0;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+}
+
+/* ===== 一覧 ===== */
+.req-panel__list {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 18px;
+}
+.req-panel__list-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.req-panel__list-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.req-panel__list-loading {
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+.req-panel__error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  background: var(--danger-bg);
+  border: 1px solid #E3C2B7;
+  border-radius: 7px;
+  font-size: 12.5px;
+  color: var(--danger);
+  margin-bottom: 8px;
+}
+.req-panel__list-empty {
+  padding: 24px;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+.req-panel__list-ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* ===== 申請行 ===== */
+.req-panel__row {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.req-panel__row-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.req-panel__row-kind {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+.req-panel__row-kind--leave {
+  background: rgba(126, 91, 166, 0.12);
+  color: #6B4694;
+}
+.req-panel__row-kind--correction {
+  background: rgba(108, 143, 61, 0.13);
+  color: var(--primary-dark);
+}
+.req-panel__row-date {
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin-left: auto;
+}
+.req-panel__row-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.req-panel__row-main {
+  font-size: 13px;
+  color: var(--ink);
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.req-panel__row-sep {
+  color: var(--ink-soft);
+}
+.req-panel__row-reason {
+  font-size: 12px;
+  color: var(--ink-mute);
+  background: var(--surface);
+  padding: 6px 8px;
+  border-radius: 5px;
+  line-height: 1.6;
+  border-left: 3px solid var(--line-strong);
+  margin-top: 2px;
+}
+
+/* ===== 取消ボタン ===== */
+.req-panel__row-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+.req-panel__row-cancel-btn {
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  background: var(--surface);
+  color: var(--ink-mute);
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+.req-panel__row-cancel-btn:hover:not(:disabled) {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border-color: #E3C2B7;
+}
+.req-panel__row-cancel-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ===== 成功バナー ===== */
+.req-panel__success {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--ok-bg);
+  border: 1px solid #CFDDB6;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+.req-panel__success-close {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--primary-dark);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 2px 6px;
+}
+
+/* ===== エラーバナー (取消用) ===== */
+.req-panel__error-close {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--danger);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 2px 6px;
+}
+/* ===== 付与履歴テーブル ===== */
+.req-panel__grants {
+  margin: 16px 0;
+  padding: 16px;
+  background: #faf8f3;
+  border: 1px solid #e8e2d5;
+  border-radius: 8px;
+}
+.req-panel__grants-title {
+  margin: 0 0 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4a4a4a;
+}
+.req-panel__grants-table-wrap {
+  overflow-x: auto;
+}
+.req-panel__grants-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.req-panel__grants-table thead th {
+  background: #f0ebe0;
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #6b6b6b;
+  border-bottom: 1px solid #e0d8c5;
+}
+.req-panel__grants-table tbody td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #ece6d8;
+}
+.req-panel__grants-row--expired td {
+  color: #999;
+  text-decoration: line-through;
+}
+.req-panel__grant-expired-days {
+  color: #c44;
+  font-weight: 600;
+}
+.req-panel__grant-expiry-hint {
+  font-size: 11px;
+  color: #888;
+  margin-top: 2px;
+}
+.req-panel__grant-expiry--warn {
+  color: #c4880a;
+  font-weight: 600;
+}
+.req-panel__grant-expiry--danger {
+  color: #c44;
+  font-weight: 700;
+}
+.req-panel__grant-expiry--expired {
+  color: #999;
+}
+.req-panel__grant-expiry--warn .req-panel__grant-expiry-hint {
+  color: #c4880a;
+}
+.req-panel__grant-expiry--danger .req-panel__grant-expiry-hint {
+  color: #c44;
+}
+
+/* 失効済セル */
+.req-panel__balance-item--expired {
+  opacity: 0.7;
+}
+.req-panel__balance-item--expired .req-panel__balance-value {
+  color: #999;
+}

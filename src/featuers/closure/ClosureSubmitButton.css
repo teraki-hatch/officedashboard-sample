@@ -1,0 +1,167 @@
+/* ============================================
+ * 勤怠カレンダー右上の提出ボタン / バッジ
+ * ============================================ */
+
+.closure-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #4a6b3a;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.closure-btn:hover {
+  background: #3d5a2e;
+}
+
+.closure-btn--submit {
+  /* グリーンのまま */
+}
+
+.closure-btn__loading {
+  font-size: 11px;
+  color: #888;
+}
+
+/* ============================================
+ * 提出モーダル
+ * ============================================ */
+
+.closure-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.closure-modal {
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+}
+
+.closure-modal__title {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.closure-modal__lead {
+  margin: 0 0 18px 0;
+  font-size: 12px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.closure-modal__label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #555;
+  margin-bottom: 14px;
+}
+
+.closure-modal__textarea {
+  width: 100%;
+  margin-top: 6px;
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.closure-modal__textarea:focus {
+  outline: 2px solid #4a6b3a;
+  outline-offset: 1px;
+  border-color: #4a6b3a;
+}
+
+.closure-modal__error {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+}
+
+.closure-modal__error span:first-child {
+  color: #ef4444;
+  font-size: 13px;
+}
+
+.closure-modal__error p {
+  flex: 1;
+  font-size: 11px;
+  color: #b91c1c;
+  margin: 0;
+  word-break: break-all;
+}
+
+.closure-modal__error-close {
+  background: transparent;
+  border: none;
+  color: #fca5a5;
+  font-size: 11px;
+  cursor: pointer;
+  padding: 2px 4px;
+}
+
+.closure-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.closure-modal__btn {
+  border: none;
+  border-radius: 8px;
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.15s ease, opacity 0.15s ease;
+}
+
+.closure-modal__btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.closure-modal__btn--cancel {
+  background: #f3f4f6;
+  color: #555;
+}
+
+.closure-modal__btn--cancel:hover:not(:disabled) {
+  background: #e5e7eb;
+}
+
+.closure-modal__btn--submit {
+  background: #4a6b3a;
+  color: #fff;
+}
+
+.closure-modal__btn--submit:hover:not(:disabled) {
+  background: #3d5a2e;
+}

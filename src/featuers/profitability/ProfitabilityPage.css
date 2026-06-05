@@ -1,0 +1,379 @@
+/* ============================================================
+   採算ページ - ProfitabilityPage.css
+   2026-05-21 整理版 (アラート機能対応, 未使用クラス削除)
+   ============================================================ */
+
+/* ============================================================
+   ページ全体
+   ============================================================ */
+.prof-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+}
+
+.prof-page__header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.prof-page__title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2c3e2c;
+  margin: 0;
+}
+
+.prof-page__subtitle {
+  font-size: 13px;
+  color: #718096;
+  margin: 0;
+}
+
+/* ============================================================
+   タブ (月別 / 期サマリー)
+   ============================================================ */
+.prof-page__tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid #e2ebe2;
+}
+
+.prof-page__tab {
+  background: transparent;
+  border: none;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #718096;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  font-family: inherit;
+}
+
+.prof-page__tab:hover {
+  color: #4a5a4a;
+}
+
+.prof-page__tab--active {
+  color: #2c3e2c;
+  border-bottom-color: #7a9e7e;
+}
+
+/* ============================================================
+   タブ内コンテンツ (月ナビ + テーブル)
+   ============================================================ */
+.prof-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.prof-tab__controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.prof-tab__nav-btn {
+  background: #fff;
+  border: 1px solid #d9ddd9;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  font-size: 18px;
+  color: #4a5a4a;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: inherit;
+}
+
+.prof-tab__nav-btn:hover {
+  background: #f7fafc;
+}
+
+.prof-tab__period-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: #2c3e2c;
+  min-width: 200px;
+  text-align: center;
+}
+
+.prof-tab__today-btn {
+  background: #f7fafc;
+  border: 1px solid #d9ddd9;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #4a5a4a;
+  cursor: pointer;
+  margin-left: 4px;
+  font-family: inherit;
+}
+
+.prof-tab__today-btn:hover {
+  background: #edf2f7;
+}
+
+/* ============================================================
+   テーブル本体
+   ============================================================ */
+.prof-table__wrap {
+  position: relative;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #d9ddd9;
+  overflow-x: auto;
+}
+
+.prof-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+/* ヘッダー: 中央寄せ + 縦線あり */
+.prof-table th {
+  background: #f0f4ef;
+  padding: 10px 12px;
+  text-align: center;
+  font-weight: 700;
+  color: #2c3e2c;
+  border-bottom: 2px solid #d9ddd9;
+  border-right: 1px solid #d9ddd9;
+  white-space: nowrap;
+}
+
+.prof-table th:last-child {
+  border-right: none;
+}
+
+/* セル: 縦線あり */
+.prof-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #edf2f7;
+  border-right: 1px solid #edf2f7;
+  color: #2c3e2c;
+}
+
+.prof-table td:last-child {
+  border-right: none;
+}
+
+/* クライアント列: 左寄せ + 太字 */
+.prof-table__col-name {
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* 数値列: 右寄せ + 等幅数字 */
+.prof-table__col-num {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================================
+   行のステート
+   ============================================================ */
+/* ゼブラ柄 (偶数行に背景色) */
+.prof-table__row:nth-child(even) {
+  background: #fafbfa;
+}
+
+/* ホバー */
+.prof-table__row:hover {
+  background: #f0f5f0;
+}
+
+/* 売上未設定の行 (名前を薄く) */
+.prof-table__row--unpriced .prof-table__col-name {
+  color: #a0aec0;
+}
+
+/* 工数も売上もない行 (全体を薄く) */
+.prof-table__row--idle {
+  opacity: 0.55;
+}
+
+.prof-table__unpriced {
+  color: #a0aec0;
+  font-size: 12px;
+  font-style: italic;
+}
+
+/* 赤字数値 */
+.prof-table__neg {
+  color: #c53030;
+}
+
+/* ============================================================
+   アラート行 (粗利率による警告)
+   ============================================================ */
+/* 危険行 (粗利率30%未満) は薄い赤背景 */
+.prof-table__row--danger {
+  background-color: rgba(220, 80, 60, 0.06) !important;
+}
+.prof-table__row--danger:hover {
+  background-color: rgba(220, 80, 60, 0.12) !important;
+}
+
+/* 重度危険行 (粗利率0%未満 = 赤字) は濃い赤背景 */
+.prof-table__row--critical {
+  background-color: rgba(200, 40, 30, 0.13) !important;
+}
+.prof-table__row--critical:hover {
+  background-color: rgba(200, 40, 30, 0.2) !important;
+}
+
+/* ============================================================
+   合計行
+   ============================================================ */
+.prof-table__total {
+  background: #f0f4ef;
+  font-weight: 700;
+}
+
+.prof-table__total td {
+  border-bottom: none;
+  border-top: 2px solid #d9ddd9;
+  border-right: 1px solid #d9ddd9;
+  padding: 12px;
+}
+
+.prof-table__total td:last-child {
+  border-right: none;
+}
+
+.prof-table__total td:first-child {
+  text-align: center;
+}
+
+/* 合計行のアラート背景上書き */
+.prof-table__total.prof-table__row--danger {
+  background-color: rgba(220, 80, 60, 0.1) !important;
+}
+.prof-table__total.prof-table__row--critical {
+  background-color: rgba(200, 40, 30, 0.18) !important;
+}
+
+/* ============================================================
+   状態表示 (ローディング / 空 / エラー)
+   ============================================================ */
+.prof-table__loader,
+.prof-table__empty,
+.prof-table__error {
+  padding: 40px;
+  text-align: center;
+  color: #718096;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e2ebe2;
+  font-size: 14px;
+}
+
+.prof-table__error {
+  color: #c53030;
+}
+
+/* ============================================================
+   クライアント名リンク
+   ============================================================ */
+.prof-table__client-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+  transition: border-color 0.15s;
+}
+
+.prof-table__client-link:hover {
+  color: #2c3e2c;
+  border-bottom-color: #7a9e7e;
+}
+
+/* ============================================================
+   粗利率の基準 凡例 (テーブル右上)
+   ============================================================ */
+.prof-table__alert-legend {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 11px;
+  color: #6b7569;
+  flex-wrap: wrap;
+}
+
+.prof-table__alert-legend-title {
+  font-weight: 600;
+  color: #4a5749;
+  align-self: center;
+  white-space: nowrap;
+}
+
+.prof-table__alert-legend-table {
+  border-collapse: collapse;
+  border: 1px solid #e4e8e0;
+  background: #fafbf9;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.prof-table__alert-legend-table th,
+.prof-table__alert-legend-table td {
+  padding: 3px 8px;
+  border: 1px solid #e4e8e0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.prof-table__alert-legend-table th {
+  background: #f0f3ee;
+  color: #4a5749;
+  font-weight: 600;
+}
+
+.prof-table__alert-legend-table td:first-child {
+  text-align: left;
+  color: #4a5749;
+}
+
+/* ============================================================
+   粗利率セル (数値 + アイコン)
+   アイコンは数値の右側に配置
+   ============================================================ */
+.prof-table__rate-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.prof-table__alert-icon {
+  font-size: 11px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   レスポンシブ
+   ============================================================ */
+@media (max-width: 900px) {
+  .prof-table__alert-legend {
+    font-size: 10px;
+  }
+  .prof-table__alert-legend-table th,
+  .prof-table__alert-legend-table td {
+    padding: 2px 5px;
+    font-size: 10px;
+  }
+}

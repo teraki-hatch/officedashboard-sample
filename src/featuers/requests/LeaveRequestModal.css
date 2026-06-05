@@ -1,0 +1,253 @@
+/* =================================================================
+   休暇申請モーダル (Phase 3-6)
+   CorrectionModal と同じデザインシステム
+   ================================================================= */
+
+.leave-modal__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(45, 45, 45, 0.5);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: leaveFadeIn 0.18s ease-out;
+}
+
+@keyframes leaveFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.leave-modal__panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  width: 100%;
+  max-width: 480px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: leaveSlideIn 0.22s ease-out;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+}
+
+@keyframes leaveSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.leave-modal__header {
+  margin: 0;
+}
+.leave-modal__title {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.leave-modal__sub {
+  margin: 0;
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+/* ===== エラー ===== */
+.leave-modal__error {
+  background: var(--danger-bg);
+  border: 1px solid #E3C2B7;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+.leave-modal__error p {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--danger);
+  font-weight: 600;
+  word-break: break-all;
+}
+
+/* ===== フォーム ===== */
+.leave-modal__body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.leave-modal__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.leave-modal__field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.leave-modal__label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-mute);
+}
+.leave-modal__required {
+  color: var(--danger);
+  margin-left: 2px;
+}
+.leave-modal__input,
+.leave-modal__select,
+.leave-modal__textarea {
+  font-family: inherit;
+  font-size: 13px;
+  padding: 8px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 7px;
+  background: var(--surface-2);
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.12s, box-shadow 0.12s, background 0.12s;
+}
+.leave-modal__input:focus,
+.leave-modal__select:focus,
+.leave-modal__textarea:focus {
+  border-color: var(--primary);
+  background: var(--surface);
+  box-shadow: 0 0 0 2px rgba(108, 143, 61, 0.18);
+}
+.leave-modal__input:disabled,
+.leave-modal__select:disabled,
+.leave-modal__textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.leave-modal__textarea {
+  resize: vertical;
+  min-height: 70px;
+  line-height: 1.6;
+}
+.leave-modal__hint {
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  margin: 2px 0 0;
+}
+
+/* ===== 日数プレビュー ===== */
+.leave-modal__preview {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  font-size: 12.5px;
+}
+.leave-modal__preview-label {
+  color: var(--ink-soft);
+}
+.leave-modal__preview-value {
+  font-size: 14px;
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+.leave-modal__preview-remain {
+  font-size: 11.5px;
+  color: var(--ink-mute);
+  margin-left: auto;
+}
+.leave-modal__preview-remain--neg {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+/* ===== 警告 (残日数超過) ===== */
+.leave-modal__warn {
+  background: #FDF5E5;
+  border: 1px solid #E5C77A;
+  border-radius: 7px;
+  padding: 9px 12px;
+}
+.leave-modal__warn p {
+  margin: 0;
+  font-size: 12px;
+  color: #8B5C13;
+  line-height: 1.5;
+}
+
+/* ===== ボタン ===== */
+.leave-modal__actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+.leave-modal__btn {
+  flex: 1;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 9px 14px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s, opacity 0.12s;
+}
+.leave-modal__btn--primary {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+.leave-modal__btn--primary:hover:not(:disabled) {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+.leave-modal__btn--secondary {
+  background: var(--surface-2);
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+.leave-modal__btn--secondary:hover:not(:disabled) {
+  background: var(--line);
+}
+.leave-modal__btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ===== 成功 ===== */
+.leave-modal__success {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.leave-modal__success-card {
+  background: var(--ok-bg);
+  border: 1px solid #CFDDB6;
+  border-radius: 10px;
+  padding: 16px 14px;
+  text-align: center;
+}
+.leave-modal__success-msg {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+.leave-modal__success-sub {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--ok);
+}

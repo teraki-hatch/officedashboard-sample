@@ -1,0 +1,519 @@
+/* =================================================================
+   勤怠カレンダー (Phase 3-5a)
+   ================================================================= */
+
+.att-cal {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.att-cal__error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  background: var(--danger-bg);
+  border: 1px solid #E3C2B7;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--danger);
+}
+
+.att-cal__empty {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 48px 28px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.att-cal__empty-icon {
+  font-size: 32px;
+  opacity: 0.55;
+}
+.att-cal__empty h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+.att-cal__empty p {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--ink-mute);
+}
+.att-cal__empty code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: var(--surface-2);
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+
+/* ===== サマリーカード ===== */
+.att-cal__summary {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+@media (max-width: 1100px) {
+  .att-cal__summary {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 720px) {
+  .att-cal__summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.att-cal__summary-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.att-cal__summary-label {
+  font-size: 11px;
+  color: var(--ink-soft);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+.att-cal__summary-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+}
+.att-cal__summary-value--accent {
+  color: var(--primary-dark);
+}
+.att-cal__summary-value--leave {
+  color: #7E5BA6;
+}
+.att-cal__summary-value--ok {
+  color: var(--ok);
+}
+.att-cal__summary-value--neg {
+  color: var(--danger);
+}
+.att-cal__summary-unit {
+  font-size: 12px;
+  color: var(--ink-mute);
+  margin-left: 2px;
+}
+.att-cal__summary-sub {
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin-top: 4px;
+}
+
+/* ===== 勤務区分内訳 ===== */
+.att-cal__breakdown {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 8px 4px;
+  font-size: 12px;
+  color: var(--ink-mute);
+}
+.att-cal__breakdown-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.att-cal__breakdown-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* ===== 月ナビ ===== */
+.att-cal__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+}
+.att-cal__nav-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.att-cal__loading {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+.att-cal__nav-right {
+  display: flex;
+  gap: 6px;
+}
+.att-cal__nav-btn {
+  font-family: inherit;
+  font-size: 13px;
+  padding: 7px 14px;
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+}
+.att-cal__nav-btn:hover {
+  background: var(--surface-2);
+  border-color: var(--primary);
+}
+
+/* ===== カレンダーグリッド ===== */
+.att-cal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 4px;
+}
+.att-cal__weekday {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-mute);
+  padding: 6px 0;
+  background: var(--surface-2);
+  border-radius: 4px;
+}
+.att-cal__weekday--sun {
+  color: #C26565;
+}
+.att-cal__weekday--sat {
+  color: #5B7AAA;
+}
+.att-cal__pad {
+  background: var(--surface);
+  border-radius: 4px;
+  min-height: 90px;
+}
+
+.att-cal__cell {
+  position: relative;
+  text-align: left;
+  background: var(--surface);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 6px 8px;
+  cursor: pointer;
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: inherit;
+  font-size: 11.5px;
+  color: var(--ink);
+  transition: border-color 0.12s, box-shadow 0.12s;
+}
+.att-cal__cell:hover {
+  border-color: var(--primary);
+}
+.att-cal__cell--today {
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+}
+.att-cal__cell--selected {
+  box-shadow: 0 0 0 2px var(--primary);
+  border-color: var(--primary);
+}
+
+/* セル種別ごとの色 */
+.cell--completed {
+  background: #F0F5E2;
+}
+.cell--working {
+  background: #FDF8E8;
+}
+.cell--leave-full {
+  background: #EFE8F5;
+}
+.cell--leave-half {
+  background: #F5EFE8;
+}
+.cell--holiday {
+  background: #FBEEEE;
+}
+.cell--weekend {
+  background: #F4F6FA;
+}
+
+.att-cal__cell-day {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--ink);
+}
+.att-cal__cell-day--sun {
+  color: #C26565;
+}
+.att-cal__cell-day--sat {
+  color: #5B7AAA;
+}
+.att-cal__cell-day--hol {
+  color: #C26565;
+}
+.att-cal__cell-leave {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #7E5BA6;
+  background: rgba(126, 91, 166, 0.1);
+  padding: 1px 6px;
+  border-radius: 999px;
+  align-self: flex-start;
+}
+.att-cal__cell-times {
+  font-size: 11px;
+  color: var(--ink-mute);
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.att-cal__cell-times-sep {
+  color: var(--ink-soft);
+}
+.att-cal__cell-wt {
+  font-size: 10.5px;
+  color: var(--ink-soft);
+  padding: 1px 5px;
+  background: var(--surface-2);
+  border-radius: 3px;
+  align-self: flex-start;
+}
+.att-cal__cell-hours {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin-top: auto;
+}
+
+/* ===== 凡例 ===== */
+.att-cal__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 11.5px;
+  color: var(--ink-mute);
+  padding: 6px 4px;
+}
+.att-cal__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.att-cal__legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  border: 1px solid var(--line);
+}
+
+/* ===== 選択日詳細 ===== */
+.att-cal__detail {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 18px;
+}
+
+/* ===== モーダル化 (オーバーレイ + 中央表示) ===== */
+.att-cal__modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: attCalOverlayIn 150ms ease-out;
+}
+.att-cal__detail--modal {
+  width: 100%;
+  max-width: 480px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 12px 40px rgba(45, 45, 45, 0.2);
+  animation: attCalModalIn 180ms ease-out;
+}
+@keyframes attCalOverlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes attCalModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.att-cal__detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.att-cal__detail-header h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.att-cal__detail-close {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: var(--ink-soft);
+  cursor: pointer;
+  padding: 4px 8px;
+}
+.att-cal__detail-close:hover {
+  color: var(--ink);
+}
+.att-cal__detail-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.att-cal__detail-row {
+  display: flex;
+  align-items: baseline;
+  font-size: 13px;
+}
+.att-cal__detail-label {
+  width: 80px;
+  color: var(--ink-soft);
+  font-size: 12px;
+  flex-shrink: 0;
+}
+.att-cal__detail-breaks ul {
+  margin: 4px 0 0 80px;
+  padding: 0;
+  list-style: none;
+}
+.att-cal__detail-breaks li {
+  font-size: 12.5px;
+  color: var(--ink-mute);
+  padding: 2px 0;
+}
+.att-cal__detail-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+}
+.att-cal__detail-btn {
+  font-family: inherit;
+  font-size: 13px;
+  padding: 7px 14px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.att-cal__detail-btn:disabled {
+  background: var(--ink-soft);
+  color: var(--surface);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* =================================================================
+   経費申請バッジ (セル右上の「申請済」表示)
+   ================================================================= */
+
+.att-cal__cell-expense {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 7px;
+  background: #c8a04a;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  border: 1px solid #b08b3a;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  transition: transform 0.15s, background 0.15s;
+  z-index: 2;
+  white-space: nowrap;
+}
+.att-cal__cell-expense:hover {
+  background: #a8843a;
+  transform: scale(1.05);
+}
+
+.att-cal__legend-expense-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 7px;
+  background: #c8a04a;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border: 1px solid #b08b3a;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  line-height: 1.2;
+}
+
+/* =================================================================
+   表示モードトグル (2026-06-01 追加: カレンダー / リスト 切替)
+   ================================================================= */
+
+.att-cal__view-toggle {
+  display: inline-flex;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--surface);
+  height: 34px;
+}
+.att-cal__view-btn {
+  font-family: inherit;
+  font-size: 13px;
+  padding: 0 14px;
+  background: transparent;
+  border: none;
+  color: var(--ink-mute);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: background 0.12s, color 0.12s;
+}
+.att-cal__view-btn + .att-cal__view-btn {
+  border-left: 1px solid var(--line-strong);
+}
+.att-cal__view-btn.is-active {
+  background: var(--primary);
+  color: var(--surface);
+  font-weight: 600;
+}
+.att-cal__view-btn:hover:not(.is-active) {
+  background: var(--surface-2);
+  color: var(--ink);
+}

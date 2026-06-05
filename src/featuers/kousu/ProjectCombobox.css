@@ -1,0 +1,167 @@
+/* ============================================================
+   ProjectCombobox - 検索可能なプロジェクト選択
+   ============================================================ */
+
+.proj-cb {
+  position: relative;
+  width: 100%;
+}
+
+/* 未展開時のボタン (選択状態を表示) */
+.proj-cb__trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 38px;
+  padding: 6px 10px;
+  background: #fff;
+  border: 1px solid #d0d6cf;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #2b3a2b;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.proj-cb__trigger:hover:not(:disabled) {
+  border-color: #7ba87b;
+}
+
+.proj-cb__trigger:focus-visible {
+  outline: none;
+  border-color: #5a8a5a;
+  box-shadow: 0 0 0 2px rgba(90, 138, 90, 0.15);
+}
+
+.proj-cb__trigger:disabled {
+  background: #f5f5f5;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* カラーチップ */
+.proj-cb__color {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.proj-cb__selected-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.proj-cb__placeholder {
+  flex: 1;
+  color: #9aa39a;
+}
+
+/* クリアボタン */
+.proj-cb__clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font-size: 12px;
+  color: #888;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.proj-cb__clear:hover {
+  background: #ececec;
+  color: #444;
+}
+
+/* 開閉インジケータ */
+.proj-cb__arrow {
+  font-size: 16px;
+  color: #5a8a5a;
+  flex-shrink: 0;
+  font-weight: bold;
+  line-height: 1;
+}
+
+/* 検索入力 (展開時) */
+.proj-cb__input {
+  width: 100%;
+  min-height: 38px;
+  padding: 6px 10px;
+  background: #fff;
+  border: 1px solid #5a8a5a;
+  border-radius: 6px 6px 0 0;
+  font-size: 14px;
+  color: #2b3a2b;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(90, 138, 90, 0.15);
+}
+
+.proj-cb__input::placeholder {
+  color: #9aa39a;
+}
+
+/* 候補リスト (展開時) */
+.proj-cb__list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  max-height: 260px;
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+  background: #fff;
+  border: 1px solid #5a8a5a;
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow-y: auto;
+}
+
+.proj-cb__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #2b3a2b;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.proj-cb__item:hover {
+  background: #f0f5f0;
+}
+
+.proj-cb__item--active {
+  background: #e2efe2;
+  font-weight: 600;
+}
+
+.proj-cb__item--active:hover {
+  background: #d6e8d6;
+}
+
+.proj-cb__item-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.proj-cb__empty {
+  padding: 12px;
+  font-size: 13px;
+  color: #999;
+  text-align: center;
+  font-style: italic;
+}

@@ -1,0 +1,604 @@
+/* =================================================================
+   管理者パネル (Phase 3-7)
+   ================================================================= */
+
+.admin-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.admin-panel__empty {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 48px 28px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.admin-panel__empty-icon {
+  font-size: 32px;
+  opacity: 0.55;
+}
+.admin-panel__empty h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+.admin-panel__empty p {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--ink-mute);
+  line-height: 1.7;
+}
+.admin-panel__btn {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  background: var(--primary);
+  color: white;
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.admin-panel__btn:hover {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+/* ===== ヘッダ ===== */
+.admin-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.admin-panel__title {
+  margin: 0 0 2px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.admin-panel__sub {
+  margin: 0;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+.admin-panel__loading {
+  font-size: 12px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+/* ===== 成功メッセージ ===== */
+.admin-panel__success {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--ok-bg);
+  border: 1px solid #CFDDB6;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+.admin-panel__success-close {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--primary-dark);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 2px 6px;
+}
+
+/* ===== エラー ===== */
+.admin-panel__error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  background: var(--danger-bg);
+  border: 1px solid #E3C2B7;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--danger);
+}
+
+/* ===== サマリー ===== */
+.admin-panel__summary {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+@media (max-width: 720px) {
+  .admin-panel__summary {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.admin-panel__summary-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  text-align: center;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.12s, background 0.12s, transform 0.05s;
+}
+.admin-panel__summary-card:hover {
+  border-color: var(--primary);
+}
+.admin-panel__summary-card:active {
+  transform: scale(0.98);
+}
+.admin-panel__summary-card--active {
+  border-color: var(--primary);
+  background: var(--surface-2);
+  box-shadow: 0 0 0 2px rgba(108, 143, 61, 0.18);
+}
+.admin-panel__summary-label {
+  font-size: 11px;
+  color: var(--ink-soft);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}
+.admin-panel__summary-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.admin-panel__summary-card--pending .admin-panel__summary-value {
+  color: #B6852A;
+}
+.admin-panel__summary-card--approved .admin-panel__summary-value {
+  color: var(--primary-dark);
+}
+.admin-panel__summary-card--rejected .admin-panel__summary-value {
+  color: var(--danger);
+}
+.admin-panel__summary-card--cancelled .admin-panel__summary-value {
+  color: var(--ink-soft);
+}
+
+/* ===== フィルター ===== */
+.admin-panel__filters {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 8px 0;
+}
+.admin-panel__filter {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.admin-panel__filter-label {
+  font-size: 11px;
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+.admin-panel__filter-input {
+  font-family: inherit;
+  font-size: 13px;
+  padding: 7px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+  outline: none;
+  min-width: 150px;
+}
+.admin-panel__filter-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(108, 143, 61, 0.18);
+}
+.admin-panel__filter-spacer {
+  flex: 1;
+}
+.admin-panel__filter-count {
+  font-size: 12px;
+  color: var(--ink-soft);
+  font-weight: 600;
+  padding: 7px 10px;
+  background: var(--surface-2);
+  border-radius: 6px;
+}
+
+/* ===== 一覧 ===== */
+.admin-panel__list {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+.admin-panel__list-empty {
+  padding: 28px;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+.admin-panel__list-ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ===== 申請行 ===== */
+.admin-panel__row {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.admin-panel__row-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.admin-panel__row-kind {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+.admin-panel__row-kind--leave {
+  background: rgba(126, 91, 166, 0.12);
+  color: #6B4694;
+}
+.admin-panel__row-kind--correction {
+  background: rgba(108, 143, 61, 0.13);
+  color: var(--primary-dark);
+}
+.admin-panel__row-user {
+  font-size: 13px;
+  color: var(--ink);
+}
+.admin-panel__row-date {
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin-left: auto;
+}
+
+.admin-panel__row-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.admin-panel__row-main {
+  font-size: 13px;
+  color: var(--ink);
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.admin-panel__row-sep {
+  color: var(--ink-soft);
+}
+.admin-panel__row-reason {
+  font-size: 12px;
+  color: var(--ink-mute);
+  background: var(--surface);
+  padding: 6px 8px;
+  border-radius: 5px;
+  line-height: 1.6;
+  border-left: 3px solid var(--line-strong);
+}
+.admin-panel__row-comment {
+  font-size: 12px;
+  color: var(--ink-mute);
+  background: #F0F5E2;
+  padding: 6px 8px;
+  border-radius: 5px;
+  line-height: 1.6;
+  border-left: 3px solid var(--primary);
+}
+.admin-panel__row-comment-label {
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin-right: 6px;
+}
+
+/* ===== アクション ===== */
+.admin-panel__row-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 2px;
+}
+.admin-panel__action {
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+}
+.admin-panel__action--approve {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+.admin-panel__action--approve:hover:not(:disabled) {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+.admin-panel__action--reject {
+  background: var(--surface);
+  color: var(--danger);
+  border-color: #E3C2B7;
+}
+.admin-panel__action--reject:hover:not(:disabled) {
+  background: var(--danger-bg);
+}
+.admin-panel__action:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* =================================================================
+   一括承認・却下 (Phase 4-3)
+   ================================================================= */
+
+/* ----- バルクツールバー ----- */
+.admin-panel__bulk {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--primary-pale);
+  border: 1px solid #DCE6CA;
+  border-radius: 8px;
+  flex-wrap: wrap;
+}
+.admin-panel__bulk-left,
+.admin-panel__bulk-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.admin-panel__bulk-count {
+  font-size: 12.5px;
+  color: var(--ink-mute);
+  margin-left: 8px;
+}
+.admin-panel__bulk-count strong {
+  color: var(--primary-dark);
+  font-size: 14px;
+}
+
+.admin-panel__bulk-btn {
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+}
+.admin-panel__bulk-btn--mini {
+  font-size: 11.5px;
+  padding: 4px 10px;
+  background: var(--surface);
+  color: var(--ink-mute);
+  border-color: var(--line-strong);
+}
+.admin-panel__bulk-btn--mini:hover:not(:disabled) {
+  background: white;
+  color: var(--primary-dark);
+  border-color: var(--primary);
+}
+.admin-panel__bulk-btn--approve {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  font-size: 13px;
+  padding: 8px 18px;
+}
+.admin-panel__bulk-btn--approve:hover:not(:disabled) {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+.admin-panel__bulk-btn--reject {
+  background: var(--danger);
+  color: white;
+  border-color: var(--danger);
+  font-size: 13px;
+  padding: 8px 18px;
+}
+.admin-panel__bulk-btn--reject:hover:not(:disabled) {
+  background: #A0392A;
+  border-color: #A0392A;
+}
+.admin-panel__bulk-btn--cancel {
+  background: var(--surface-2);
+  color: var(--ink);
+  border-color: var(--line-strong);
+  font-size: 13px;
+  padding: 8px 18px;
+}
+.admin-panel__bulk-btn--cancel:hover:not(:disabled) {
+  background: var(--line);
+}
+.admin-panel__bulk-btn--abort {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border-color: #E3B8AE;
+}
+.admin-panel__bulk-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ----- 進捗 ----- */
+.admin-panel__bulk-progress {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+.admin-panel__bulk-progress-bar {
+  height: 8px;
+  background: var(--surface-2);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.admin-panel__bulk-progress-fill {
+  height: 100%;
+  background: var(--primary);
+  transition: width 0.2s;
+}
+.admin-panel__bulk-progress-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 12.5px;
+  color: var(--ink-mute);
+}
+.admin-panel__bulk-progress-info strong {
+  color: var(--ink);
+}
+.admin-panel__bulk-progress-ok {
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+.admin-panel__bulk-progress-ng {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+/* ----- 結果 ----- */
+.admin-panel__bulk-result {
+  background: var(--primary-pale);
+  border: 1px solid #DCE6CA;
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+.admin-panel__bulk-result-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12.5px;
+  color: var(--ink);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.admin-panel__bulk-result-head strong {
+  font-size: 14px;
+  color: var(--primary-dark);
+}
+.admin-panel__bulk-errors {
+  margin-top: 8px;
+  font-size: 11.5px;
+}
+.admin-panel__bulk-errors summary {
+  cursor: pointer;
+  color: var(--danger);
+  font-weight: 600;
+}
+.admin-panel__bulk-errors ul {
+  margin: 6px 0 0 12px;
+  padding: 0;
+  color: var(--ink-mute);
+}
+.admin-panel__bulk-errors li {
+  margin: 2px 0;
+  list-style: disc;
+}
+.admin-panel__bulk-errors code {
+  background: var(--surface);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+}
+
+/* ----- チェックボックスと選択行 ----- */
+.admin-panel__row-check {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary);
+}
+.admin-panel__row--selected {
+  background: var(--primary-pale) !important;
+  border-color: var(--primary) !important;
+}
+.admin-panel__row--processing {
+  background: #FDF4E1 !important;
+  border-color: #E9D08C !important;
+  opacity: 0.85;
+}
+
+/* ----- 確認モーダル ----- */
+.admin-panel__bulk-confirm-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(45, 45, 45, 0.55);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.admin-panel__bulk-confirm {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--primary);
+  border-radius: 14px;
+  padding: 22px 24px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+.admin-panel__bulk-confirm-title {
+  margin: 0 0 12px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.admin-panel__bulk-confirm-msg {
+  margin: 0 0 8px;
+  font-size: 13.5px;
+  color: var(--ink);
+  line-height: 1.7;
+}
+.admin-panel__bulk-confirm-msg strong {
+  font-size: 16px;
+  color: var(--primary-dark);
+}
+.admin-panel__bulk-confirm-hint {
+  margin: 0 0 14px;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+.admin-panel__bulk-confirm-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}

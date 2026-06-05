@@ -1,0 +1,279 @@
+/* =================================================================
+   勤怠修正申請モーダル
+   ================================================================= */
+
+.corr-modal__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(45, 45, 45, 0.5);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: corrFadeIn 0.18s ease-out;
+}
+
+@keyframes corrFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.corr-modal__panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  width: 100%;
+  max-width: 440px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: corrSlideIn 0.22s ease-out;
+}
+
+@keyframes corrSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.corr-modal__header {
+  margin: 0;
+}
+.corr-modal__title {
+  margin: 0 0 2px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.corr-modal__date {
+  margin: 0;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+/* ===== 休暇日の注意 ===== */
+.corr-modal__leave-note {
+  background: #EFE8F5;
+  border: 1px solid #D6C9E6;
+  border-radius: 8px;
+  padding: 9px 12px;
+}
+.corr-modal__leave-note p {
+  margin: 0;
+  font-size: 12px;
+  color: #5B3F89;
+  line-height: 1.6;
+}
+
+/* ===== エラー ===== */
+.corr-modal__error {
+  background: var(--danger-bg);
+  border: 1px solid #E3C2B7;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+.corr-modal__error p {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--danger);
+  font-weight: 600;
+  word-break: break-all;
+}
+
+/* ===== フォーム ===== */
+.corr-modal__body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.corr-modal__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.corr-modal__field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.corr-modal__label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-mute);
+}
+.corr-modal__required {
+  color: var(--danger);
+  margin-left: 2px;
+}
+.corr-modal__input,
+.corr-modal__select,
+.corr-modal__textarea {
+  font-family: inherit;
+  font-size: 13px;
+  padding: 8px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 7px;
+  background: var(--surface-2);
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.12s, box-shadow 0.12s, background 0.12s;
+}
+.corr-modal__input:focus,
+.corr-modal__select:focus,
+.corr-modal__textarea:focus {
+  border-color: var(--primary);
+  background: var(--surface);
+  box-shadow: 0 0 0 2px rgba(108, 143, 61, 0.18);
+}
+.corr-modal__input:disabled,
+.corr-modal__select:disabled,
+.corr-modal__textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.corr-modal__textarea {
+  resize: vertical;
+  min-height: 70px;
+  line-height: 1.6;
+}
+.corr-modal__hint {
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  margin: 2px 0 0;
+}
+.corr-modal__hint--warn {
+  color: #B6852A;
+}
+
+/* ===== ボタン ===== */
+.corr-modal__actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+.corr-modal__btn {
+  flex: 1;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 9px 14px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s, opacity 0.12s;
+}
+.corr-modal__btn--primary {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+.corr-modal__btn--primary:hover:not(:disabled) {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+.corr-modal__btn--secondary {
+  background: var(--surface-2);
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+.corr-modal__btn--secondary:hover:not(:disabled) {
+  background: var(--line);
+}
+.corr-modal__btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ===== 成功 ===== */
+.corr-modal__success {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.corr-modal__success-card {
+  background: var(--ok-bg);
+  border: 1px solid #CFDDB6;
+  border-radius: 10px;
+  padding: 16px 14px;
+  text-align: center;
+}
+.corr-modal__success-msg {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+.corr-modal__success-sub {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--ok);
+}
+/* === 休憩入力エリア (Phase B 追加) === */
+.corr-modal__break-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+.corr-modal__input--time {
+  max-width: 130px;
+}
+.corr-modal__break-sep {
+  color: #8a8266;
+  font-size: 13px;
+}
+.corr-modal__break-del {
+  border: 1px solid #d8d2bf;
+  background: transparent;
+  color: #8a8266;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.corr-modal__break-del:hover:not(:disabled) {
+  background: #f3eee0;
+  color: #5a5240;
+}
+.corr-modal__break-del:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.corr-modal__break-add {
+  margin-top: 10px;
+  border: 1px dashed #b3a98a;
+  background: transparent;
+  color: #5a5240;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.corr-modal__break-add:hover:not(:disabled) {
+  background: #f3eee0;
+  border-color: #7b9e6e;
+  color: #5a5240;
+}
+.corr-modal__break-add:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.corr-modal__hint--mute {
+  color: #b3a98a;
+  font-style: italic;
+}

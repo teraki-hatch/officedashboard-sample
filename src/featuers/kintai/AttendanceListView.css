@@ -1,0 +1,138 @@
+/* =================================================================
+   勤怠リストビュー (2026-06-01 追加)
+   PDF台帳と同じ列構成 / カレンダーと同じデータソース
+   ================================================================= */
+
+.att-list-wrap {
+  overflow-x: auto;
+  margin-top: 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.att-list {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+}
+
+/* ===== ヘッダー行 ===== */
+.att-list thead th {
+  background: var(--surface-2);
+  color: var(--ink-soft);
+  font-weight: 600;
+  font-size: 11px;
+  padding: 12px 10px;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--line);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* ===== データ行 ===== */
+.att-list tbody tr {
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.att-list tbody td {
+  padding: 11px 10px;
+  white-space: nowrap;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  background: var(--surface);
+}
+.att-list tbody tr:last-child td {
+  border-bottom: none;
+}
+.att-list tbody tr:hover td {
+  background: var(--surface-2);
+}
+.att-list tbody tr:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+}
+
+/* ===== 列幅・整形 ===== */
+.att-list__th-day,  .att-list__td-day  {
+  text-align: right;
+  font-weight: 600;
+  width: 52px;
+  color: var(--ink);
+}
+.att-list__th-dow,  .att-list__td-dow  {
+  text-align: center;
+  width: 40px;
+}
+.att-list__td-dow--sun { color: #C26565; font-weight: 600; }
+.att-list__td-dow--sat { color: #5B7AAA; font-weight: 600; }
+
+.att-list__th-div,  .att-list__td-div  {
+  text-align: center;
+  width: 50px;
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+.att-list__th-wt,   .att-list__td-wt   { width: 100px; }
+.att-list__th-time, .att-list__td-time {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  width: 78px;
+}
+.att-list__th-h,    .att-list__td-h    {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  width: 68px;
+}
+.att-list__th-note, .att-list__td-note {
+  font-size: 12px;
+  color: var(--ink-mute);
+  padding-left: 16px;
+}
+
+/* ===== 行の状態 (カレンダーの cell-- と色を揃える) ===== */
+.att-list__row--weekend td {
+  background: #F4F6FA;
+  color: var(--ink-mute);
+}
+.att-list__row--holiday td {
+  background: #FBEEEE;
+  color: #C26565;
+}
+.att-list__row--leave td {
+  background: #EFE8F5;
+  color: #5B4878;
+}
+
+/* 異常検知: 出退勤あるのに休憩0件 (黄色) */
+.att-list__row--anomaly td {
+  background: #FDF6D8;
+}
+.att-list__row--anomaly .att-list__td-note {
+  color: #8B6914;
+  font-weight: 600;
+}
+
+/* ===== 今日の行: 左端1本だけ強調 (前回のバグ修正済み) ===== */
+.att-list__row--today td {
+  background: rgba(125, 158, 96, 0.08);
+  font-weight: 600;
+}
+.att-list__row--today td:first-child {
+  box-shadow: inset 3px 0 0 var(--primary);
+}
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 768px) {
+  .att-list { font-size: 12px; }
+  .att-list thead th,
+  .att-list td { padding: 9px 6px; }
+  .att-list__th-note, .att-list__td-note { font-size: 11px; }
+  .att-list__th-wt,   .att-list__td-wt   { width: 80px; }
+}

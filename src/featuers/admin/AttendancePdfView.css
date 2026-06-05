@@ -1,0 +1,292 @@
+/* ============================================
+ * AttendancePdfView.css
+ * 月次勤怠台帳 PDF出力ビュー
+ * (As Partner グリーン基調)
+ * ============================================ */
+
+.pdfview {
+  padding: 20px 24px;
+}
+
+.pdfview--denied {
+  text-align: center;
+  padding: 32px;
+}
+
+.pdfview__denied-msg {
+  font-size: 13px;
+  font-weight: 700;
+  color: #b91c1c;
+}
+
+.pdfview__head {
+  margin-bottom: 16px;
+}
+
+.pdfview__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 4px 0;
+}
+
+.pdfview__subtitle {
+  font-size: 12px;
+  color: #888;
+  margin: 0;
+}
+
+.pdfview__error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+}
+
+.pdfview__error-icon {
+  color: #ef4444;
+  font-size: 14px;
+}
+
+.pdfview__error-msg {
+  flex: 1;
+  font-size: 12px;
+  color: #b91c1c;
+  margin: 0;
+  word-break: break-all;
+}
+
+.pdfview__error-close {
+  background: transparent;
+  border: none;
+  color: #fca5a5;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+
+.pdfview__body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.pdfview__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pdfview__label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #555;
+}
+
+.pdfview__hint {
+  font-size: 12px;
+  color: #888;
+  margin: 0;
+}
+
+.pdfview__month-picker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pdfview__month-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  font-weight: 700;
+  color: #555;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.pdfview__month-btn:hover {
+  background: #e5e7eb;
+}
+
+.pdfview__month-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: #333;
+  min-width: 110px;
+  text-align: center;
+}
+
+.pdfview__select {
+  width: 100%;
+  max-width: 360px;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 13px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.pdfview__select:focus {
+  outline: 2px solid #4a6b3a;
+  outline-offset: 1px;
+  border-color: #4a6b3a;
+}
+
+.pdfview__preview {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  background: #f7f6f1;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+@media (max-width: 640px) {
+  .pdfview__preview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.pdfview__preview-cell {
+  background: #fff;
+  border: 1px solid #ece7d7;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.pdfview__preview-label {
+  font-size: 11px;
+  color: #888;
+  margin: 0 0 4px 0;
+}
+
+.pdfview__preview-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: #444;
+  margin: 0;
+}
+
+.pdfview__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pdfview__submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #4a6b3a;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, opacity 0.15s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.pdfview__submit:hover:not(:disabled) {
+  background: #3d5a2e;
+}
+
+.pdfview__submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pdfview__spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #fff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: pdfview-spin 0.8s linear infinite;
+}
+
+@keyframes pdfview-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.pdfview__guide {
+  background: #f0f7ff;
+  border: 1px solid #c7d8eb;
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+  color: #2c4a73;
+}
+
+.pdfview__guide-title {
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.pdfview__guide-steps {
+  margin: 0;
+  padding-left: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pdfview__guide-browsers {
+  background: #dfeaf6;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pdfview__guide-browsers-title {
+  font-weight: 700;
+  margin: 0 0 2px 0;
+}
+
+.pdfview__guide-browsers p {
+  margin: 0;
+}
+
+.pdfview__guide-note {
+  color: #2563eb;
+  margin: 0;
+}
+
+.pdfview__warning {
+  background: #fffaeb;
+  border: 1px solid #fde68a;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 12px;
+  color: #92400e;
+}
+
+.pdfview__warning-title {
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+
+.pdfview__warning p {
+  margin: 0;
+}

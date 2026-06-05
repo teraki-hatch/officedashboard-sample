@@ -1,0 +1,221 @@
+.employee-modal__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  overflow-y: auto;
+}
+
+.employee-modal__panel {
+  background: #fff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 640px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.employee-modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.employee-modal__title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #2c3e2c;
+}
+
+.employee-modal__sub {
+  font-size: 13px;
+  font-weight: 400;
+  color: #718096;
+  margin-left: 8px;
+}
+
+.employee-modal__close {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  color: #718096;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.employee-modal__close:hover {
+  background: #f7fafc;
+}
+
+.employee-modal__body {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.employee-modal__row {
+  display: flex;
+  gap: 12px;
+}
+
+.employee-modal__row--double > * {
+  flex: 1;
+}
+
+.employee-modal__row--checkboxes {
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #f7fafc;
+  border-radius: 8px;
+}
+
+.employee-modal__field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.employee-modal__label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #4a5a4a;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.employee-modal__required {
+  color: #c53030;
+}
+
+.employee-modal__hint {
+  font-size: 11px;
+  font-weight: 400;
+  color: #a0aec0;
+}
+
+.employee-modal__field input,
+.employee-modal__field select {
+  padding: 8px 10px;
+  border: 1px solid #d9ddd9;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #fff;
+  outline: none;
+}
+
+.employee-modal__field input:focus,
+.employee-modal__field select:focus {
+  border-color: #7a9e7e;
+  box-shadow: 0 0 0 3px rgba(122, 158, 126, 0.15);
+}
+
+.employee-modal__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #4a5a4a;
+  cursor: pointer;
+}
+
+.employee-modal__error {
+  padding: 10px 12px;
+  background: #fed7d7;
+  color: #c53030;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.employee-modal__footer {
+  padding: 16px 24px;
+  border-top: 1px solid #edf2f7;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.employee-modal__btn {
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+.employee-modal__btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.employee-modal__btn--cancel {
+  background: #f7fafc;
+  color: #4a5568;
+  border: 1px solid #d9ddd9;
+}
+
+.employee-modal__btn--cancel:hover:not(:disabled) {
+  background: #edf2f7;
+}
+
+.employee-modal__btn--primary {
+  background: #7a9e7e;
+  color: #fff;
+}
+
+.employee-modal__btn--primary:hover:not(:disabled) {
+  background: #6b8c6f;
+}
+
+/* 単価セクション (案件採算計算用) */
+.employee-modal__section {
+  padding: 12px 14px;
+  background: #f7faf7;
+  border: 1px solid #e2ebe2;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.employee-modal__section-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #4a5a4a;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.employee-modal__input-with-unit {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.employee-modal__unit {
+  position: absolute;
+  left: 10px;
+  font-size: 13px;
+  color: #718096;
+  pointer-events: none;
+  font-weight: 600;
+}
+
+.employee-modal__input-with-unit input {
+  width: 100%;
+  padding-left: 24px;
+}
