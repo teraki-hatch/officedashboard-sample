@@ -1,0 +1,1883 @@
+/* Phase D-4-c: TaskBoard スタイル (アイボリー×グリーン基調) */
+/* Phase D-4-e (Step 7.3): .tb を親いっぱいに → AppLayout 側の .content スクロールに任せる */
+
+.tb {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+/* ===== ヘッダー ===== */
+.tb-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+.tb-header__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+  margin-right: auto;
+}
+.tb-header__search {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  padding: 6px 10px;
+  min-width: 220px;
+  gap: 6px;
+}
+.tb-header__search input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 13px;
+  color: var(--ink);
+}
+.tb-header__filter {
+  background: #fff;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 13px;
+  color: var(--ink);
+  cursor: pointer;
+}
+.tb-header__toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--ink-mute);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ===== モード切替 ===== */
+.tb-mode {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+.tb-mode__btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  color: var(--ink-mute);
+  border-radius: 6px;
+  padding: 7px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+.tb-mode__btn--active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+.tb-mode__btn:hover:not(.tb-mode__btn--active) {
+  background: var(--primary-pale);
+  border-color: var(--primary);
+  color: var(--primary-dark);
+}
+
+/* ===== ボード本体 ===== */
+.tb-board {
+  flex: 1;
+  display: flex;
+  gap: 12px;
+  padding: 16px 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background: var(--bg);
+  min-height: 0;
+}
+
+/* ===== リスト (カラム) ===== */
+.tb-list {
+  flex: 0 0 280px;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  background: #f0eee5;
+  border-radius: 10px;
+  padding: 10px;
+  gap: 8px;
+}
+.tb-list__header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 6px;
+}
+.tb-list__title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  flex: 1;
+}
+.tb-list__count {
+  font-size: 12px;
+  color: var(--ink-mute);
+  background: #fff;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+.tb-list__menu {
+  background: transparent;
+  border: none;
+  color: var(--ink-soft);
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.tb-list__menu:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+.tb-list__cards {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  padding: 2px;
+  min-height: 0;
+}
+.tb-list__add {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px dashed var(--line-strong);
+  color: var(--ink-mute);
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+.tb-list__add:hover {
+  background: #fff;
+  border-color: var(--primary);
+  color: var(--primary-dark);
+}
+
+/* ===== カード ===== */
+.tb-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: all 120ms ease;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tb-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+.tb-card--dragging {
+  opacity: 0.4;
+}
+.tb-card__labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.tb-card__label {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+.tb-card__title {
+  font-size: 13.5px;
+  color: var(--ink);
+  line-height: 1.4;
+  font-weight: 500;
+  word-break: break-word;
+}
+.tb-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  color: var(--ink-mute);
+}
+.tb-card__due {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #f3f4f6;
+  color: #374151;
+}
+.tb-card__due--overdue {
+  background: #fee2e2;
+  color: #991b1b;
+  font-weight: 500;
+}
+.tb-card__due--today {
+  background: #fef3c7;
+  color: #92400e;
+  font-weight: 500;
+}
+.tb-card__status {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.tb-card__icon-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+/* ===== ローディング / 空状態 ===== */
+.tb-loading,
+.tb-empty,
+.tb-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  color: var(--ink-mute);
+  font-size: 14px;
+  padding: 40px;
+}
+.tb-error {
+  color: var(--danger, #b91c1c);
+}
+
+/* ===== モバイル ===== */
+@media (max-width: 768px) {
+  .tb-header { padding: 10px 12px; }
+  .tb-header__title { width: 100%; font-size: 16px; }
+  .tb-header__search { min-width: 0; flex: 1; }
+  .tb-mode { padding: 8px 12px; }
+  .tb-board { padding: 12px; gap: 10px; }
+  .tb-list { flex: 0 0 240px; padding: 8px; }
+}
+
+/* =========================================================
+   Phase D-4-e: Trello風カード詳細モーダル
+   ========================================================= */
+
+.cdm-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 1000;
+  padding: 40px 16px;
+  overflow-y: auto;
+}
+
+.cdm {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 920px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  overflow: hidden;
+}
+
+/* ===== ヘッダー ===== */
+.cdm__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+  gap: 8px;
+}
+.cdm__header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+.cdm__header-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cdm__assignee-wrap {
+  position: relative;
+  display: inline-block;
+}
+.cdm__assignee-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #eef0f4;
+  border: 1px solid transparent;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+.cdm__assignee-badge:hover {
+  background: #e2e6ec;
+}
+.cdm__chev {
+  font-size: 10px;
+  color: var(--ink-mute);
+}
+
+.cdm__icon-btn {
+  background: transparent;
+  border: none;
+  color: var(--ink-mute);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.cdm__icon-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--ink);
+}
+
+/* ===== 本体 (2カラム) ===== */
+.cdm__layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 0;
+  min-height: 480px;
+}
+.cdm__main {
+  padding: 16px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+.cdm__side {
+  background: #fafafa;
+  border-left: 1px solid var(--line);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ===== タイトル ===== */
+.cdm__title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+.cdm__title-check {
+  font-size: 18px;
+  color: var(--ink-mute);
+  padding: 2px 4px 0 0;
+}
+.cdm__title-btn {
+  background: transparent;
+  border: none;
+  text-align: left;
+  flex: 1;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  line-height: 1.4;
+  word-break: break-word;
+}
+.cdm__title-btn:hover {
+  background: var(--primary-pale, #f3f7ed);
+}
+
+/* ===== アクションバー ===== */
+.cdm__actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.cdm__actions-wrap {
+  position: relative;
+  display: inline-block;
+}
+.cdm__action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #f1f2f4;
+  border: 1px solid transparent;
+  color: var(--ink);
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+.cdm__action-btn:hover {
+  background: #e3e5e8;
+}
+
+/* ===== チップ行 ===== */
+.cdm__chips-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 28px;
+}
+.cdm__chips-label {
+  width: 64px;
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-mute);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.cdm__chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+.cdm__chips--dropdown-host {
+  position: relative;
+}
+.cdm__chip {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-weight: 500;
+  background: #eef0f4;
+  color: var(--ink);
+  border: 1px solid transparent;
+}
+.cdm__chip--btn {
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+.cdm__chip--btn:hover {
+  background: #e2e6ec;
+}
+.cdm__chip--overdue {
+  background: #fee2e2;
+  color: #991b1b;
+}
+.cdm__chip--today {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.cdm__placeholder {
+  color: #9ca3af;
+  font-style: italic;
+  font-size: 12px;
+}
+.cdm__placeholder--block {
+  padding: 8px 4px;
+}
+
+.cdm__chip-add {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: #eef0f4;
+  border: 1px dashed var(--line-strong);
+  color: var(--ink-mute);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+.cdm__chip-add:hover {
+  background: #e2e6ec;
+  color: var(--ink);
+  border-color: var(--ink-mute);
+}
+
+/* ===== セクション ===== */
+.cdm__section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 6px;
+}
+.cdm__section-head {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  padding: 2px 0;
+}
+
+/* ===== 説明 ===== */
+.cdm__desc {
+  background: #f1f2f4;
+  border: 1px solid transparent;
+  text-align: left;
+  width: 100%;
+  font-size: 13px;
+  color: var(--ink);
+  padding: 10px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  min-height: 48px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.55;
+  transition: all 120ms ease;
+}
+.cdm__desc:hover {
+  background: #e3e5e8;
+}
+
+/* ===== 編集モード ===== */
+.cdm__edit-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+.cdm__input,
+.cdm__textarea {
+  font-size: 13px;
+  padding: 8px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  outline: none;
+  font-family: inherit;
+  width: 100%;
+}
+.cdm__input:focus,
+.cdm__textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary-pale, #f3f7ed);
+}
+.cdm__input--title {
+  font-size: 17px;
+  font-weight: 600;
+}
+.cdm__textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.55;
+}
+
+.cdm__edit-btns {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.cdm__btn {
+  font-size: 12px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--line-strong);
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+.cdm__btn:hover:not(:disabled) {
+  background: #f5f5f5;
+}
+.cdm__btn--primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+.cdm__btn--primary:hover:not(:disabled) {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+.cdm__btn--danger {
+  background: #fff;
+  border-color: var(--danger, #b91c1c);
+  color: var(--danger, #b91c1c);
+}
+.cdm__btn--danger:hover:not(:disabled) {
+  background: #fee2e2;
+}
+.cdm__btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===== ドロップダウン ===== */
+.cdm-dd {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 50;
+  background: #fff;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+  max-width: 260px;
+  padding: 6px;
+  max-height: 420px;
+  overflow-y: auto;
+}
+.cdm-dd--wide {
+  min-width: 304px;
+  max-width: 320px;
+  padding: 0;
+}
+.cdm-dd__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-size: 13px;
+  color: var(--ink);
+  padding: 7px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 100ms ease;
+}
+.cdm-dd__item:hover {
+  background: #f1f2f4;
+}
+.cdm-dd__item--selected {
+  background: var(--primary-pale, #f3f7ed);
+  font-weight: 500;
+}
+.cdm-dd__check {
+  color: var(--primary, #6b8e23);
+  font-size: 12px;
+}
+.cdm-dd__chip {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.cdm-dd__date {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+}
+
+/* ===== フッター ===== */
+.cdm__footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  margin-top: 8px;
+}
+.cdm__archive {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  color: var(--danger, #b91c1c);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+.cdm__archive:hover:not(:disabled) {
+  background: #fee2e2;
+  border-color: var(--danger, #b91c1c);
+}
+.cdm__archive:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.cdm__error {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+/* =========================================================
+   Phase D-4-e (Step 2.5): Trello風ラベルピッカー
+   ========================================================= */
+
+.cdm-lp {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  gap: 10px;
+}
+
+.cdm-lp__head {
+  display: grid;
+  grid-template-columns: 24px 1fr 24px;
+  align-items: center;
+  gap: 4px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+.cdm-lp__title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: center;
+}
+.cdm-lp__close,
+.cdm-lp__back {
+  background: transparent;
+  border: none;
+  color: var(--ink-mute);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+.cdm-lp__close:hover,
+.cdm-lp__back:hover {
+  background: #f1f2f4;
+  color: var(--ink);
+}
+.cdm-lp__head-spacer {
+  display: inline-block;
+  width: 24px;
+}
+
+.cdm-lp__search {
+  font-size: 12px;
+  padding: 6px 8px;
+}
+
+.cdm-lp__list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 240px;
+  overflow-y: auto;
+  padding: 2px 0;
+}
+
+.cdm-lp__row {
+  display: grid;
+  grid-template-columns: 20px 1fr 28px;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 0;
+}
+.cdm-lp__row input[type='checkbox'] {
+  flex-shrink: 0;
+  cursor: pointer;
+  margin: 0;
+}
+.cdm-lp__chip-btn {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: filter 100ms ease;
+}
+.cdm-lp__chip-btn:hover:not(:disabled) {
+  filter: brightness(0.95);
+}
+.cdm-lp__chip-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.cdm-lp__edit-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--ink-mute);
+  padding: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 120ms ease;
+}
+.cdm-lp__edit-btn:hover {
+  background: #f1f2f4;
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+
+.cdm-lp__create-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: #f1f2f4;
+  border: 1px solid transparent;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 120ms ease;
+  width: 100%;
+}
+.cdm-lp__create-btn:hover {
+  background: #e3e5e8;
+}
+
+/* ===== ラベル編集モード ===== */
+.cdm-lp__preview-wrap {
+  background: linear-gradient(180deg, #f5e6c4 0%, #e8d2a0 100%);
+  border-radius: 6px;
+  padding: 24px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cdm-lp__preview-chip {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 120px;
+  text-align: center;
+}
+
+.cdm-lp__field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.cdm-lp__field-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-mute);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.cdm-lp__colors {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+.cdm-lp__color-swatch {
+  height: 32px;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 120ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.cdm-lp__color-swatch:hover {
+  filter: brightness(0.95);
+  transform: scale(1.04);
+}
+.cdm-lp__color-swatch--selected {
+  border-color: var(--ink);
+  box-shadow: 0 0 0 2px #fff inset;
+}
+
+.cdm-lp__editor-btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+
+/* ===== モバイル ===== */
+@media (max-width: 768px) {
+  .cdm-backdrop { padding: 0; }
+  .cdm { max-width: 100%; border-radius: 0; min-height: 100vh; }
+  .cdm__layout { grid-template-columns: 1fr; min-height: 0; }
+  .cdm__side { border-left: none; border-top: 1px solid var(--line); }
+  .cdm__chips-label { width: 56px; }
+}
+
+/* =========================================================
+   Phase D-4-e (Step 2.6): Trello風 日付ピッカー
+   ========================================================= */
+
+.cdm-dp {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  gap: 10px;
+}
+
+.cdm-dp__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.cdm-dp__nav-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--ink-mute);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.cdm-dp__nav-btn:hover {
+  background: #f1f2f4;
+  color: var(--ink);
+}
+.cdm-dp__month-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  min-width: 110px;
+  text-align: center;
+}
+
+/* カレンダー */
+.cdm-cal {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.cdm-cal__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+.cdm-cal__weekday {
+  font-size: 11px;
+  color: var(--ink-mute);
+  text-align: center;
+  padding: 4px 0;
+  font-weight: 500;
+}
+.cdm-cal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+.cdm-cal__day {
+  position: relative;
+  background: transparent;
+  border: none;
+  font-size: 12px;
+  color: var(--ink);
+  padding: 8px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+.cdm-cal__day:hover {
+  background: var(--primary-pale, #f3f7ed);
+}
+.cdm-cal__day--out {
+  color: var(--ink-soft, #c0c0c0);
+}
+.cdm-cal__day--today {
+  font-weight: 700;
+  border: 1px solid var(--primary);
+  color: var(--primary-dark, #4a6818);
+}
+/* 範囲ハイライト (開始日と期限の間) */
+.cdm-cal__day--range {
+  background: #dbeafe;
+  color: #1e40af;
+  border-radius: 0;
+}
+/* 開始日 */
+.cdm-cal__day--start {
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.cdm-cal__day--start:hover {
+  background: var(--primary-dark, #4a6818);
+}
+/* 期限 */
+.cdm-cal__day--due {
+  background: var(--primary-dark, #4a6818);
+  color: #fff;
+  font-weight: 600;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+/* 開始日かつ期限が同じ日 */
+.cdm-cal__day--start.cdm-cal__day--due {
+  border-radius: 4px;
+}
+
+/* 入力フィールド */
+.cdm-dp__field-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+}
+.cdm-dp__field-row {
+  display: grid;
+  grid-template-columns: 20px 60px 1fr auto;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+.cdm-dp__field-row input[type='checkbox'] {
+  margin: 0;
+  cursor: pointer;
+}
+.cdm-dp__field-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.cdm-dp__input {
+  font-size: 12px;
+  padding: 4px 6px;
+}
+.cdm-dp__input--time {
+  width: 90px;
+}
+.cdm-dp__input:disabled {
+  background: #f5f5f5;
+  color: var(--ink-soft, #c0c0c0);
+}
+
+.cdm-dp__btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+/* =========================================================
+   Phase D-4-e (Step 2.8): 完了マーク + 完了フィルタ
+   ========================================================= */
+
+/* タイトル横の完了マーク (○ / ✓) */
+.cdm__title-check-btn {
+  background: transparent;
+  border: none;
+  color: var(--ink-mute);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 120ms ease;
+  flex-shrink: 0;
+}
+.cdm__title-check-btn:hover:not(:disabled) {
+  background: var(--primary-pale, #f3f7ed);
+  color: var(--primary, #6b8e23);
+}
+.cdm__title-check-btn--done {
+  color: var(--primary, #6b8e23);
+}
+.cdm__title-check-btn--done:hover:not(:disabled) {
+  background: #e8f0d8;
+  color: var(--primary-dark, #4a6818);
+}
+.cdm__title-check-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* 完了タイトルの取り消し線 */
+.cdm__title-btn--done {
+  text-decoration: line-through;
+  color: var(--ink-mute);
+}
+
+/* ヘッダー: 完了表示トグル */
+.tb-header__filter--active {
+  background: var(--primary, #6b8e23);
+  color: #fff;
+  border-color: var(--primary, #6b8e23);
+}
+.tb-header__filter {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ボードのカード: 完了カードは控えめに (フィルタOFFで表示中の場合) */
+.tb-card[data-completed='true'] {
+  opacity: 0.6;
+}
+.tb-card[data-completed='true'] .tb-card__title {
+  text-decoration: line-through;
+  color: var(--ink-mute);
+}
+
+/* =========================================================
+   Phase D-4-e (Step 3): チェックリスト
+   ========================================================= */
+
+.cl-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.cl-section__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.cl-section__head-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.cl-section__toggle {
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  color: var(--ink);
+  font-size: 11px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+.cl-section__toggle:hover {
+  background: #f1f2f4;
+}
+
+/* === 新規作成フォーム === */
+.cl-create {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+}
+
+/* === 単一チェックリスト === */
+.cl {
+  background: #fafafa;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid var(--line);
+}
+
+.cl__head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cl__icon {
+  color: var(--ink-mute);
+  flex-shrink: 0;
+}
+.cl__title {
+  background: transparent;
+  border: 1px solid transparent;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: left;
+  flex: 1;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  word-break: break-word;
+}
+.cl__title:hover {
+  background: #fff;
+  border-color: var(--line-strong);
+}
+.cl__title-input {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+}
+.cl__delete {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--ink-mute);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.cl__delete:hover {
+  background: #fee2e2;
+  color: var(--danger, #b91c1c);
+  border-color: var(--danger, #b91c1c);
+}
+
+/* === 進捗バー === */
+.cl__progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cl__progress-label {
+  font-size: 11px;
+  color: var(--ink-mute);
+  font-weight: 500;
+  min-width: 30px;
+  text-align: right;
+}
+.cl__progress-bar {
+  flex: 1;
+  height: 6px;
+  background: #e3e5e8;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.cl__progress-fill {
+  height: 100%;
+  background: var(--primary, #6b8e23);
+  transition: width 200ms ease;
+}
+
+/* === アイテム一覧 === */
+.cl__items {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cl-item {
+  display: grid;
+  grid-template-columns: 18px 1fr auto auto;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 6px;
+  border-radius: 4px;
+  transition: background 120ms ease;
+}
+.cl-item:hover {
+  background: #fff;
+}
+.cl-item--done .cl-item__title {
+  text-decoration: line-through;
+  color: var(--ink-mute);
+}
+.cl-item__check {
+  margin: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.cl-item__title {
+  background: transparent;
+  border: 1px solid transparent;
+  font-size: 13px;
+  color: var(--ink);
+  text-align: left;
+  padding: 4px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  word-break: break-word;
+  line-height: 1.4;
+}
+.cl-item__title:hover {
+  background: #fff;
+  border-color: var(--line);
+}
+.cl-item__input {
+  font-size: 13px;
+}
+
+/* メタ (期限/担当者バッジ) */
+.cl-item__meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.cl-item__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: #eef0f4;
+  color: var(--ink);
+  font-weight: 500;
+}
+.cl-item__chip--due {
+  background: #fef3c7;
+  color: #92400e;
+}
+.cl-item__chip--assignee {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+/* アクション */
+.cl-item__actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+.cl-item:hover .cl-item__actions {
+  opacity: 1;
+}
+.cl-item__menu-wrap {
+  position: relative;
+  display: inline-block;
+}
+.cl-item__icon-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--ink-mute);
+  cursor: pointer;
+  padding: 3px;
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.cl-item__icon-btn:hover {
+  background: #f1f2f4;
+  color: var(--ink);
+}
+.cl-item__icon-btn--danger:hover {
+  background: #fee2e2;
+  color: var(--danger, #b91c1c);
+}
+
+.cl-item__menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  z-index: 60;
+  background: #fff;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 4px;
+  min-width: 180px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+.cl-item__menu-item {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-size: 12px;
+  color: var(--ink);
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.cl-item__menu-item:hover {
+  background: #f1f2f4;
+}
+.cl-item__menu-date {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 4px;
+}
+
+/* アイテム追加ボタン */
+.cl__add-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: 1px dashed var(--line-strong);
+  color: var(--ink-mute);
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: all 120ms ease;
+}
+.cl__add-btn:hover {
+  background: #fff;
+  border-color: var(--primary);
+  color: var(--primary-dark);
+}
+
+/* === アイテム追加フォーム === */
+.cl-adder {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #fff;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--line-strong);
+}
+.cl-adder__btns {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.cl-adder__option {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  color: var(--ink-mute);
+  font-size: 11px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+.cl-adder__option:hover {
+  background: #f1f2f4;
+  color: var(--ink);
+}
+.cl-adder__option--active {
+  background: var(--primary-pale, #f3f7ed);
+  color: var(--primary-dark, #4a6818);
+  border-color: var(--primary);
+}
+
+/* ============================================================
+ * Phase D-4-h: ガントビュー
+ * 旧 taskboard の GanttChart を OfficeHub スタイル (アイボリー×グリーン) で再実装
+ * ============================================================ */
+
+/* ===== コンテナ ===== */
+.tb-gantt {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--surface);
+}
+
+/* ===== 月ナビ ===== */
+.tb-gantt__nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+.tb-gantt__navbtn {
+  background: #fff;
+  border: 1px solid var(--line-strong);
+  color: var(--ink-mute);
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 120ms ease;
+  min-width: 28px;
+  line-height: 1.2;
+}
+.tb-gantt__navbtn:hover {
+  background: var(--primary-pale);
+  border-color: var(--primary);
+  color: var(--primary-dark);
+}
+.tb-gantt__navbtn--today {
+  font-weight: 500;
+}
+.tb-gantt__monthlabel {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-left: 8px;
+}
+.tb-gantt__count {
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-left: auto;
+}
+
+/* ===== スクロールエリア ===== */
+.tb-gantt__scroll {
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+  background: var(--bg);
+}
+.tb-gantt__inner {
+  display: inline-flex;
+  min-width: 100%;
+}
+
+/* ===== 左ペイン (固定) ===== */
+.tb-gantt__left {
+  position: sticky;
+  left: 0;
+  z-index: 3;
+  flex-shrink: 0;
+  width: 440px;
+  background: var(--surface);
+  border-right: 1px solid var(--line-strong);
+  box-shadow: 2px 0 4px rgba(45, 45, 45, 0.04);
+}
+.tb-gantt__lefthead {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: 1fr 100px 70px;
+  gap: 6px;
+  padding: 8px 12px;
+  background: #f0eee5;
+  border-bottom: 1px solid var(--line-strong);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-mute);
+  letter-spacing: 0.02em;
+  height: 44px;
+  align-items: center;
+}
+.tb-gantt__col-title { }
+.tb-gantt__col-assignee { }
+.tb-gantt__col-due { text-align: right; }
+.tb-gantt__empty {
+  padding: 32px 16px;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+
+/* ===== 右ペイン (タイムライン) ===== */
+.tb-gantt__right {
+  position: relative;
+  flex-shrink: 0;
+}
+.tb-gantt__dayhead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  background: #f0eee5;
+  border-bottom: 1px solid var(--line-strong);
+  height: 44px;
+}
+.tb-gantt__daycell {
+  flex-shrink: 0;
+  width: var(--day-width);
+  border-right: 1px solid var(--line);
+  text-align: center;
+  padding: 4px 0;
+  font-size: 11px;
+  color: var(--ink-mute);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.tb-gantt__daycell--weekend {
+  background: rgba(0, 0, 0, 0.025);
+  color: var(--ink-soft);
+}
+.tb-gantt__daycell--today {
+  background: var(--primary-pale);
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+.tb-gantt__daynum {
+  font-size: 12px;
+  line-height: 1.3;
+}
+.tb-gantt__daydow {
+  font-size: 10px;
+  opacity: 0.65;
+  line-height: 1.2;
+}
+
+.tb-gantt__timeline {
+  position: relative;
+}
+.tb-gantt__grid {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  pointer-events: none;
+}
+.tb-gantt__gridcell {
+  flex-shrink: 0;
+  width: var(--day-width);
+  border-right: 1px solid var(--line);
+}
+.tb-gantt__gridcell--weekend {
+  background: rgba(0, 0, 0, 0.015);
+}
+.tb-gantt__todayline {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--danger);
+  opacity: 0.7;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ===== 行 (左ペイン) ===== */
+.tb-gantt-row {
+  display: grid;
+  grid-template-columns: 1fr 100px 70px;
+  gap: 6px;
+  padding: 0 12px;
+  align-items: center;
+  height: 36px;
+  font-size: 13px;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+}
+.tb-gantt-row:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+.tb-gantt-row--group {
+  background: #ece9dc;
+  height: 36px;
+}
+.tb-gantt-row--group:hover {
+  background: #e3dfcf;
+}
+.tb-gantt-row--completed {
+  opacity: 0.55;
+}
+.tb-gantt-row__title {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+.tb-gantt-row__caret {
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--ink-mute);
+  cursor: pointer;
+  font-size: 11px;
+  flex-shrink: 0;
+  padding: 0;
+  border-radius: 3px;
+}
+.tb-gantt-row__caret:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--ink);
+}
+.tb-gantt-row__caret--card {
+  margin-left: 4px;
+}
+.tb-gantt-row__caret--placeholder {
+  margin-left: 28px;
+  cursor: default;
+}
+.tb-gantt-row__caret--placeholder:hover {
+  background: transparent;
+}
+.tb-gantt-row__groupname {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tb-gantt-row__groupcount {
+  font-size: 11px;
+  color: var(--ink-mute);
+  flex-shrink: 0;
+  margin-left: 2px;
+}
+.tb-gantt-row__titletext {
+  font-weight: 500;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+.tb-gantt-row__titletext--child {
+  font-weight: 400;
+  color: var(--ink-mute);
+  padding-left: 4px;
+}
+.tb-gantt-row--completed .tb-gantt-row__titletext {
+  text-decoration: line-through;
+}
+.tb-gantt-row__progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  grid-column: 2 / span 2;
+  font-size: 11px;
+  color: var(--ink-mute);
+}
+.tb-gantt-row__progresslabel {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.tb-gantt-row__progressbar {
+  flex: 1;
+  height: 5px;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  min-width: 40px;
+}
+.tb-gantt-row__progressfill {
+  height: 100%;
+  background: var(--info);
+  transition: width 200ms ease;
+}
+.tb-gantt-row__progressfill--done {
+  background: var(--ok);
+}
+.tb-gantt-row__assignee {
+  font-size: 12px;
+  color: var(--ink-mute);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tb-gantt-row__due {
+  font-size: 12px;
+  color: var(--ink-mute);
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ===== バー (右ペイン) ===== */
+.tb-gantt-bar {
+  position: relative;
+  height: 36px;
+  border-bottom: 1px solid var(--line);
+}
+.tb-gantt-bar--group {
+  background: #ece9dc;
+}
+.tb-gantt-bar--completed {
+  opacity: 0.55;
+}
+.tb-gantt-bar__fill {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: filter 120ms ease, box-shadow 120ms ease;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(45, 45, 45, 0.08);
+}
+.tb-gantt-bar__fill:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 2px 4px rgba(45, 45, 45, 0.12);
+}
+.tb-gantt-bar__fill--card {
+  height: 20px;
+}
+.tb-gantt-bar__fill--checklist {
+  height: 12px;
+}
+.tb-gantt-bar__fill--primary {
+  background: var(--primary);
+}
+.tb-gantt-bar__fill--ok {
+  background: var(--ok);
+}
+.tb-gantt-bar__fill--danger {
+  background: var(--danger);
+}
+.tb-gantt-bar__fill--info {
+  background: var(--info);
+}
+.tb-gantt-bar__label {
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 0 6px;
+  white-space: nowrap;
+  line-height: 1;
+}
+.tb-gantt-bar__fill--checklist .tb-gantt-bar__label {
+  font-size: 10px;
+}

@@ -1,0 +1,529 @@
+/* =================================================================
+   有休管理パネル (Phase 3-8)
+   ================================================================= */
+
+.leave-admin {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.leave-admin__empty {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 48px 28px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.leave-admin__empty-icon {
+  font-size: 32px;
+  opacity: 0.55;
+}
+.leave-admin__empty h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+.leave-admin__empty p {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--ink-mute);
+  line-height: 1.7;
+}
+.leave-admin__btn {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  background: var(--primary);
+  color: white;
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.leave-admin__btn:hover {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+/* ===== ヘッダ ===== */
+.leave-admin__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.leave-admin__title {
+  margin: 0 0 2px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.leave-admin__sub {
+  margin: 0;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+.leave-admin__loading {
+  font-size: 12px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+/* ===== 年度セレクタ ===== */
+.leave-admin__header-tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.leave-admin__fy-select {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--ink-mute);
+}
+.leave-admin__fy-select select {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+}
+.leave-admin__fy-select select:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+.leave-admin__fy-warning {
+  color: #B25E2A;
+  font-weight: 600;
+}
+
+/* ===== メッセージ ===== */
+.leave-admin__success {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--ok-bg);
+  border: 1px solid #CFDDB6;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+.leave-admin__success-close {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--primary-dark);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 2px 6px;
+}
+.leave-admin__error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  background: var(--danger-bg);
+  border: 1px solid #E3C2B7;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--danger);
+}
+.leave-admin__error-close {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--danger);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 2px 6px;
+}
+
+/* ===== サマリー ===== */
+.leave-admin__summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.leave-admin__summary-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+  text-align: center;
+}
+.leave-admin__summary-card--grantable {
+  border-color: var(--primary);
+  background: var(--surface-2);
+}
+.leave-admin__summary-label {
+  font-size: 11px;
+  color: var(--ink-soft);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}
+.leave-admin__summary-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.leave-admin__summary-card--grantable .leave-admin__summary-value {
+  color: var(--primary-dark);
+}
+
+/* ===== テーブル ===== */
+.leave-admin__table-section {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 8px;
+  overflow: hidden;
+}
+.leave-admin__list-empty {
+  padding: 28px;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+.leave-admin__table-wrap {
+  overflow-x: auto;
+}
+
+/* ===== ツールバー ===== */
+.leave-admin__table-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 4px 10px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 6px;
+}
+.leave-admin__toolbar-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  color: var(--ink);
+  cursor: pointer;
+  user-select: none;
+}
+.leave-admin__toolbar-toggle input {
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+.leave-admin__toolbar-count {
+  margin-left: auto;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  font-weight: 600;
+  background: var(--surface-2);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.leave-admin__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.leave-admin__table th,
+.leave-admin__table td {
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+.leave-admin__table th {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  background: var(--surface-2);
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+.leave-admin__table th.num,
+.leave-admin__table td.num {
+  text-align: right;
+}
+.leave-admin__table tbody tr:hover {
+  background: var(--surface-2);
+}
+.leave-admin__remaining {
+  font-weight: 700;
+}
+.leave-admin__remaining--neg {
+  color: var(--danger);
+}
+
+/* ===== 対象外行 ===== */
+.leave-admin__row--excluded {
+  opacity: 0.65;
+  background: var(--surface-2);
+}
+.leave-admin__row--excluded:hover {
+  opacity: 0.85;
+}
+.leave-admin__excluded-tag {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink-soft);
+  border: 1px solid var(--line-strong);
+  vertical-align: middle;
+}
+
+/* ===== 行のアクション ===== */
+.leave-admin__row-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.leave-admin__row-btn {
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+}
+.leave-admin__row-btn--grant {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+.leave-admin__row-btn--grant:hover:not(:disabled) {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+.leave-admin__row-btn--edit {
+  background: var(--surface-2);
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+.leave-admin__row-btn--edit:hover:not(:disabled) {
+  background: var(--line);
+}
+.leave-admin__row-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.leave-admin__row-next {
+  font-size: 11px;
+  color: var(--ink-soft);
+  padding: 3px 8px;
+  background: var(--surface-2);
+  border: 1px dashed var(--line-strong);
+  border-radius: 5px;
+}
+.leave-admin__row-no-hire {
+  font-size: 11px;
+  color: var(--danger);
+  font-style: italic;
+  padding: 3px 8px;
+}
+
+/* ===== 付与履歴 ===== */
+.leave-admin__history {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+.leave-admin__history-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.leave-admin__history-toggle {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0;
+}
+.leave-admin__history-toggle:hover {
+  color: var(--primary-dark);
+}
+.leave-admin__history-filter {
+  font-family: inherit;
+  font-size: 12px;
+  padding: 5px 9px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: var(--surface-2);
+  color: var(--ink);
+  outline: none;
+  margin-left: auto;
+  min-width: 180px;
+}
+.leave-admin__history-filter:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(108, 143, 61, 0.18);
+}
+.leave-admin__history-body {
+  margin-top: 10px;
+  overflow-x: auto;
+}
+.leave-admin__history-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+.leave-admin__history-table th,
+.leave-admin__history-table td {
+  padding: 7px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+.leave-admin__history-table th {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  background: var(--surface-2);
+  letter-spacing: 0.04em;
+}
+.leave-admin__history-table th.num,
+.leave-admin__history-table td.num {
+  text-align: right;
+}
+
+/* ===== 付与履歴削除ボタン ===== */
+.leave-admin__grant-delete-btn {
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  background: var(--surface);
+  color: var(--ink-mute);
+  border: 1px solid var(--line-strong);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+.leave-admin__grant-delete-btn:hover:not(:disabled) {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border-color: #E3C2B7;
+}
+.leave-admin__grant-delete-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.leave-admin__grant-no-id {
+  font-size: 11px;
+  color: var(--ink-soft);
+}
+/* ===== 期限管理対応の追加スタイル ===== */
+/* 既存の LeaveAdminPanel.css の末尾に追記してください */
+
+/* 期限切れ間近 (30日以内) */
+.leave-admin__expiry--alert {
+  color: #c0392b;
+  font-weight: 600;
+}
+
+/* 期限警告 (90日以内) */
+.leave-admin__expiry--warn {
+  color: #b68c3f;
+  font-weight: 500;
+}
+
+/* 期限切れ grant の行 */
+.leave-admin__row--expired {
+  opacity: 0.5;
+  background: #f5f5f5;
+}
+
+.leave-admin__row--expired td {
+  text-decoration: line-through;
+}
+
+/* 「期限切れ」タグ */
+.leave-admin__expired-tag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 6px;
+  font-size: 11px;
+  background: #c0392b;
+  color: #fff;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+/* ===== 期限管理対応の追加スタイル ===== */
+/* 既存の LeaveAdminPanel.css の末尾に追記してください */
+
+/* 期限切れ間近 (30日以内) */
+.leave-admin__expiry--alert {
+  color: #c0392b;
+  font-weight: 600;
+}
+
+/* 期限警告 (90日以内) */
+.leave-admin__expiry--warn {
+  color: #b68c3f;
+  font-weight: 500;
+}
+
+/* 期限切れ grant の行 (付与履歴) */
+.leave-admin__row--expired {
+  opacity: 0.5;
+  background: #f5f5f5;
+}
+
+.leave-admin__row--expired td {
+  text-decoration: line-through;
+}
+
+/* 「期限切れ」タグ */
+.leave-admin__expired-tag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 6px;
+  font-size: 11px;
+  background: #c0392b;
+  color: #fff;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
+/* 失効予定セル (日数 / 期限の2段表示) */
+.leave-admin__expiry-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+  gap: 2px;
+}
+
+.leave-admin__expiry-days {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.leave-admin__expiry-date {
+  font-size: 11px;
+  opacity: 0.75;
+}
