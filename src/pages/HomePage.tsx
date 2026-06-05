@@ -8,7 +8,6 @@ import { useMyStatus } from '../features/home/useMyStatus';
 import { useTodayAttendance } from '../features/home/useTodayAttendance';
 import type { TodayMemberStatus } from '../features/home/useTodayAttendance';
 import { useLeaveBalance } from '../features/requests/useLeaveBalance';
-import { PortalLinks } from './PortalLinks';
 import { getAnniversary, getSeasonalMessage } from '../data/anniversaries';
 import './HomePage.css';
 
@@ -249,9 +248,6 @@ export function HomePage() {
               </ul>
             )}
           </div>
-
-          {/* 4番目: ポータル (外部リンクカード 2列x2行) */}
-          <PortalLinks />
 
         </div>
 
